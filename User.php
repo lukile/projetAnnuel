@@ -27,6 +27,7 @@
                 $this->comments_ = $comments;
                 $this->registration_date_ = $registration_date;
                 $this->application_fee_ = $application_fee;
+                
             }
 
 
