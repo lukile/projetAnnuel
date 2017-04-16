@@ -13,7 +13,8 @@
         private $applicationFee_;
         private $userId_;
 
-        public function __construct($firstname, $lastname, $archivingDate, $login, $password, $phone, $mail, $emergencyMail, $comments, $applicationFee, $userId){
+        public function __construct($id, $firstname, $lastname, $archivingDate, $login, $password, $phone, $mail, $emergencyMail, $comments, $applicationFee, $userId){
+            $this->id_ = $id;
             $this->firstname_ = $firstname;
             $this->lastname_ = $lastname;
             $this->archivingDate_ = $archivingDate;
@@ -25,6 +26,13 @@
             $this->comments_ = $comments;
             $this->applicationFee_ = $applicationFee;
             $this->userId_ = $userId;
+        }
+
+        public function getId(){
+            return $this->id_;
+        }
+        public function setId($id){
+            $this->id_ = $id;
         }
 
         public function getFirstname(){
