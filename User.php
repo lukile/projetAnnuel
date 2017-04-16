@@ -14,7 +14,8 @@
         private $registrationDate_;
         private $applicationFee_;
 
-        public function __construct($firstname = NULL, $lastname = NULL, $login = NULL, $password = NULL, $phone = NULL, $mail = NULL, $emergencyMail = NULL, $activationKey = NULL, $active = 0, $comments = NULL, $registrationDate, $applicationFee = 0.0){
+        public function __construct($id, $firstname = NULL, $lastname = NULL, $login = NULL, $password = NULL, $phone = NULL, $mail = NULL, $emergencyMail = NULL, $activationKey = NULL, $active = 0, $comments = NULL, $registrationDate, $applicationFee = 0.0){
+                $this->id_ = $id;
                 $this->firstname_ = $firstname;
                 $this->lastname_ = $lastname;
                 $this->login_ = $login;
@@ -29,8 +30,7 @@
                 $this->applicationFee_ = $applicationFee;
 
             }
-
-
+            
         public function getId(){
             return $this->id_;
         }
