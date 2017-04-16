@@ -14,8 +14,9 @@
         private $ttcPrice_;
         private $tvaPrice_;
         private $serviceId_;
+        private $coeffAcousticGroup_;
 
-        public function __construct($id, $petroleumProduct, $shelterFeature, $landingType, $landingPeriod, $timeUnit, $parkingSurface, $parkingWeek, $rate, $rateType, $htPrice, $ttcPrice, $tvaPrice, $serviceId){
+        public function __construct($id, $petroleumProduct, $shelterFeature, $landingType, $landingPeriod, $timeUnit, $parkingSurface, $parkingWeek, $rate, $rateType, $htPrice, $ttcPrice, $tvaPrice, $serviceId, $coeffAcousticGroup){
             $this->id_ = $id;
             $this->petroleumProduct_ = $petroleumProduct;
             $this->shelterFeature_ = $shelterFeature;
@@ -30,6 +31,7 @@
             $this->ttcPrice_ = $ttcPrice;
             $this->tvaPrice_ = $tvaPrice;
             $this->serviceId_ = $serviceId;
+            $this->coeffAcousticGroup_ = $coeffAcousticGroup;
         }
 
         public function getId(){
@@ -128,6 +130,13 @@
         }
         public function setServiceId($serviceId){
             $this->serviceId_ = $serviceId;
+        }
+
+        public function getCoeffAcousticGroup(){
+            return $this->coeffAcousticGroup_;
+        }
+        public function setCoeffAcousticGroup($coeffAcousticGroup){
+            $this->coeffAcousticGroup_ = $coeffAcousticGroup;
         }
     }
 ?>
