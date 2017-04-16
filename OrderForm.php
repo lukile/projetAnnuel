@@ -2,15 +2,15 @@
     class OrderForm{
         private $id_;
         private $invoice_;
-        private $booking_date_;
+        private $bookingDate_;
         private $validation_;
-        private $user_id_;
+        private $userId_;
 
-        public function __construct($invoice, $booking_date, $validation, $user_id){
+        public function __construct($invoice, $bookingDate, $validation, $userId){
             $this->invoice_ = $invoice;
-            $this->booking_date_ = $booking_date;
+            $this->bookingDate_ = $bookingDate;
             $this->validation_ = $validation;
-            $this->user_id_ = $user_id;
+            $this->userId_ = $userId;
         }
 
         public function getInvoice(){
@@ -21,10 +21,10 @@
         }
 
         public function getBookingDate(){
-            return $this->booking_date_;
+            return $this->bookingDate_;
         }
-        public function setBookingDate($booking_date){
-            $this->booking_date_ = $booking_date;
+        public function setBookingDate($bookingDate){
+            $this->bookingDate_ = $bookingDate;
         }
 
         public function getValidation(){
@@ -35,10 +35,10 @@
         }
 
         public function getUserId(){
-            return $this->user_id_;
+            return $this->userId_;
         }
-        public function setUserId($user_id){
-            $this->user_id_ = $user_id;
+        public function setUserId($userId){
+            $this->userId_ = $userId;
         }
     }
 ?>
