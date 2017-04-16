@@ -7,27 +7,27 @@
         private $password_;
         private $phone_;
         private $mail_;
-        private $emergency_mail_;
-        private $activation_key;
+        private $emergencyMail_;
+        private $activationKey;
         private $active_;
         private $comments_;
-        private $registration_date_;
-        private $application_fee_;
+        private $registrationDate_;
+        private $applicationFee_;
 
-        public function __construct($firstname = NULL, $lastname = NULL, $login = NULL, $password = NULL, $phone = NULL, $mail = NULL, $emergency_mail = NULL, $activation_key = NULL, $active = 0, $comments = NULL, $registration_date, $application_fee = 0.0){
+        public function __construct($firstname = NULL, $lastname = NULL, $login = NULL, $password = NULL, $phone = NULL, $mail = NULL, $emergencyMail = NULL, $activationKey = NULL, $active = 0, $comments = NULL, $registrationDate, $applicationFee = 0.0){
                 $this->firstname_ = $firstname;
                 $this->lastname_ = $lastname;
                 $this->login_ = $login;
                 $this->password_ = $password;
                 $this->phone_ = $phone;
                 $this->mail_ = $mail;
-                $this->emergency_mail_ = $emergency_mail;
-                $this->activation_key_ = $activation_key;
+                $this->emergencyMail_ = $emergencyMail;
+                $this->activationKey_ = $activationKey;
                 $this->active_ = $active;
                 $this->comments_ = $comments;
-                $this->registration_date_ = $registration_date;
-                $this->application_fee_ = $application_fee;
-                
+                $this->registrationDate_ = $registrationDate;
+                $this->applicationFee_ = $applicationFee;
+
             }
 
 
@@ -81,17 +81,17 @@
         }
 
         public function getEmergencyMail(){
-            return $this->emergency_mail_;
+            return $this->emergencyMail_;
         }
-        public function setEmergencyMail($emergency_mail){
-            $this->emergency_mail_ = $emergency_mail;
+        public function setEmergencyMail($emergencyMail){
+            $this->emergencyMail_ = $emergencyMail;
         }
 
         public function getActivationKey(){
-            return $this->activation_key_;
+            return $this->activationKey_;
         }
-        public function setActivationKey($activation_key){
-            $this->activation_key_ = $activation_key;
+        public function setActivationKey($activationKey){
+            $this->activationKey_ = $activationKey;
         }
 
         public function getActive(){
@@ -109,22 +109,17 @@
         }
 
         public function getRegistrationDate(){
-            return $this->registration_date_;
+            return $this->registrationDate_;
         }
-        public function setRegistrationDate($registration_date){
-            $this->registration_date_ = $registration_date;
+        public function setRegistrationDate($registrationDate){
+            $this->registrationDate_ = $registrationDate;
         }
 
         public function getApplicationFee(){
-            return $this->application_fee_;
+            return $this->applicationFee_;
         }
-        public function setApplicationFee($application_fee){
-            $this->application_fee_ = $application_fee;
+        public function setApplicationFee($applicationFee){
+            $this->applicationFee_ = $applicationFee;
         }
-
-
     }
-
-
-
 ?>
