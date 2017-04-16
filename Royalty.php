@@ -13,8 +13,9 @@
         private $htPrice_;
         private $ttcPrice_;
         private $tvaPrice_;
+        private $serviceId_;
 
-        public function __construct($id, $petroleumProduct, $shelterFeature, $landingType, $landingPeriod, $timeUnit, $parkingSurface, $parkingWeek, $rate, $rateType, $htPrice, $ttcPrice, $tvaPrice){
+        public function __construct($id, $petroleumProduct, $shelterFeature, $landingType, $landingPeriod, $timeUnit, $parkingSurface, $parkingWeek, $rate, $rateType, $htPrice, $ttcPrice, $tvaPrice, $serviceId){
             $this->id_ = $id;
             $this->petroleumProduct_ = $petroleumProduct;
             $this->shelterFeature_ = $shelterFeature;
@@ -28,6 +29,7 @@
             $this->htPrice_ = $htPrice;
             $this->ttcPrice_ = $ttcPrice;
             $this->tvaPrice_ = $tvaPrice;
+            $this->serviceId_ = $serviceId;
         }
 
         public function getId(){
@@ -119,6 +121,13 @@
         }
         public function setTvaPrice($tvaPrice){
             $this->tvaPrice_ = $tvaPrice;
+        }
+
+        public function getServiceId(){
+            return $this->serviceId_;
+        }
+        public function setServiceId($serviceId){
+            $this->serviceId_ = $serviceId;
         }
     }
 ?>
