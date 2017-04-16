@@ -8,23 +8,23 @@
         private $password_;
         private $phone_;
         private $mail_;
-        private $emergency_mail_;
+        private $emergencyMail_;
         private $comments_;
-        private $application_fee_;
-        private $user_id_;
+        private $applicationFee_;
+        private $userId_;
 
-        public function __construct($firstname, $lastname, $archiving_date, $login, $password, $phone, $mail, $emergency_mail, $comments, $application_fee, $user_id){
+        public function __construct($firstname, $lastname, $archivingDate, $login, $password, $phone, $mail, $emergencyMail, $comments, $applicationFee, $userId){
             $this->firstname_ = $firstname;
             $this->lastname_ = $lastname;
-            $this->archiving_date_ = $archiving_date;
+            $this->archivingDate_ = $archivingDate;
             $this->login_ = $login;
             $this->password_ = $password;
             $this->phone_ = $phone;
             $this->mail_ = $mail;
-            $this->emergency_mail_ = $emergency_mail;
+            $this->emergencyMail_ = $emergencyMail;
             $this->comments_ = $comments;
-            $this->application_fee_ = $application_fee;
-            $this->user_id_ = $user_id;
+            $this->applicationFee_ = $applicationFee;
+            $this->userId_ = $userId;
         }
 
         public function getFirstname(){
@@ -44,8 +44,8 @@
         public function getArchivingDate(){
             return $this->archiving_date_;
         }
-        public function setArchivingDate($archiving_date){
-            $this->archiving_date_ = $archiving_date;
+        public function setArchivingDate($archivingDate){
+            $this->archivingDate_ = $archivingDate;
         }
 
         public function getLogin(){
@@ -77,10 +77,10 @@
         }
 
         public function getEmergencyMail(){
-            return $this->emergency_mail_;
+            return $this->emergencyMail_;
         }
-        public function setEmergencyMail($emergency_mail){
-            $this->emergency_mail_ = $emergency_mail;
+        public function setEmergencyMail($emergencyMail){
+            $this->emergencyMail_ = $emergencyMail;
         }
 
         public function getComments(){
@@ -91,18 +91,17 @@
         }
 
         public function getApplicationFee(){
-            return $this->application_fee_;
+            return $this->applicationFee_;
         }
-        public function setApplicationFee($application_fee){
-            $this->application_fee_ = $application_fee;
+        public function setApplicationFee($applicationFee){
+            $this->applicationFee_ = $applicationFee;
         }
 
         public function getUserId(){
-            return $this->user_id_;
+            return $this->userId_;
         }
-        public function setUserId($user_id){
-            $this->user_id_ = $user_id;
+        public function setUserId($userId){
+            $this->userId_ = $userId;
         }
-
     }
 ?>
