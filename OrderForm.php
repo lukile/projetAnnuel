@@ -6,11 +6,19 @@
         private $validation_;
         private $userId_;
 
-        public function __construct($invoice, $bookingDate, $validation, $userId){
+        public function __construct($id, $invoice, $bookingDate, $validation, $userId){
+            $this->id_ = $id;
             $this->invoice_ = $invoice;
             $this->bookingDate_ = $bookingDate;
             $this->validation_ = $validation;
             $this->userId_ = $userId;
+        }
+
+        public function getId(){
+            return $this->$id_;
+        }
+        public function setId($id){
+            $this->id_ = $id;
         }
 
         public function getInvoice(){
