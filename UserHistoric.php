@@ -11,8 +11,9 @@
         private $emergency_mail_;
         private $comments_;
         private $application_fee_;
+        private $user_id_;
 
-        public function __construct($firstname, $lastname, $archiving_date, $login, $password, $phone, $mail, $emergency_mail, $comments, $application_fee){
+        public function __construct($firstname, $lastname, $archiving_date, $login, $password, $phone, $mail, $emergency_mail, $comments, $application_fee, $user_id){
             $this->firstname_ = $firstname;
             $this->lastname_ = $lastname;
             $this->archiving_date_ = $archiving_date;
@@ -23,6 +24,7 @@
             $this->emergency_mail_ = $emergency_mail;
             $this->comments_ = $comments;
             $this->application_fee_ = $application_fee;
+            $this->user_id_ = $user_id;
         }
 
         public function getFirstname(){
@@ -93,6 +95,13 @@
         }
         public function setApplicationFee($application_fee){
             $this->application_fee_ = $application_fee;
+        }
+
+        public function getUserId(){
+            return $this->user_id_;
+        }
+        public function setUserId($user_id){
+            $this->user_id_ = $user_id;
         }
 
     }
