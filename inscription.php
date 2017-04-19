@@ -273,7 +273,7 @@ if (isset($firstname, $lastname, $pseudo, $pass, $mail)) {
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="firstname" id="name"  placeholder="Nom"/>
+                                    <input type="text" class="form-control" name="lastname" id="name"  placeholder="Nom"/>
                                 </div>
                             </div>
                         </div>
@@ -282,7 +282,7 @@ if (isset($firstname, $lastname, $pseudo, $pass, $mail)) {
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="lastname" id="name"  placeholder="Prénom"/>
+                                    <input type="text" class="form-control" name="firstname" id="name"  placeholder="Prénom"/>
                                 </div>
                             </div>
                         </div>
