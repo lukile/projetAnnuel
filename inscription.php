@@ -266,14 +266,14 @@ if (isset($firstname, $lastname, $pseudo, $pass, $phone, $mail, $emergency_mail,
     
 
 <div class="main-login main-center">
-                    <form class="form-horizontal" method="POST" action="inscription.php">
+                    <form class="form-horizontal" method="POST" action="index.html">
                         
                         <div class="form-group">
                             <label for="name" class="cols-sm-2 control-label">Nom</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="surname" id="name"  placeholder="Nom"/>
+                                    <input type="text" class="form-control" name="firstname" id="name"  placeholder="Nom"/>
                                 </div>
                             </div>
                         </div>
@@ -282,7 +282,7 @@ if (isset($firstname, $lastname, $pseudo, $pass, $phone, $mail, $emergency_mail,
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="name" id="name"  placeholder="Prénom"/>
+                                    <input type="text" class="form-control" name="lastname" id="name"  placeholder="Prénom"/>
                                 </div>
                             </div>
                         </div>
@@ -312,7 +312,7 @@ if (isset($firstname, $lastname, $pseudo, $pass, $phone, $mail, $emergency_mail,
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                    <input type="password" class="form-control" name="password" id="password"  placeholder="saisir le mot de passe"/>
+                                    <input type="password" class="form-control" name="pass" id="password"  placeholder="saisir le mot de passe"/>
                                 </div>
                             </div>
                         </div>
@@ -322,7 +322,7 @@ if (isset($firstname, $lastname, $pseudo, $pass, $phone, $mail, $emergency_mail,
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                    <input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirmer le mot de passe"/>
+                                    <input type="password" class="form-control" name="pass" id="confirm"  placeholder="Confirmer le mot de passe"/>
                                 </div>
                             </div>
                         </div>
