@@ -10,17 +10,18 @@ $firstname = filter_input(INPUT_POST, 'firstname');
 $lastname = filter_input(INPUT_POST, 'lastname');
 $pseudo = filter_input(INPUT_POST, 'pseudo');
 $pass = filter_input(INPUT_POST, 'pass');
-//$phone = filter_input(INPUT_POST, 'phone');
+$phone = filter_input(INPUT_POST, 'phone');
 $mail = filter_input(INPUT_POST, 'mail');
-//$emergency_mail = filter_input(INPUT_POST, 'emergency_mail');
-//$comments = filter_input(INPUT_POST, 'comments');
+$emergency_mail = filter_input(INPUT_POST, 'emergency_mail');
+$comments = filter_input(INPUT_POST, 'comments');
 
 $pass_length = strlen($pass);
 
 
 /* Si le formulaire est envoyé */
-if (isset($firstname, $lastname, $pseudo, $pass, $mail)) {   
+if (isset($firstname, $lastname, $pseudo, $pass, $phone, $mail, $emergency_mail, $comments)) {   
     if(filter_var($mail, FILTER_VALIDATE_EMAIL) && filter_var($emergency_mail, FILTER_VALIDATE_EMAIL)){
+        if($mail != $emergency_mail){
             if($pass_length > 4){
 
             /* aene que les valeurs ne sont pas vides ou composées uniquement d'espaces  */ 
@@ -28,13 +29,13 @@ if (isset($firstname, $lastname, $pseudo, $pass, $mail)) {
             $lastname = trim($lastname) != '' ? $lastname : null;
             $pseudo = trim($pseudo) != '' ? $pseudo : null;
             $pass = trim($pass) != '' ? $pass : null;
-            //$phone = trim($phone) != '' ? $phone : null;
+            $phone = trim($phone) != '' ? $phone : null;
             $mail = trim($mail) != '' ? $mail : null;
-           // $emergency_mail = trim($emergency_mail) != '' ? $emergency_mail : null;
-            //$comments = trim($comments) != '' ? $comments : null;
+            $emergency_mail = trim($emergency_mail) != '' ? $emergency_mail : null;
+            $comments = trim($comments) != '' ? $comments : null;
 
                 /* Si les champs sont différents de null */
-                if(isset($lastname, $firstname, $pseudo, $pass, $mail)) {
+                if(isset($lastname, $firstname, $pseudo, $pass, $mail, $emergency_mail)) {
                     /* Connexion au serveur : dans cet exemple, en local sur le serveur d'évaluation
                     A MODIFIER avec vos valeurs */
                     $hostname = "localhost";
@@ -78,13 +79,13 @@ if (isset($firstname, $lastname, $pseudo, $pass, $mail)) {
                             /* Résultat du comptage = 0 pour ce pseudo, on peut donc l'enregistrer */
                         
                             /* Pour enregistrer la date actuelle (date/heure/minutes/secondes) on peut utiliser directement la fonction mysql : NOW()*/
-                            $insertion = "INSERT INTO user(firstname, lastname, pseudo,pass, mail, registration_date) VALUES(:firstname, :lastname, :nom, :password, :mail, NOW())";
+                            $insertion = "INSERT INTO user(firstname, lastname, pseudo,pass, phone, mail, emergency_mail, comments, registration_date) VALUES(:firstname, :lastname, :nom, :password, :phone, :mail, :emergency_mail, :comments, NOW())";
                             
                             /* préparation de l'insertion */
                             $insert_prep = $connect->prepare($insertion);
                             
                             /* Exécution de la requête en passant les marqueurs et leur variables associées dans un tableau*/
-                            $inser_exec = $insert_prep->execute(array(':firstname'=>$firstname, ':lastname'=>$lastname, ':nom'=>$pseudo,':password'=>$pass, ':mail'=>$mail));
+                            $inser_exec = $insert_prep->execute(array(':firstname'=>$firstname, ':lastname'=>$lastname, ':nom'=>$pseudo,':password'=>$pass, ':phone'=>$phone, ':mail'=>$mail, ':emergency_mail'=>$emergency_mail, ':comments'=>$comments));
                             
                             /* Si l'insertion s'est faite correctement...*/
                             if ($inser_exec === true) {
@@ -95,8 +96,8 @@ if (isset($firstname, $lastname, $pseudo, $pass, $mail)) {
                                 /* A MODIFIER Remplacer le '#' par l'adresse de votre page de destination, sinon ce lien indique la page actuelle.*/
                                 $message = 'Votre inscription est bien enregistrée.';
                                 /*ou redirection vers une page en cas de succès ex : menu.php*/
-                                header("Location: index.html");
-                                    exit();  
+                                /*header("Location: menu.php");
+                                    exit();  */
                             }   
                         }else{   /* Le pseudo est déjà utilisé */
                             $message = 'Ce pseudo existe déjà, Veuillez en choisir un autre.';
@@ -104,7 +105,7 @@ if (isset($firstname, $lastname, $pseudo, $pass, $mail)) {
                     }catch (PDOException $e){
                         $message = 'Problème lors d\'insertion';
                         echo 'Erreur : '.$e->getMessage();
-                    }	
+                    }   
                 
                 }else {    
                     $message = 'Tous les champs doivent êtres renseignés';
@@ -118,5 +119,242 @@ if (isset($firstname, $lastname, $pseudo, $pass, $mail)) {
     }else{
         $message = 'Le format de l\'adresse mail est incorrect';
     }
-
+}
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Aérodrome d'Evreux Normandie</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/modern-business.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Accueil</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active">
+                        <a href="subscribe.html">Inscription</a>
+                    </li>  
+                    <li>
+                        <a href="login.html">Connexion</a>
+                    </li>     
+                    <li>
+                        <a href="about.html">A propos</a>
+                    </li>
+                    <li>
+                        <a href="services.html">Services</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="portfolio-1-col.html">1 Column Portfolio</a>
+                            </li>
+                            <li>
+                                <a href="portfolio-2-col.html">2 Column Portfolio</a>
+                            </li>
+                            <li>
+                                <a href="portfolio-3-col.html">3 Column Portfolio</a>
+                            </li>
+                            <li>
+                                <a href="portfolio-4-col.html">4 Column Portfolio</a>
+                            </li>
+                            <li>
+                                <a href="portfolio-item.html">Single Portfolio Item</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="blog-home-1.html">Blog Home 1</a>
+                            </li>
+                            <li>
+                                <a href="blog-home-2.html">Blog Home 2</a>
+                            </li>
+                            <li>
+                                <a href="blog-post.html">Blog Post</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="full-width.html">Full Width Page</a>
+                            </li>
+                            <li>
+                                <a href="sidebar.html">Sidebar Page</a>
+                            </li>
+                            <li>
+                                <a href="faq.html">FAQ</a>
+                            </li>
+                            <li>
+                                <a href="404.html">404</a>
+                            </li>
+                            <li>
+                                <a href="pricing.html">Pricing Table</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Inscription
+                  
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Accueil</a>
+                    </li>
+                    <li class="active">Inscription</li>
+                </ol>
+            </div>
+        </div>
+    
+
+<div class="main-login main-center">
+                    <form class="form-horizontal" method="POST" action="inscription.php">
+                        
+                        <div class="form-group">
+                            <label for="name" class="cols-sm-2 control-label">Nom</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="surname" id="name"  placeholder="Nom"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="cols-sm-2 control-label">Prénom</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="name" id="name"  placeholder="Prénom"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="cols-sm-2 control-label">E-mail</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="mail" id="email"  placeholder="Email"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="cols-sm-2 control-label">Utilisateur</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="pseudo" id="username"  placeholder="Nom d'utilisateur"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="cols-sm-2 control-label">Mot de passe</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                    <input type="password" class="form-control" name="password" id="password"  placeholder="saisir le mot de passe"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirm" class="cols-sm-2 control-label">Confirmation</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                    <input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirmer le mot de passe"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Valider</button>
+                        </div>
+                        <div class="login-register">
+                            <a href="login.html">Déjà un compte ? Cliquez ici pour vous connectez !</a>
+                         </div>
+                    </form>
+                </div>
+        
+
+   <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Projet annuel 2A, Lucile, Damien, Sacha</p>
+                </div>
+            </div>
+    </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <!-- Do not edit these files! In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>          
