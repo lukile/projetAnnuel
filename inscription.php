@@ -10,18 +10,18 @@ $firstname = filter_input(INPUT_POST, 'firstname');
 $lastname = filter_input(INPUT_POST, 'lastname');
 $pseudo = filter_input(INPUT_POST, 'pseudo');
 $pass = filter_input(INPUT_POST, 'pass');
-$phone = filter_input(INPUT_POST, 'phone');
+//$phone = filter_input(INPUT_POST, 'phone');
 $mail = filter_input(INPUT_POST, 'mail');
-$emergency_mail = filter_input(INPUT_POST, 'emergency_mail');
-$comments = filter_input(INPUT_POST, 'comments');
+//$emergency_mail = filter_input(INPUT_POST, 'emergency_mail');
+//$comments = filter_input(INPUT_POST, 'comments');
 
 $pass_length = strlen($pass);
 
 
 /* Si le formulaire est envoyé */
-if (isset($firstname, $lastname, $pseudo, $pass, $phone, $mail, $emergency_mail, $comments)) {   
-    if(filter_var($mail, FILTER_VALIDATE_EMAIL) && filter_var($emergency_mail, FILTER_VALIDATE_EMAIL)){
-        if($mail != $emergency_mail){
+if (isset($firstname, $lastname, $pseudo, $pass, $mail)) {   
+    if(filter_var($mail, FILTER_VALIDATE_EMAIL) ){
+        //if($mail != $emergency_mail){
             if($pass_length > 4){
 
             /* aene que les valeurs ne sont pas vides ou composées uniquement d'espaces  */ 
@@ -29,13 +29,13 @@ if (isset($firstname, $lastname, $pseudo, $pass, $phone, $mail, $emergency_mail,
             $lastname = trim($lastname) != '' ? $lastname : null;
             $pseudo = trim($pseudo) != '' ? $pseudo : null;
             $pass = trim($pass) != '' ? $pass : null;
-            $phone = trim($phone) != '' ? $phone : null;
+          //  $phone = trim($phone) != '' ? $phone : null;
             $mail = trim($mail) != '' ? $mail : null;
-            $emergency_mail = trim($emergency_mail) != '' ? $emergency_mail : null;
-            $comments = trim($comments) != '' ? $comments : null;
+        //  $emergency_mail = trim($emergency_mail) != '' ? $emergency_mail : null;
+          // $comments = trim($comments) != '' ? $comments : null;
 
                 /* Si les champs sont différents de null */
-                if(isset($lastname, $firstname, $pseudo, $pass, $mail, $emergency_mail)) {
+                if(isset($lastname, $firstname, $pseudo, $pass, $mail)) {
                     /* Connexion au serveur : dans cet exemple, en local sur le serveur d'évaluation
                     A MODIFIER avec vos valeurs */
                     $hostname = "localhost";
@@ -79,13 +79,13 @@ if (isset($firstname, $lastname, $pseudo, $pass, $phone, $mail, $emergency_mail,
                             /* Résultat du comptage = 0 pour ce pseudo, on peut donc l'enregistrer */
                         
                             /* Pour enregistrer la date actuelle (date/heure/minutes/secondes) on peut utiliser directement la fonction mysql : NOW()*/
-                            $insertion = "INSERT INTO user(firstname, lastname, pseudo,pass, phone, mail, emergency_mail, comments, registration_date) VALUES(:firstname, :lastname, :nom, :password, :phone, :mail, :emergency_mail, :comments, NOW())";
+                            $insertion = "INSERT INTO user(firstname, lastname, pseudo, pass,  mail, registration_date) VALUES(:firstname, :lastname, :nom, :password, :mail,  NOW())";
                             
                             /* préparation de l'insertion */
                             $insert_prep = $connect->prepare($insertion);
                             
                             /* Exécution de la requête en passant les marqueurs et leur variables associées dans un tableau*/
-                            $inser_exec = $insert_prep->execute(array(':firstname'=>$firstname, ':lastname'=>$lastname, ':nom'=>$pseudo,':password'=>$pass, ':phone'=>$phone, ':mail'=>$mail, ':emergency_mail'=>$emergency_mail, ':comments'=>$comments));
+                            $inser_exec = $insert_prep->execute(array(':firstname'=>$firstname, ':lastname'=>$lastname, ':nom'=>$pseudo,':password'=>$pass, ':mail'=>$mail));
                             
                             /* Si l'insertion s'est faite correctement...*/
                             if ($inser_exec === true) {
@@ -119,7 +119,7 @@ if (isset($firstname, $lastname, $pseudo, $pass, $phone, $mail, $emergency_mail,
     }else{
         $message = 'Le format de l\'adresse mail est incorrect';
     }
-}
+
 ?>
 
 <!DOCTYPE html>
