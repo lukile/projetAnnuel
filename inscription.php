@@ -10,16 +10,16 @@ $firstname = filter_input(INPUT_POST, 'firstname');
 $lastname = filter_input(INPUT_POST, 'lastname');
 $pseudo = filter_input(INPUT_POST, 'pseudo');
 $pass = filter_input(INPUT_POST, 'pass');
-//$phone = filter_input(INPUT_POST, 'phone');
+$phone = filter_input(INPUT_POST, 'phone');
 $mail = filter_input(INPUT_POST, 'mail');
 //$emergency_mail = filter_input(INPUT_POST, 'emergency_mail');
-//$comments = filter_input(INPUT_POST, 'comments');
+$comments = filter_input(INPUT_POST, 'comments');
 
 $pass_length = strlen($pass);
 
 
 /* Si le formulaire est envoyé */
-if (isset($firstname, $lastname, $pseudo, $pass, $mail)) {   
+if (isset($firstname, $lastname, $pseudo, $pass, $phone, $mail, $comments)) {   
     if(filter_var($mail, FILTER_VALIDATE_EMAIL) ){
         //if($mail != $emergency_mail){
             if($pass_length > 4){
@@ -29,13 +29,13 @@ if (isset($firstname, $lastname, $pseudo, $pass, $mail)) {
             $lastname = trim($lastname) != '' ? $lastname : null;
             $pseudo = trim($pseudo) != '' ? $pseudo : null;
             $pass = trim($pass) != '' ? $pass : null;
-          //  $phone = trim($phone) != '' ? $phone : null;
+            $phone = trim($phone) != '' ? $phone : null;
             $mail = trim($mail) != '' ? $mail : null;
         //  $emergency_mail = trim($emergency_mail) != '' ? $emergency_mail : null;
-          // $comments = trim($comments) != '' ? $comments : null;
+           $comments = trim($comments) != '' ? $comments : null;
 
                 /* Si les champs sont différents de null */
-                if(isset($lastname, $firstname, $pseudo, $pass, $mail)) {
+                if(isset($lastname, $firstname, $pseudo, $pass, $phone, $mail)) {
                     /* Connexion au serveur : dans cet exemple, en local sur le serveur d'évaluation
                     A MODIFIER avec vos valeurs */
                     $hostname = "localhost";
@@ -79,13 +79,13 @@ if (isset($firstname, $lastname, $pseudo, $pass, $mail)) {
                             /* Résultat du comptage = 0 pour ce pseudo, on peut donc l'enregistrer */
                         
                             /* Pour enregistrer la date actuelle (date/heure/minutes/secondes) on peut utiliser directement la fonction mysql : NOW()*/
-                            $insertion = "INSERT INTO user(firstname, lastname, pseudo, pass,  mail, registration_date) VALUES(:firstname, :lastname, :nom, :password, :mail,  NOW())";
+                            $insertion = "INSERT INTO user(firstname, lastname, pseudo, pass, phone,  mail, comments, registration_date) VALUES(:firstname, :lastname, :nom, :password, :phone, :mail, :comments,  NOW())";
                             
                             /* préparation de l'insertion */
                             $insert_prep = $connect->prepare($insertion);
                             
                             /* Exécution de la requête en passant les marqueurs et leur variables associées dans un tableau*/
-                            $inser_exec = $insert_prep->execute(array(':firstname'=>$firstname, ':lastname'=>$lastname, ':nom'=>$pseudo,':password'=>$pass, ':mail'=>$mail));
+                            $inser_exec = $insert_prep->execute(array(':firstname'=>$firstname, ':lastname'=>$lastname, ':nom'=>$pseudo,':password'=>$pass, ':phone'=>$phone, ':mail'=>$mail, ':comments'=>$comments));
                             
                             /* Si l'insertion s'est faite correctement...*/
                             if ($inser_exec === true) {
@@ -323,6 +323,26 @@ if (isset($firstname, $lastname, $pseudo, $pass, $mail)) {
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
                                     <input type="password" class="form-control" name="pass" id="confirm"  placeholder="Confirmer le mot de passe"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone" class="cols-sm-2 control-label">Téléphone</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-phone fa-lg" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="phone" id="phone"  placeholder="Numéro de téléphone"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="comments" class="cols-sm-2 control-label">Commentaire</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-comment fa-lg" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="comments" id="comments"  placeholder="Commentaires(facultatif) "/>
                                 </div>
                             </div>
                         </div>
