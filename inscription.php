@@ -266,7 +266,7 @@ if (isset($firstname, $lastname, $pseudo, $pass, $mail)) {
     
 
 <div class="main-login main-center">
-                    <form class="form-horizontal" method="POST" action="index.html">
+                    <form class="form-horizontal" method="POST" action="#">
                         
                         <div class="form-group">
                             <label for="lastname" class="cols-sm-2 control-label">Nom</label>
@@ -334,6 +334,7 @@ if (isset($firstname, $lastname, $pseudo, $pass, $mail)) {
                             <a href="login.html">Déjà un compte ? Cliquez ici pour vous connectez !</a>
                          </div>
                     </form>
+                    <p id = "message"><?= $message?:'' ?></p>
                 </div>
         
 
