@@ -269,7 +269,7 @@ if (isset($firstname, $lastname, $pseudo, $pass, $mail)) {
                     <form class="form-horizontal" method="POST" action="index.html">
                         
                         <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label">Nom</label>
+                            <label for="lastname" class="cols-sm-2 control-label">Nom</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -278,7 +278,7 @@ if (isset($firstname, $lastname, $pseudo, $pass, $mail)) {
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="name" class="cols-sm-2 control-label">Prénom</label>
+                            <label for="firstname" class="cols-sm-2 control-label">Prénom</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -288,7 +288,7 @@ if (isset($firstname, $lastname, $pseudo, $pass, $mail)) {
                         </div>
 
                         <div class="form-group">
-                            <label for="email" class="cols-sm-2 control-label">E-mail</label>
+                            <label for="mail" class="cols-sm-2 control-label">E-mail</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
@@ -298,7 +298,7 @@ if (isset($firstname, $lastname, $pseudo, $pass, $mail)) {
                         </div>
 
                         <div class="form-group">
-                            <label for="username" class="cols-sm-2 control-label">Utilisateur</label>
+                            <label for="pseudo" class="cols-sm-2 control-label">Utilisateur</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
@@ -308,7 +308,7 @@ if (isset($firstname, $lastname, $pseudo, $pass, $mail)) {
                         </div>
 
                         <div class="form-group">
-                            <label for="password" class="cols-sm-2 control-label">Mot de passe</label>
+                            <label for="pass" class="cols-sm-2 control-label">Mot de passe</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
@@ -318,7 +318,7 @@ if (isset($firstname, $lastname, $pseudo, $pass, $mail)) {
                         </div>
 
                         <div class="form-group">
-                            <label for="confirm" class="cols-sm-2 control-label">Confirmation</label>
+                            <label for="pass" class="cols-sm-2 control-label">Confirmation</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
