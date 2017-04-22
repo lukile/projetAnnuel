@@ -1,3 +1,52 @@
+<?php
+    session_start();
+
+    //include("login.html");
+    $error_msg = null;
+    $message = null;
+
+    $pseudo = filter_input(INPUT_POST, 'pseudo');
+    $pass = filter_input(INPUT_POST, 'pass');
+
+    if(isset($pseudo, $pass)){
+        $pseudo = trim($pseudo) != '' ? $pseudo : null;
+        $pass = trim($pass) != '' ? $pass : null;
+
+        if(isset($pseudo, $pass)){
+               $hostname = "localhost";
+               $database = "aen";
+               $username = "root";
+               $password = "";
+
+               $pdo_options[PDO::ATTR_EMULATE_PREPARES] = false;
+               $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
+               $pdo_options[PDO::MYSQL_ATTR_INIT_COMMAND] = "SET NAMES utf8";
+ 
+               try{
+                    $connect = new PDO('mysql:host='.$hostname.';dbname='.$database, $username, $password, $pdo_options);
+               }catch (PDOException $e){
+                    exit('problème de connexion à la base');
+               }
+
+            $query = $connect->prepare('SELECT id, pseudo, pass FROM user WHERE pseudo = :pseudo');
+            $query->bindValue(':pseudo', $_POST['pseudo'], PDO::PARAM_STR);
+            $query->execute();
+            $data = $query->fetch();    
+
+        
+            if($data['pass'] == $_POST['pass']){
+                $_SESSION['pseudo'] = $data['pseudo'];
+                $_SESSION['id'] = $data['id'];
+                $message = '<p> Bienvenue '.$data['pseudo'].', vous êtes maintenant connecté !';
+            }else{
+                $message = 'Le pseudo et/ou le mot de passe est incorrect';
+            }
+            $query->CloseCursor();
+        }else{
+            $message = 'Tous les champs doivent être renseignés';
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,7 +97,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="inscription.php">Inscription</a>
+                        <a href="subscribe.html">Inscription</a>
                     </li>  
                     <li class="active">
                         <a href="login.html">Connexion</a>
@@ -155,23 +204,25 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password" class="cols-sm-2 control-label">Mot de passe</label>
+                            <label for="pass" class="cols-sm-2 control-label">Mot de passe</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                    <input type="password" class="form-control" name="password" id="password"  placeholder="saisir le mot de passe"/>
+                                    <input type="pass" class="form-control" name="pass" id="pass"  placeholder="saisir le mot de passe"/>
                                 </div>
                             </div>
                         </div>
 
 
                         <div class="form-group ">
-                            <button type="button" class="btn btn-primary btn-lg btn-block login-button">Connexion</button>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Connexion</button>
                         </div>
                         <div class="login-register">
                             <a href="forgetpwd.html">Mot de passe oublié ? Cliquez ici !</a>
                          </div>
                     </form>
+                    <p id="message"><?= $message?:'' ?><p>
+
                 </div>
         
 

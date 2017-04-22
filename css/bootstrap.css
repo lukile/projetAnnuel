@@ -9,6 +9,11 @@ html {
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
+#message{
+  color: #761c19;
+  font-weight: bold;
+}
+
 body {
   margin: 0;
 }
