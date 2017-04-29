@@ -22,29 +22,30 @@ include "header.php";
             <th>Avion</th>
             <th>Taille</th>
             <th>Masse maximum</th>
-            <th>Essence</th>
+            <th>Carburant</th>
             <th>Groupe Acoustique</th>
             <th>Catégorie</th>
         </tr>
     </thead>
     <tbody>
+    <form method="POST" name="form1">
         <tr>
             <th scope="row">
-                <select class="selectpricker">
-                    <option value="" disabled selected hidden> Type d'Avion</option>
+                <select name="planeSelecter" class="selectpricker">
+                    <option value=""> Type d'Avion</option>
                     <option value="monoBiTur">Mono-turbine/Bi-Turbine</option>
                     <option value="monoMulti">Réacteur mono/multi</option>
                 </select>
             </th>
             <th scope="row">
-                <input type="text" value="sizeMachine" placeholder="Taille de l'appareil en mètre"/>
+                <input type="text" name="planeLength" placeholder="Taille appareil en mètre"/>
             </th>
             <th>
-                <input type="text" value="maxWeight" placeholder="Poids max au décollage"/>
+                <input type="text" name="maxWeight" placeholder="Poids max au décollage"/>
             </th>
             <th scope="row">
-                <select class="selectpricker">
-                    <option value="" disabled selected hidden> Type d'Essence</option>
+                <select name="fuel" class="selectpricker">
+                    <option value=""> Type de carburant</option>
                     <option value="essJST">JETAI Sans TIC</option>
                     <option value="JAT">JETAI A1 +TRIC</option>
                     <option value="AV100">AVGAS 100LL</option>
@@ -52,8 +53,8 @@ include "header.php";
                 </select>
             </th>
              <th scope="row">
-                <select class="selectpricker">
-                    <option value="" disabled selected hidden> Groupe Acoustique</option>
+                <select name="acousticGroup" class="selectpricker">
+                    <option value=""> Groupe Acoustique</option>
                     <option value="ga1">1</option>
                     <option value="ga2">2</option>
                     <option value="ga3">3</option>
@@ -63,8 +64,8 @@ include "header.php";
                 </select>
             </th>
             <th scope="row">
-                <select class="selectpricker">
-                    <option value="" disabled selected hidden>Catégorie</option>
+                <select name="category" class="selectpricker">
+                    <option value="">Catégorie</option>
                     <option value="cat1">1</option>
                     <option value="cat2">2</option>
                     <option value="cat3">3</option>
@@ -92,7 +93,7 @@ include "header.php";
             </th>
             <td>
                 <fieldset class="form-group">
-                    <input type="checkbox" id="checkBoxStat" name="checkBoxStat">
+                    <input type="checkbox" id="checkBoxStat" name="services[]" value="parking">
                     <label for="checkBoxStat"></label>
                 </fieldset>
             </td>
@@ -138,7 +139,7 @@ include "header.php";
             </th>
             <td>
                 <fieldset class="form-group">
-                    <input type="checkbox" id="checkBoxAvi" name="checkBoxAvi">
+                    <input type="checkbox" id="checkBoxAvi" name="services[]" value="refueling">
                     <label for="checkBoxAvi"></label>
                 </fieldset>
             </td>
@@ -172,7 +173,7 @@ include "header.php";
             </th>
             <td>
                 <fieldset class="form-group">
-                    <input type="checkbox" id="checkBoxAvi" name="checkBoxAvi">
+                    <input type="checkbox" id="checkBoxAvi" name="services[]" value="landing">
                     <label for="checkBoxAvi"></label>
                 </fieldset>
             </td>
@@ -204,11 +205,11 @@ include "header.php";
             <th scope="row">Nettoyage d'intérieur</th>
             <td>
                 <fieldset class="form-group">
-                    <input type="checkbox" id="checkBoxNet" name="checkBoxNet">
+                    <input type="checkbox" id="checkBoxNet" name="services[]" value="inside_cleaning">
                     <label for="checkBoxNet"></label>
                 </fieldset>
             </td>
-            <td>*Contacter le support</td>
+            <td><a href="contact.php">*Contacter le support</td>
             <td>
                 <div class="control-group">
                 <div class="controls input-append date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
@@ -236,7 +237,7 @@ include "header.php";
             <th scope="row">Parachutisme</th>
             <td>
                 <fieldset class="form-group">
-                    <input type="checkbox" id="checkBoxPara" name="checkBoxPara">
+                    <input type="checkbox" id="checkBoxPara" name="services[]" value="parachuting">
                     <label for="checkBoxPara"></label>
                 </fieldset>
             </td>
@@ -268,7 +269,7 @@ include "header.php";
             <th scope="row">ULM</th>
             <td>
                 <fieldset class="form-group">
-                    <input type="checkbox" id="checkBoxUlm" name="checkBoxUlm">
+                    <input type="checkbox" id="checkBoxUlm" name="services[]" value="ulm">
                     <label for="checkBoxUlm"></label>
                 </fieldset>
             </td>
@@ -300,7 +301,7 @@ include "header.php";
             <th scope="row">Baptême de l'air</th>
             <td>
                 <fieldset class="form-group">
-                    <input type="checkbox" id="checkBoxBapt" name="checkBoxBapt">
+                    <input type="checkbox" id="checkBoxBapt" name="services[]" value="first_flight">
                     <label for="checkBoxBapt"></label>
                 </fieldset>
             </td>
@@ -332,7 +333,7 @@ include "header.php";
             <th scope="row">Leçons de pilotage</th>
             <td>
                 <fieldset class="form-group">
-                    <input type="checkbox" id="checkBoxLecon" name="checkBoxLecon">
+                    <input type="checkbox" id="checkBoxLecon" name="services[]" value="flying_lesson">
                     <label for="checkBoxLecon"></label>
                 </fieldset>
             </td>
@@ -369,6 +370,8 @@ include "header.php";
       <div class="col-md-8 red">
         <h3>Reservation et confirmation 24h à l'avance</h3>
     </div>       
+
+    </form>
 
          
 <script type="text/javascript" src="calendar/bootstrapv3/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
