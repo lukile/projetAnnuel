@@ -24,10 +24,10 @@
                 <img class="img-responsive" src="img/teamAndcustom/BellaicheDayClick.jpeg" alt="">
             </div>
             <div class="col-md-6">
-                <h2>About Modern Business</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptate nihil eum consectetur similique? Consectetur, quod, incidunt, harum nisi dolores delectus reprehenderit voluptatem perferendis dicta dolorem non blanditiis ex fugiat.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, magni, aperiam vitae illum voluptatum aut sequi impedit non velit ab ea pariatur sint quidem corporis eveniet. Odit, temporibus reprehenderit dolorum!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti eum ratione ex ea praesentium quibusdam? Aut, in eum facere corrupti necessitatibus perspiciatis quis?</p>
+                <h2>A propos de notre équipe</h2>
+                <p>Nous portons un intérêt vif aux beaux montages photos, c'est essentiel. C'est pour cela que nous avons remporté 4 fois consécutives le championnat de photoshop, notamment 2014 - 2015 - 2016 - 2017.</p>
+                <p>Nous faisons partie de la Iteam : Une Equipe de choc, addicte aux technologie du numériques et de l'Internet, nous organisons nos propre évènements, notamment le DayClick qui rassemble les codeurs les plus fous !</p>
+                <p>Notre équipe est sur le terrain depuis maintenant presque 10 ans, c'est pour cela que nous apportons tout particulièrement la qualité dans nos projets afin de les rendre si uniques et ainsi être à la tête de plus de 500 employés.</p>
             </div>
         </div>
         <!-- /.row -->
@@ -44,7 +44,7 @@
                         <h3>Sacha Bellaiche<br>
                             <small>Developpeur Front</small>
                         </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste saepe et quisquam nesciunt maxime.</p>
+                        <p>Aussi connu sous le nom du "Juif", "le susceptible" il n'hésitera pas à flamber son portefeuille pour une bonne bouteille de champagne.</p>
                         <ul class="list-inline">
                             <li><a href="#"><i class="fa fa-2x fa-facebook-square"></i></a>
                             </li>
@@ -63,7 +63,7 @@
                         <h3>Lucile Schiada<br>
                             <small>Developpeur PHP</small>
                         </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste saepe et quisquam nesciunt maxime.</p>
+                        <p>Aussi connu sous le nom de la doyenne de la classe, sa bonne humeur et son esprit d"équipe en fait une redoutable développeuse.</p>
                         <ul class="list-inline">
                             <li><a href="#"><i class="fa fa-2x fa-facebook-square"></i></a>
                             </li>
@@ -82,7 +82,7 @@
                         <h3>Damien Coppola<br>
                             <small>Administrateur Réseaux</small>
                         </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste saepe et quisquam nesciunt maxime.</p>
+                        <p>Aussi connu sous le nom de "l'archer fou" ou "copeaux de chocolat" il n'hesitera pas à vous tirer dessus avec un pistolet nerf.</p>
                         <ul class="list-inline">
                             <li><a href="#"><i class="fa fa-2x fa-facebook-square"></i></a>
                             </li>

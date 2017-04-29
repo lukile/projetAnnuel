@@ -32,7 +32,7 @@ include "header.php";
         <tr>
             <th scope="row">
                 <select name="planeSelecter" class="selectpricker">
-                    <option value=""> Type d'Avion</option>
+                    <option value=""disabled selected> Type d'Avion</option>
                     <option value="monoBiTur">Mono-turbine/Bi-Turbine</option>
                     <option value="monoMulti">Réacteur mono/multi</option>
                 </select>
@@ -45,7 +45,7 @@ include "header.php";
             </th>
             <th scope="row">
                 <select name="fuel" class="selectpricker">
-                    <option value=""> Type de carburant</option>
+                    <option value=""disabled selected> Type de carburant</option>
                     <option value="essJST">JETAI Sans TIC</option>
                     <option value="JAT">JETAI A1 +TRIC</option>
                     <option value="AV100">AVGAS 100LL</option>
@@ -54,7 +54,7 @@ include "header.php";
             </th>
              <th scope="row">
                 <select name="acousticGroup" class="selectpricker">
-                    <option value=""> Groupe Acoustique</option>
+                    <option value=""disabled selected> Groupe Acoustique</option>
                     <option value="ga1">1</option>
                     <option value="ga2">2</option>
                     <option value="ga3">3</option>
@@ -65,7 +65,7 @@ include "header.php";
             </th>
             <th scope="row">
                 <select name="category" class="selectpricker">
-                    <option value="">Catégorie</option>
+                    <option value=""disabled selected>Catégorie</option>
                     <option value="cat1">1</option>
                     <option value="cat2">2</option>
                     <option value="cat3">3</option>
