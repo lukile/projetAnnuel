@@ -35,7 +35,7 @@
         <!-- Team Members -->
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="page-header">Our Team</h2>
+                <h2 class="page-header">Notre Equipe</h2>
             </div>
             <div class="col-md-4 text-center">
                 <div class="thumbnail">
