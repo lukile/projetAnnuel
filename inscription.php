@@ -78,21 +78,21 @@ if (isset($firstname, $lastname,$mail, $pseudo, $pass, $pass_validation, $phone,
                             
                                 /* Pour enregistrer la date actuelle (date/heure/minutes/secondes) on peut utiliser directement la fonction mysql : NOW()*/
                                 $insertion = "INSERT INTO user(firstname, lastname, pseudo, pass, phone, mail, comments, registration_date) VALUES(:firstname, :lastname, :pseudo, :pass, :phone, :mail, :comments, NOW())";
-                                echo 'test 1';
+                                
                                 /* préparation de l'insertion */
                                 $insert_prep = $connect->prepare($insertion);
 
                                 /* Exécution de la requête en passant les marqueurs et leur variables associées dans un tableau*/
                                 $inser_exec = $insert_prep->execute(array(':firstname'=>$firstname, ':lastname'=>$lastname, ':pseudo'=>$pseudo,':pass'=>$pass, ':phone'=>$phone, ':mail'=>$mail, ':comments'=>$comments));
-                                echo 'test 3';
+                                
                                 /* Si l'insertion s'est faite correctement...*/
                                 if ($inser_exec === true) {
-                                    echo 'test 4';
+                                    
                                     /* Démarre une session si aucune n'est déjà existante et enregistre le pseudo dans la variable de session $_SESSION['login'] qui donne au visiteur la possibilité de se connecter.  */
                                     if (!session_id()) session_start();
-                                    echo 'test 5';
+                                    
                                     $_SESSION['login'] = $mail;
-                                    echo 'test 6';
+                                    
                                     $message = 'Votre inscription est bien enregistrée.';
                                     /*header("Location: menu.php");
                                         exit();  */
