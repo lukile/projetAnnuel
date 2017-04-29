@@ -31,39 +31,43 @@ include "header.php";
         <tr>
             <th scope="row">
                 <select class="selectpricker">
-                    <option>Mono-turbine/Bi-Turbine</option>
-                    <option>Réacteur mono/multi</option>
+                    <option value="" disabled selected hidden> Type d'Avion</option>
+                    <option value="monoBiTur">Mono-turbine/Bi-Turbine</option>
+                    <option value="monoMulti">Réacteur mono/multi</option>
                 </select>
             </th>
             <th scope="row">
-                <input type="text" value="" placeholder="Taille de l'appareil en mètre"/>
+                <input type="text" value="sizeMachine" placeholder="Taille de l'appareil en mètre"/>
             </th>
             <th>
-                <input type="text" value="" placeholder="Poids max au décollage"/>
+                <input type="text" value="maxWeight" placeholder="Poids max au décollage"/>
             </th>
             <th scope="row">
                 <select class="selectpricker">
-                    <option>JETAI Sans TIC</option>
-                    <option>JETAI A1 +TRIC</option>
-                    <option>AVGAS 100LL</option>
-                    <option>AVGAS 100LL TIC</option>
+                    <option value="" disabled selected hidden> Type d'Essence</option>
+                    <option value="essJST">JETAI Sans TIC</option>
+                    <option value="JAT">JETAI A1 +TRIC</option>
+                    <option value="AV100">AVGAS 100LL</option>
+                    <option value="AV100T">AVGAS 100LL TIC</option>
                 </select>
             </th>
              <th scope="row">
                 <select class="selectpricker">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5a</option>
-                    <option>5b</option>
+                    <option value="" disabled selected hidden> Groupe Acoustique</option>
+                    <option value="ga1">1</option>
+                    <option value="ga2">2</option>
+                    <option value="ga3">3</option>
+                    <option value="ga4">4</option>
+                    <option value="ga5a">5a</option>
+                    <option value="ga5b">5b</option>
                 </select>
             </th>
             <th scope="row">
                 <select class="selectpricker">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                    <option value="" disabled selected hidden>Catégorie</option>
+                    <option value="cat1">1</option>
+                    <option value="cat2">2</option>
+                    <option value="cat3">3</option>
                 </select>
             </th>
         </tr>
