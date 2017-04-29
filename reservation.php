@@ -385,7 +385,7 @@ include "header.php";
         todayBtn:  1,
         autoclose: 1,
         todayHighlight: 1,
-        startView: 2,
+        startView: 1,
         forceParse: 0,
         showMeridian: 1
     });
@@ -406,7 +406,7 @@ include "header.php";
         autoclose: 1,
         todayHighlight: 1,
         startView: 1,
-        minView: 0,
+        minView: 2,
         maxView: 1,
         forceParse: 0
     });
