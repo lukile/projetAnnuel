@@ -66,7 +66,7 @@ include "header.php";
                     <option>3</option>
                 </select>
             </th>
-
+        </tr>
 
     </tbody>       
 <table>        
@@ -204,7 +204,7 @@ include "header.php";
                     <label for="checkBoxNet"></label>
                 </fieldset>
             </td>
-            <td>@arielsea</td>
+            <td>*Contacter le support</td>
             <td>
                 <div class="control-group">
                 <div class="controls input-append date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
@@ -236,7 +236,7 @@ include "header.php";
                     <label for="checkBoxPara"></label>
                 </fieldset>
             </td>
-            <td>@ashow</td>
+            <td>60€</td>
             <td>
                 <div class="control-group">
                 <div class="controls input-append date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
@@ -268,7 +268,7 @@ include "header.php";
                     <label for="checkBoxUlm"></label>
                 </fieldset>
             </td>
-            <td>@cullby</td>
+            <td>120€</td>
             <td>
                 <div class="control-group">
                 <div class="controls input-append date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
@@ -300,7 +300,7 @@ include "header.php";
                     <label for="checkBoxBapt"></label>
                 </fieldset>
             </td>
-            <td>@arielsea</td>
+            <td>80€</td>
             <td>
                <div class="control-group">
                 <div class="controls input-append date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
@@ -332,7 +332,7 @@ include "header.php";
                     <label for="checkBoxLecon"></label>
                 </fieldset>
             </td>
-            <td>@ashow</td>
+            <td>70€</td>
             <td>
                <div class="control-group">
                 <div class="controls input-append date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
