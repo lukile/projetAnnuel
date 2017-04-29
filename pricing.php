@@ -23,39 +23,18 @@
             <div class="col-md-3">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Basic</h3>
+                        <h3 class="panel-title">Redevance d'atterrissage</h3>
                     </div>
                     <div class="panel-body">
-                        <span class="price"><sup>$</sup>19<sup>99</sup></span>
-                        <span class="period">per month</span>
+                        <span class="price"><sup>€</sup>18<sup>30</sup></span>
+                        <span class="period">à partir de</span>
                     </div>
                     <ul class="list-group">
-                        <li class="list-group-item"><strong>1</strong> User</li>
-                        <li class="list-group-item"><strong>5</strong> Projects</li>
-                        <li class="list-group-item"><strong>Unlimited</strong> Email Accounts</li>
-                        <li class="list-group-item"><strong>10GB</strong> Disk Space</li>
-                        <li class="list-group-item"><strong>100GB</strong> Monthly Bandwidth</li>
-                        <li class="list-group-item"><a href="#" class="btn btn-primary">Sign Up!</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="panel panel-primary text-center">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Plus <span class="label label-success">Best Value</span></h3>
-                    </div>
-                    <div class="panel-body">
-                        <span class="price"><sup>$</sup>39<sup>99</sup></span>
-                        <span class="period">per month</span>
-                    </div>
-                    <ul class="list-group">
-                        <li class="list-group-item"><strong>10</strong> User</li>
-                        <li class="list-group-item"><strong>500</strong> Projects</li>
-                        <li class="list-group-item"><strong>Unlimited</strong> Email Accounts</li>
-                        <li class="list-group-item"><strong>1000GB</strong> Disk Space</li>
-                        <li class="list-group-item"><strong>10000GB</strong> Monthly Bandwidth</li>
-                        <li class="list-group-item"><a href="#" class="btn btn-primary">Sign Up!</a>
+                        <li class="list-group-item"><strong></strong> Mono-turbine / Bi-turbine</li>
+                        <li class="list-group-item"><strong></strong> Réacteur mono/multi</li>
+                        <li class="list-group-item"><strong></strong> Week-end et semaine</li>
+                        <li class="list-group-item"><strong></strong> Avion basé et non basé</li>
+                        <li class="list-group-item"><a href="inscription.php" class="btn btn-primary">S'inscrire !</a>
                         </li>
                     </ul>
                 </div>
@@ -63,19 +42,37 @@
             <div class="col-md-3">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Ultra</h3>
+                        <h3 class="panel-title">Redevance stationnement</h3>
                     </div>
                     <div class="panel-body">
-                        <span class="price"><sup>$</sup>159<sup>99</sup></span>
-                        <span class="period">per month</span>
+                        <span class="price"><sup>€</sup>2<sup>76</sup></span>
+                        <span class="period">à partir de</span>
                     </div>
                     <ul class="list-group">
-                        <li class="list-group-item"><strong>Unlimted</strong> Users</li>
-                        <li class="list-group-item"><strong>Unlimited</strong> Projects</li>
-                        <li class="list-group-item"><strong>Unlimited</strong> Email Accounts</li>
-                        <li class="list-group-item"><strong>10000GB</strong> Disk Space</li>
-                        <li class="list-group-item"><strong>Unlimited</strong> Monthly Bandwidth</li>
-                        <li class="list-group-item"><a href="#" class="btn btn-primary">Sign Up!</a>
+                        <li class="list-group-item"><strong></strong> Un prix par m²</li>
+                        <li class="list-group-item"><strong></strong> Par semaine</li>
+                        <li class="list-group-item"><strong></strong> Franchise de 2 semaines</li>
+                        <li class="list-group-item"><strong></strong> Pour tout types d'avion</li>
+                        <li class="list-group-item"><a href="inscription.php" class="btn btn-primary">S'inscrire !</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default text-center">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Redevance d'abris</h3>
+                    </div>
+                    <div class="panel-body">
+                        <span class="price"><sup>€</sup>12<sup>99</sup></span>
+                        <span class="period">à partir</span>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item"><strong></strong> Un service qui varie</li>
+                        <li class="list-group-item"><strong></strong> La taille totale</li>
+                        <li class="list-group-item"><strong></strong> La masse maximum</li>
+                        <li class="list-group-item"><strong></strong> Vos machines en sécurité </li>
+                        <li class="list-group-item"><a href="inscription.php" class="btn btn-primary">S'inscrire !</a>
                         </li>
                     </ul>
                 </div>
@@ -84,19 +81,18 @@
             <div class="col-md-3">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Ultra</h3>
+                        <h3 class="panel-title">Redevance avitaillement</h3>
                     </div>
                     <div class="panel-body">
-                        <span class="price"><sup>$</sup>159<sup>99</sup></span>
-                        <span class="period">per month</span>
+                        <span class="price"><sup>€</sup>1<sup>0.1 /L</sup></span>
+                        <span class="period">à partir de</span>
                     </div>
                     <ul class="list-group">
-                        <li class="list-group-item"><strong>Unlimted</strong> Users</li>
-                        <li class="list-group-item"><strong>Unlimited</strong> Projects</li>
-                        <li class="list-group-item"><strong>Unlimited</strong> Email Accounts</li>
-                        <li class="list-group-item"><strong>10000GB</strong> Disk Space</li>
-                        <li class="list-group-item"><strong>Unlimited</strong> Monthly Bandwidth</li>
-                        <li class="list-group-item"><a href="#" class="btn btn-primary">Sign Up!</a>
+                        <li class="list-group-item"><strong></strong>JETAI Sans TIC</li>
+                        <li class="list-group-item"><strong></strong>JETAI A1 TIC</li>
+                        <li class="list-group-item"><strong></strong>AVGAS 100LL sans TIC </li>
+                        <li class="list-group-item"><strong></strong>AVGAS 100LL TIC </li>
+                        <li class="list-group-item"><a href="inscription.php" class="btn btn-primary">S'inscire !</a>
                         </li>
                     </ul>
                 </div>
@@ -105,25 +101,46 @@
             <div class="col-md-3">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Ultra</h3>
+                        <h3 class="panel-title">Cotisation Aero-club</h3>
                     </div>
                     <div class="panel-body">
-                        <span class="price"><sup>$</sup>159<sup>99</sup></span>
-                        <span class="period">per month</span>
+                        <span class="price"><sup>€</sup>178<sup></sup></span>
+                        <span class="period">à partir de </span>
                     </div>
                     <ul class="list-group">
-                        <li class="list-group-item"><strong>Unlimted</strong> Users</li>
-                        <li class="list-group-item"><strong>Unlimited</strong> Projects</li>
-                        <li class="list-group-item"><strong>Unlimited</strong> Email Accounts</li>
-                        <li class="list-group-item"><strong>10000GB</strong> Disk Space</li>
-                        <li class="list-group-item"><strong>Unlimited</strong> Monthly Bandwidth</li>
-                        <li class="list-group-item"><a href="#" class="btn btn-primary">Sign Up!</a>
+                        <li class="list-group-item"><strong></strong> Accès aux locaux et aux avions</li>
+                        <li class="list-group-item"><strong></strong> Ouvert du 15 avril au 15 octobre</li>
+                        <li class="list-group-item"><strong></strong> Ouverture hors saison</li>
+                        <li class="list-group-item"><strong></strong> samedi, dimanche, jours fériés</li>
+                        <li class="list-group-item"><strong></strong> Valable une année civile pleine</li>
+                        <li class="list-group-item"><a href="inscription.php" class="btn btn-primary">S'inscrire !</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default text-center">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Adhésion FFA</h3>
+                    </div>
+                    <div class="panel-body">
+                        <span class="price"><sup>€</sup>74<sup></sup></span>
+                        <span class="period">à partir de </span>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item"><strong></strong> Licence + assurance</li>
+                        <li class="list-group-item"><strong></strong> Licen + assurance + revu mensuelle</li>
+                        <li class="list-group-item"><strong></strong> 2 types d'avions disponiles</li>
+                        <li class="list-group-item"><strong></strong> des utilisations variées</li>
+                        <li class="list-group-item"><strong></strong> Des tarifs attractifs</li>
+                        <li class="list-group-item"><a href="inscription.php" class="btn btn-primary">S'inscrire!</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
         <!-- /.row -->
+
 
         <hr>
 
