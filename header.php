@@ -27,6 +27,8 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+            <!-- bootstrap Calendar Ne pas Toucher -->
     <link href="calendar/bootstrapv3/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="calendar/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 </head>
@@ -56,35 +58,20 @@
                         <a href="login.php">Connexion</a>
                     </li>    
                     <li>
-                        <a href="about.php">A propos</a>
+                        <a href="reservation.php">Reservation</a>
                     </li>
                     <li>
                         <a href="services.php">Services</a>
                     </li>
                     <li>
-                        <a href="contact.php">Contact</a>
+                        <a href="about.php">A propos</a>
                     </li>
                     <li>
-                        <a href="reservation.php">Reservation</a>
+                        <a href="contact.php">Contact</a>
                     </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="full-width.html">Full Width Page</a>
-                            </li>
-                            <li>
-                                <a href="sidebar.html">Sidebar Page</a>
-                            </li>
-                            <li>
-                                <a href="faq.html">FAQ</a>
-                            </li>
-                            <li>
-                                <a href="404.html">404</a>
-                            </li>
-                            <li>
-                                <a href="pricing.html">Pricing Table</a>
-                            </li>
+                        <li>
+                         <a href="faq.php">FAQ</a>
+                        </li>
                         </ul>
                     </li>
                 </ul>

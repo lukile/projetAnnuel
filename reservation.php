@@ -16,32 +16,83 @@ include "header.php";
             </div>
         </div>
             
+<table class="table">
+    <thead>
+        <tr>
+            <th>Avion</th>
+            <th>Taille</th>
+            <th>Masse maximum</th>
+            <th>Essence</th>
+            <th>Groupe Acoustique</th>
+            <th>Catégorie</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">
+                <select class="selectpricker">
+                    <option>Mono-turbine/Bi-Turbine</option>
+                    <option>Réacteur mono/multi</option>
+                </select>
+            </th>
+            <th scope="row">
+                <input type="text" value="" placeholder="Taille de l'appareil en mètre"/>
+            </th>
+            <th>
+                <input type="text" value="" placeholder="Poids max au décollage"/>
+            </th>
+            <th scope="row">
+                <select class="selectpricker">
+                    <option>JETAI Sans TIC</option>
+                    <option>JETAI A1 +TRIC</option>
+                    <option>AVGAS 100LL</option>
+                    <option>AVGAS 100LL TIC</option>
+                </select>
+            </th>
+             <th scope="row">
+                <select class="selectpricker">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5a</option>
+                    <option>5b</option>
+                </select>
+            </th>
+            <th scope="row">
+                <select class="selectpricker">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+            </th>
 
+
+    </tbody>       
+<table>        
 
 <table class="table">
     <thead>
         <tr>
             <th>Services</th>
             <th>Choix</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
+            <th>A partir de</th>
             <th>Date</th>
             <th>Heure</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <th scope="row">Stationnement</th>
+            <th scope="row">Stationnement
+                <input type="hidden" id="priceStat" name="priceStat" value="2.76" />
+            </th>
             <td>
                 <fieldset class="form-group">
                     <input type="checkbox" id="checkBoxStat" name="checkBoxStat">
                     <label for="checkBoxStat"></label>
                 </fieldset>
             </td>
-            <td>Ashley</td>
-            <td>Lynwood</td>
-            <td>@ashow</td>
+            <td>2.76€ /m²</td>
             <td>
             <div class="control-group">
                 <div class="controls input-append date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
@@ -56,7 +107,6 @@ include "header.php";
                     <span class="add-on"><i class="glyphicon glyphicon-remove icon-remove"></i></span>
                     <span class="add-on"><i class="glyphicon glyphicon-th icon-th"></i></span>
                 </div>
-                <input type="hidden" id="dtp_input2" value="" /><br/>
             </div>
             </td>
 
@@ -79,16 +129,50 @@ include "header.php";
             </td>
         </tr>
         <tr>
-            <th scope="row">Avitaillement</th>
+            <th scope="row">Avitaillement
+                <input type="hidden" id="priceAvi" name="priceStat" value="2" />
+            </th>
             <td>
                 <fieldset class="form-group">
                     <input type="checkbox" id="checkBoxAvi" name="checkBoxAvi">
                     <label for="checkBoxAvi"></label>
                 </fieldset>
             </td>
-            <td>Billy</td>
-            <td>Cullen</td>
-            <td>@cullby</td>
+            <td>1.01€ / L</td>
+            <td>
+                <div class="control-group">
+                <div class="controls input-append date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                    <input size="16" type="text" value="" readonly name="aviDate" id="aviDate">
+                    <span class="add-on"><i class="glyphicon glyphicon-remove icon-remove"></i></span>
+                    <span class="add-on"><i class="glyphicon glyphicon-th icon-th"></i></span>
+                </div>
+                <input type="hidden" id="dtp_input2" value="" /><br/>
+            </div>
+            </td>
+
+            <td>
+            <div class="control-group">
+                <div class="controls input-append date form_time" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii">
+                    <input size="16" type="text" value="" readonly name="aviHeure" id="aviHeure">
+                    <span class="add-on"><i class="glyphicon glyphicon-remove icon-remove"></i></span>
+                    <span class="add-on"><i class="glyphicon glyphicon-time icon-time"></i></span>
+                </div>
+                <input type="hidden" id="dtp_input3" value="" /><br/>
+            </div>
+            </td>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">Atterrissage
+                <input type="hidden" id="priceAvi" name="priceStat" value="2" />
+            </th>
+            <td>
+                <fieldset class="form-group">
+                    <input type="checkbox" id="checkBoxAvi" name="checkBoxAvi">
+                    <label for="checkBoxAvi"></label>
+                </fieldset>
+            </td>
+            <td>21.60€</td>
             <td>
                 <div class="control-group">
                 <div class="controls input-append date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
@@ -120,8 +204,6 @@ include "header.php";
                     <label for="checkBoxNet"></label>
                 </fieldset>
             </td>
-            <td>Ariel</td>
-            <td>Macy</td>
             <td>@arielsea</td>
             <td>
                 <div class="control-group">
@@ -154,8 +236,6 @@ include "header.php";
                     <label for="checkBoxPara"></label>
                 </fieldset>
             </td>
-            <td>Ashley</td>
-            <td>Lynwood</td>
             <td>@ashow</td>
             <td>
                 <div class="control-group">
@@ -188,8 +268,6 @@ include "header.php";
                     <label for="checkBoxUlm"></label>
                 </fieldset>
             </td>
-            <td>Billy</td>
-            <td>Cullen</td>
             <td>@cullby</td>
             <td>
                 <div class="control-group">
@@ -222,8 +300,6 @@ include "header.php";
                     <label for="checkBoxBapt"></label>
                 </fieldset>
             </td>
-            <td>Ariel</td>
-            <td>Macy</td>
             <td>@arielsea</td>
             <td>
                <div class="control-group">
@@ -256,8 +332,6 @@ include "header.php";
                     <label for="checkBoxLecon"></label>
                 </fieldset>
             </td>
-            <td>Ashley</td>
-            <td>Lynwood</td>
             <td>@ashow</td>
             <td>
                <div class="control-group">
