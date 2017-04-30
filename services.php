@@ -40,13 +40,13 @@
                     <div class="panel-heading">
                         <span class="fa-stack fa-5x">
                               <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-tree fa-stack-1x fa-inverse"></i>
+                              <i class="fa fa-cloud fa-stack-1x fa-inverse icon-grav"></i>
                         </span>
                     </div>
                     <div class="panel-body">
                         <h4>Parachutisme</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <a href="#" class="btn btn-primary">Learn More</a>
+                        <a href="#" class="btn btn-primary">En savoir plus</a>
                     </div>
                 </div>
             </div>
@@ -55,13 +55,13 @@
                     <div class="panel-heading">
                         <span class="fa-stack fa-5x">
                               <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-car fa-stack-1x fa-inverse"></i>
+                              <i class="fa fa-paper-plane fa-stack-1x fa-inverse"></i>
                         </span>
                     </div>
                     <div class="panel-body">
                         <h4>ULM</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <a href="#" class="btn btn-primary">Learn More</a>
+                        <a href="#" class="btn btn-primary">En savoir plus</a>
                     </div>
                 </div>
             </div>
@@ -70,13 +70,13 @@
                     <div class="panel-heading">
                         <span class="fa-stack fa-5x">
                               <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-support fa-stack-1x fa-inverse"></i>
+                              <i class="fa fa-plane fa-stack-1x fa-inverse"></i>
                         </span>
                     </div>
                     <div class="panel-body">
                         <h4>Baptême de l'air</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <a href="#" class="btn btn-primary">Learn More</a>
+                        <a href="#" class="btn btn-primary">En savoir plus</a>
                     </div>
                 </div>
             </div>
@@ -85,13 +85,13 @@
                     <div class="panel-heading">
                         <span class="fa-stack fa-5x">
                               <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-database fa-stack-1x fa-inverse"></i>
+                              <i class="fa fa-book fa-stack-1x fa-inverse "></i>
                         </span>
                     </div>
                     <div class="panel-body">
                         <h4>Leçons de pilotage</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <a href="#" class="btn btn-primary">Learn More</a>
+                        <a href="#" class="btn btn-primary">En savoir plus</a>
                     </div>
                 </div>
             </div>
@@ -107,13 +107,13 @@
                     <div class="panel-heading">
                         <span class="fa-stack fa-5x">
                               <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-tree fa-stack-1x fa-inverse"></i>
+                              <i class="fa fa-road fa-stack-1x fa-inverse"></i>
                         </span>
                     </div>
                     <div class="panel-body">
                         <h4>Stationnement</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <a href="#" class="btn btn-primary">Learn More</a>
+                        <a href="#" class="btn btn-primary">En savoir plus</a>
                     </div>
                 </div>
             </div>
@@ -123,13 +123,13 @@
                     <div class="panel-heading">
                         <span class="fa-stack fa-5x">
                               <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-tree fa-stack-1x fa-inverse"></i>
+                              <i class="fa fa-car fa-stack-1x fa-inverse"></i>
                         </span>
                     </div>
                     <div class="panel-body">
                         <h4>Avitaillement</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <a href="#" class="btn btn-primary">Learn More</a>
+                        <a href="#" class="btn btn-primary">En savoir plus</a>
                     </div>
                 </div>
             </div>
@@ -145,7 +145,7 @@
                     <div class="panel-body">
                         <h4>Nettoyage intérieur</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <a href="#" class="btn btn-primary">Learn More</a>
+                        <a href="#" class="btn btn-primary">En savoir plus</a>
                     </div>
                 </div>
             </div>
@@ -155,13 +155,13 @@
                     <div class="panel-heading">
                         <span class="fa-stack fa-5x">
                               <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-tree fa-stack-1x fa-inverse"></i>
+                              <i class="fa fa-sun-o fa-stack-1x fa-inverse"></i>
                         </span>
                     </div>
                     <div class="panel-body">
                         <h4>Informations météorologiques</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <a href="#" class="btn btn-primary">Learn More</a>
+                        <a href="#" class="btn btn-primary">En savoir plus</a>
                     </div>
                 </div>
             </div>
@@ -176,21 +176,21 @@
             <div class="col-lg-12">
 
                 <ul id="myTab" class="nav nav-tabs nav-justified">
-                    <li class="active"><a href="#service-one" data-toggle="tab"><i class="fa fa-tree"></i> Parachutisme</a>
+                    <li class="active"><a href="#service-one" data-toggle="tab"><i class="fa fa-cloud"></i> Parachutisme</a>
                     </li>
-                    <li class=""><a href="#service-two" data-toggle="tab"><i class="fa fa-car"></i>ULM</a>
+                    <li class=""><a href="#service-two" data-toggle="tab"><i class="fa fa-paper-plane"></i>ULM</a>
                     </li>
-                    <li class=""><a href="#service-three" data-toggle="tab"><i class="fa fa-support"></i>Baptême</a>
+                    <li class=""><a href="#service-three" data-toggle="tab"><i class="fa fa-plane"></i>Baptême</a>
                     </li>
-                    <li class=""><a href="#service-four" data-toggle="tab"><i class="fa fa-database"></i>Leçons</a>
+                    <li class=""><a href="#service-four" data-toggle="tab"><i class="fa fa-book"></i>Leçons</a>
                     </li>
-                    <li class="active"><a href="#service-five" data-toggle="tab"><i class="fa fa-tree"></i>Stationnement</a>
+                    <li class="active"><a href="#service-five" data-toggle="tab"><i class="fa fa-road"></i>Stationnement</a>
                     </li>
                     <li class=""><a href="#service-six" data-toggle="tab"><i class="fa fa-car"></i> Avitaillement</a>
                     </li>
-                    <li class=""><a href="#service-seven" data-toggle="tab"><i class="fa fa-support"></i> Nettoyage</a>
+                    <li class=""><a href="#service-seven" data-toggle="tab"><i class="fa fa-tree"></i> Nettoyage</a>
                     </li>
-                    <li class=""><a href="#service-eight" data-toggle="tab"><i class="fa fa-database"></i> Météo</a>
+                    <li class=""><a href="#service-eight" data-toggle="tab"><i class="fa fa-sun-o"></i> Météo</a>
                     </li>
                 </ul>
 
@@ -251,7 +251,7 @@
                     <div class="pull-left">
                         <span class="fa-stack fa-2x">
                               <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-tree fa-stack-1x fa-inverse"></i>
+                              <i class="fa fa-cloud fa-stack-1x fa-inverse"></i>
                         </span> 
                     </div>
                     <div class="media-body">
@@ -263,7 +263,7 @@
                     <div class="pull-left">
                         <span class="fa-stack fa-2x">
                               <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-car fa-stack-1x fa-inverse"></i>
+                              <i class="fa fa-paper-plane fa-stack-1x fa-inverse"></i>
                         </span> 
                     </div>
                     <div class="media-body">
@@ -275,7 +275,7 @@
                     <div class="pull-left">
                         <span class="fa-stack fa-2x">
                               <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-support fa-stack-1x fa-inverse"></i>
+                              <i class="fa fa-plane fa-stack-1x fa-inverse"></i>
                         </span> 
                     </div>
                     <div class="media-body">
@@ -289,7 +289,7 @@
                     <div class="pull-left">
                         <span class="fa-stack fa-2x">
                               <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-database fa-stack-1x fa-inverse"></i>
+                              <i class="fa fa-book fa-stack-1x fa-inverse"></i>
                         </span> 
                     </div>
                     <div class="media-body">
@@ -301,7 +301,7 @@
                     <div class="pull-left">
                         <span class="fa-stack fa-2x">
                               <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-bomb fa-stack-1x fa-inverse"></i>
+                              <i class="fa fa-road fa-stack-1x fa-inverse"></i>
                         </span> 
                     </div>
                     <div class="media-body">
@@ -313,7 +313,7 @@
                     <div class="pull-left">
                         <span class="fa-stack fa-2x">
                               <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-bank fa-stack-1x fa-inverse"></i>
+                              <i class="fa fa-car fa-stack-1x fa-inverse"></i>
                         </span> 
                     </div>
                     <div class="media-body">
@@ -327,7 +327,7 @@
                     <div class="pull-left">
                         <span class="fa-stack fa-2x">
                               <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-paper-plane fa-stack-1x fa-inverse"></i>
+                              <i class="fa fa-tree fa-stack-1x fa-inverse"></i>
                         </span> 
                     </div>
                     <div class="media-body">
@@ -339,7 +339,7 @@
                     <div class="pull-left">
                         <span class="fa-stack fa-2x">
                               <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-space-shuttle fa-stack-1x fa-inverse"></i>
+                              <i class="fa fa-sun-o fa-stack-1x fa-inverse"></i>
                         </span> 
                     </div>
                     <div class="media-body">
