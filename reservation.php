@@ -117,7 +117,7 @@ include "header.php";
 
             <td>
             <div class="control-group">
-                <div class="controls input-append date form_time" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii">
+                <div class="controls input-append date form_time" data-date="" data-date-format="hh" data-link-field="dtp_input3" data-link-format="hh">
                     <input size="16" type="text" value="" placeholder="heure d'arrivée" readonly name="statHeureDebut" id="statHeureDebut">
                     <span class="add-on"><i class="glyphicon glyphicon-remove icon-remove"></i></span>
                     <span class="add-on"><i class="glyphicon glyphicon-time icon-time"></i></span>
@@ -125,7 +125,7 @@ include "header.php";
                 <input type="hidden" id="dtp_input3" value="" /><br/>
 
             </div>
-             <div class="controls input-append date form_time" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii">
+             <div class="controls input-append date form_time" data-date="" data-date-format="hh" data-link-field="dtp_input3" data-link-format="hh">
                     <input size="16" type="text" value="" placeholder="heure de départ" readonly name="statHeureFin" id="statHeureFin">
                     <span class="add-on"><i class="glyphicon glyphicon-remove icon-remove"></i></span>
                     <span class="add-on"><i class="glyphicon glyphicon-time icon-time"></i></span>
@@ -157,7 +157,7 @@ include "header.php";
 
             <td>
             <div class="control-group">
-                <div class="controls input-append date form_time" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii">
+                <div class="controls input-append date form_time" data-date="" data-date-format="hh" data-link-field="dtp_input3" data-link-format="hh">
                     <input size="16" type="text" value="" readonly name="aviHeure" id="aviHeure">
                     <span class="add-on"><i class="glyphicon glyphicon-remove icon-remove"></i></span>
                     <span class="add-on"><i class="glyphicon glyphicon-time icon-time"></i></span>
@@ -191,7 +191,7 @@ include "header.php";
 
             <td>
             <div class="control-group">
-                <div class="controls input-append date form_time" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii">
+                <div class="controls input-append date form_time" data-date="" data-date-format="hh" data-link-field="dtp_input3" data-link-format="hh">
                     <input size="16" type="text" value="" readonly name="aviHeure" id="aviHeure">
                     <span class="add-on"><i class="glyphicon glyphicon-remove icon-remove"></i></span>
                     <span class="add-on"><i class="glyphicon glyphicon-time icon-time"></i></span>
@@ -223,7 +223,7 @@ include "header.php";
 
             <td>
             <div class="control-group">
-                <div class="controls input-append date form_time" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii">
+                <div class="controls input-append date form_time" data-date="" data-date-format="hh" data-link-field="dtp_input3" data-link-format="hh">
                     <input size="16" type="text" value="" readonly name="netHeure" id="netHeure">
                     <span class="add-on"><i class="glyphicon glyphicon-remove icon-remove"></i></span>
                     <span class="add-on"><i class="glyphicon glyphicon-time icon-time"></i></span>
@@ -255,7 +255,7 @@ include "header.php";
 
             <td>
             <div class="control-group">
-                <div class="controls input-append date form_time" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii">
+                <div class="controls input-append date form_time" data-date="" data-date-format="hh" data-link-field="dtp_input3" data-link-format="hh">
                     <input size="16" type="text" value="" readonly name="paraHeure" id="paraHeure">
                     <span class="add-on"><i class="glyphicon glyphicon-remove icon-remove"></i></span>
                     <span class="add-on"><i class="glyphicon glyphicon-time icon-time"></i></span>
@@ -287,7 +287,7 @@ include "header.php";
 
             <td>
             <div class="control-group">
-                <div class="controls input-append date form_time" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii">
+                <div class="controls input-append date form_time" data-date="" data-date-format="hh" data-link-field="dtp_input3" data-link-format="hh">
                     <input size="16" type="text" value="" readonly name="ulmHeure" id="ulmHeure">
                     <span class="add-on"><i class="glyphicon glyphicon-remove icon-remove"></i></span>
                     <span class="add-on"><i class="glyphicon glyphicon-time icon-time"></i></span>
@@ -319,7 +319,7 @@ include "header.php";
 
             <td>
             <div class="control-group">
-                <div class="controls input-append date form_time" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii">
+                <div class="controls input-append date form_time" data-date="" data-date-format="hh" data-link-field="dtp_input3" data-link-format="hh">
                     <input size="16" type="text" value="" readonly name="baptHeure" id="baptHeure">
                     <span class="add-on"><i class="glyphicon glyphicon-remove icon-remove"></i></span>
                     <span class="add-on"><i class="glyphicon glyphicon-time icon-time"></i></span>
@@ -351,7 +351,7 @@ include "header.php";
 
             <td>
             <div class="control-group">
-                <div class="controls input-append date form_time" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii">
+                <div class="controls input-append date form_time" data-date="" data-date-format="hh" data-link-field="dtp_input3" data-link-format="hh">
                     <input size="16" type="text" value="" readonly name="leconHeure" id="leconHeure">
                     <span class="add-on"><i class="glyphicon glyphicon-remove icon-remove"></i></span>
                     <span class="add-on"><i class="glyphicon glyphicon-time icon-time"></i></span>
