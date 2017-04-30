@@ -226,7 +226,7 @@ if (isset($firstname, $lastname,$mail, $pseudo, $pass, $pass_validation, $phone,
                             <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Valider</button>
                         </div>
                         <div class="login-register">
-                            <a href="login.php">Déjà un compte ? Cliquez ici pour vous connectez !</a>
+                            <a href="login.html">Déjà un compte ? Cliquez ici pour vous connectez !</a>
                          </div>
                     </form>
                     <p id = "message"><?= $message?:'' ?></p>
