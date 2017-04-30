@@ -181,7 +181,7 @@ include "header.php";
             <td>
                 <div class="control-group">
                 <div class="controls input-append date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                    <input size="16" type="text" value="" readonly name="aviDate" id="aviDate">
+                    <input size="16" type="text" value="" readonly name="attDate" id="attDate">
                     <span class="add-on"><i class="glyphicon glyphicon-remove icon-remove"></i></span>
                     <span class="add-on"><i class="glyphicon glyphicon-th icon-th"></i></span>
                 </div>
@@ -191,8 +191,9 @@ include "header.php";
 
             <td>
             <div class="control-group">
-                <div class="controls input-append date form_time" data-date="" data-date-format="hh" data-link-field="dtp_input3" data-link-format="hh">
-                    <input size="16" type="text" value="" readonly name="aviHeure" id="aviHeure">
+
+                <div class="controls input-append date form_time" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii">
+                    <input size="16" type="text" value="" readonly name="attHeure" id="attHeure">
                     <span class="add-on"><i class="glyphicon glyphicon-remove icon-remove"></i></span>
                     <span class="add-on"><i class="glyphicon glyphicon-time icon-time"></i></span>
                 </div>
@@ -368,7 +369,7 @@ include "header.php";
              <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Valider</button>
          </div>
       <div class="col-md-8 red">
-        <h3>Reservation et confirmation 24h à l'avance</h3>
+        <h3>N'oubliez pas de confirmer votre réservation 24h à l'avance !</h3>
     </div>       
 
     </form>

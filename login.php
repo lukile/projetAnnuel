@@ -49,7 +49,7 @@
                             <button type="button" class="btn btn-primary btn-lg btn-block login-button">Connexion</button>
                         </div>
                         <div class="login-register">
-                            <a href="forgetpwd.html">Mot de passe oublié ? Cliquez ici !</a>
+                            <a href="forgetpwd.php">Mot de passe oublié ? Cliquez ici !</a>
                          </div>
                     </form>
                 </div>

@@ -11,7 +11,7 @@
                   
                 </h1>
                 <ol class="breadcrumb">
-                    <li><p>Nous utilisons l'email associé à votre compte afin de renitialisé votre mot de passe</p>
+                    <li><p>Nous utilisons l'email associé à votre compte afin de renitialiser votre mot de passe</p>
                     </li>
                     
                 </ol>
