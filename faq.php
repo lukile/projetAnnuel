@@ -9,7 +9,6 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">FAQ
-                    <small>Subheading</small>
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="index.html">Home</a>
@@ -32,7 +31,7 @@
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse">
                             <div class="panel-body">
-                                Nous sommes tout simplement un groupe d'étudiant, en 2ème année dans la plus formidable école d'informatique qui est l'ESGI. Nous réalisions ce site comme projet annuel de notre année. Comme tout projet nous allons mener celui-ci à terme dans les plus brefs délais et avec la plus grande attention aux détails afin de rendre unique ce site.
+                                Nous sommes tout simplement un groupe d'étudiant, en 2ème année dans la plus formidable des écoles d'informatique qu'est l'ESGI. Nous réalisons ce site comme projet annuel de notre année. Comme tout projet nous allons mener celui-ci à terme dans les plus brefs délais et avec la plus grande attention aux détails afin de rendre unique ce site.
                             </div>
                         </div>
                     </div>
@@ -45,9 +44,9 @@
                         </div>
                         <div id="collapseTwo" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <p>Par contre bancaire (Visa, Mastercard, Carte Bleue, American Express, Maestro), nous souhaitons qu'un maximum de clients puissent profiter de nos services.</p>
-                                <p>Les prélèvement bancaire par RIB sont également autorisés sur notre site.</p>
-                                <p>Afin d'élargir nos moyens de paiments, le paiment par compte Paypal, PaySafeCard, Skrill sont disponibles.</p>
+                                <p>Les paiments sont effectués sur place le jour de votre arrivée.</p>
+                                <p>Vous pouvez payer par carte bancaire (Visa MasterCard, American Express, Maestro)</p>
+                                <p>Les règlements par chèque sont autorisés sur présentation d'une pièce d'identité.</p>
                             </div>
                         </div>
                     </div>

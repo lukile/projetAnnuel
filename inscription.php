@@ -136,6 +136,9 @@ if (isset($firstname, $lastname,$mail, $pseudo, $pass, $pass_validation, $phone,
                     </li>
                     <li class="active">Inscription</li>
                 </ol>
+                <div>
+                    <h4>Pour pouvoir participer aux services, inscrivez-vous</h4>
+                </div>
             </div>
         </div>
     
