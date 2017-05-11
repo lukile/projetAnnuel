@@ -9,13 +9,13 @@
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Inscription
+                <h1 class="page-header">Connexion
                   
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="index.html">Accueil</a>
                     </li>
-                    <li class="active">Inscription</li>
+                    <li class="active">Connexion</li>
                 </ol>
             </div>
         </div>
@@ -39,7 +39,7 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                    <input type="password" class="form-control" name="password" id="password"  placeholder="saisir le mot de passe"/>
+                                    <input type="password" class="form-control" name="password" id="password"  placeholder="Saisir le mot de passe"/>
                                 </div>
                             </div>
                         </div>
