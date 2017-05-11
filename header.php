@@ -41,12 +41,7 @@
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+                <img class="navbar-brand" src="img/logoAENBlack.png"/>
                 <a class="navbar-brand" href="index.php">Accueil</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
