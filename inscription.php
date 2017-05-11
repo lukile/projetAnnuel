@@ -61,7 +61,7 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                    <input type="password" class="form-control" name="pass" id="pass"  placeholder="saisir le mot de passe"/>
+                                    <input type="password" class="form-control" name="pass" id="pass"  placeholder="Saisir le mot de passe"/>
                                 </div>
                             </div>
                         </div>
