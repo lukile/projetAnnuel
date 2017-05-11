@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <link rel="icon" type="image/png" href="img/logoAEN.png"/>
     <title>Aérodrome D'Evreux Normandie</title>
 
     <!-- Bootstrap Core CSS -->
@@ -31,6 +31,7 @@
             <!-- bootstrap Calendar Ne pas Toucher -->
     <link href="calendar/bootstrapv3/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="calendar/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+
 </head>
 
 <body>
