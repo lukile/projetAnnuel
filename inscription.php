@@ -1,126 +1,6 @@
-<?php
-/* Indique le bon format des entêtes (par défaut apache risque de les envoyer au standard ISO-8859-1)*/
-header('Content-type: text/html; charset=UTF-8');
-
-/* Initialisation de la variable du message de réponse*/
-$message = null;
-
-/* Récupération des variables issues du formulaire par la méthode post*/
-$firstname = filter_input(INPUT_POST, 'firstname');
-$lastname = filter_input(INPUT_POST, 'lastname');
-$pseudo = filter_input(INPUT_POST, 'pseudo');
-$pass = md5(filter_input(INPUT_POST, 'pass'));
-$pass_validation = md5(filter_input(INPUT_POST, 'pass_validation'));
-$phone = filter_input(INPUT_POST, 'phone');
-$mail = filter_input(INPUT_POST, 'mail');
-$comments = filter_input(INPUT_POST, 'comments');
-
-$pass_length = strlen($pass);
-
-
-/* Si le formulaire est envoyé */
-if (isset($firstname, $lastname,$mail, $pseudo, $pass, $pass_validation, $phone, $comments)) {   
-            
-
-            /* Check que les valeurs ne sont pas vides ou composées uniquement d'espaces  */ 
-            $firstname = trim($firstname) != '' ? $firstname : null;
-            $lastname = trim($lastname) != '' ? $lastname : null;
-            $pseudo = trim($pseudo) != '' ? $pseudo : null;
-            $pass = trim($pass) != '' ? $pass : null;
-            $pass_validation = trim($pass_validation) != '' ? $pass_validation : null;
-            $phone = trim($phone) != '' ? $phone : null;
-            $mail = trim($mail) != '' ? $mail : null;
-            $comments = trim($comments) != '' ? $comments : null;
-
-                /* Si les champs sont différents de null */
-                if(isset($lastname, $firstname, $pseudo, $pass, $pass_validation, $phone, $mail)) {
-                    /* Connexion au serveur : dans cet exemple, en local sur le serveur d'évaluation */
-                    if(filter_var($mail, FILTER_VALIDATE_EMAIL) ){
-                        if($pass_length > 4){      
-                            if($pass == $pass_validation){  
-                            $hostname = "localhost";
-                            $database = "aen";
-                            $username = "root";
-                            $password = "";
-                                        
-                    /* Désactive l'éumlateur de requêtes préparées (hautement recommandé)  */
-                    $pdo_options[PDO::ATTR_EMULATE_PREPARES] = false;
-                    
-                    /* Active le mode exception */
-                    $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-                    
-                    /* Indique le charset */
-                    $pdo_options[PDO::MYSQL_ATTR_INIT_COMMAND] = "SET NAMES utf8";
-                    
-                    /* Connexion */
-                    try{
-                        $connect = new PDO('mysql:host='.$hostname.';dbname='.$database, $username, $password, $pdo_options);
-                    }catch (PDOException $e){
-                        exit('problème de connexion à la base');
-                    }
-
-       
-                    /* Requête pour compter le nombre d'enregistrements répondant à la clause : champ du pseudo de la table = pseudo posté dans le formulaire */
-                    $requete = "SELECT count(*) FROM user WHERE mail = ?";
-                        
-                            try{
-                            /* préparation de la requête*/
-                            $req_prep = $connect->prepare($requete);
-                        
-                            /* Exécution de la requête en passant la position du marqueur et sa variable associée dans un tableau*/
-                            $req_prep->execute(array(0=>$mail));
-                        
-                            /* Récupération du résultat */
-                            $resultat = $req_prep->fetchColumn();
-                        
-                            if ($resultat == 0){ 
-                                /* Résultat du comptage = 0 pour ce pseudo, on peut donc l'enregistrer */
-                            
-                                /* Pour enregistrer la date actuelle (date/heure/minutes/secondes) on peut utiliser directement la fonction mysql : NOW()*/
-                                $insertion = "INSERT INTO user(firstname, lastname, pseudo, pass, phone, mail, comments, registration_date) VALUES(:firstname, :lastname, :pseudo, :pass, :phone, :mail, :comments, NOW())";
-                                
-                                /* préparation de l'insertion */
-                                $insert_prep = $connect->prepare($insertion);
-
-                                /* Exécution de la requête en passant les marqueurs et leur variables associées dans un tableau*/
-                                $inser_exec = $insert_prep->execute(array(':firstname'=>$firstname, ':lastname'=>$lastname, ':pseudo'=>$pseudo,':pass'=>$pass, ':phone'=>$phone, ':mail'=>$mail, ':comments'=>$comments));
-                                
-                                /* Si l'insertion s'est faite correctement...*/
-                                if ($inser_exec === true) {
-                                    
-                                    /* Démarre une session si aucune n'est déjà existante et enregistre le pseudo dans la variable de session $_SESSION['login'] qui donne au visiteur la possibilité de se connecter.  */
-                                    if (!session_id()) session_start();
-                                    
-                                    $_SESSION['login'] = $mail;
-                                    
-                                    $message = 'Votre inscription est bien enregistrée.';
-                                    /*header("Location: menu.php");
-                                        exit();  */
-                                }   
-                            }else{   /* Le mail est déjà utilisé */
-                                $message = 'Ce mail existe déjà. Veuillez en choisir un autre.';
-                            }
-                            }catch (PDOException $e){
-                                $message = 'Problème lors d\'insertion';
-                                echo 'Erreur : '.$e->getMessage();
-                            }                
-                        }else{
-                            $message = 'Les deux mots de passe doivent être identiques';
-                        }
-                    }else{    
-                        $message = 'Le mot de passe doit faire plus de 4 caractères'; 
-                    }
-                }else{
-                    $message = 'Le format de l\'adresse mail est incorrect ';
-                }
-            }else{            
-                $message = 'Tous les champs doivent être renseignés';
-            }
-        }
-?>
-
 <?php 
     include "header.php";
+    include "createInscription.php";
 ?>    
     <!-- Page Content -->
     <div class="container">
@@ -147,15 +27,6 @@ if (isset($firstname, $lastname,$mail, $pseudo, $pass, $pass_validation, $phone,
                     <form class="form-horizontal" method="POST" action="#">
                         
                         <div class="form-group">
-                            <label for="lastname" class="cols-sm-2 control-label">Nom</label>
-                            <div class="cols-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="lastname" id="lastname"  placeholder="Nom"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label for="firstname" class="cols-sm-2 control-label">Prénom</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
@@ -166,11 +37,11 @@ if (isset($firstname, $lastname,$mail, $pseudo, $pass, $pass_validation, $phone,
                         </div>
 
                         <div class="form-group">
-                            <label for="mail" class="cols-sm-2 control-label">E-mail</label>
+                            <label for="lastname" class="cols-sm-2 control-label">Nom</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="mail" id="mail"  placeholder="Email"/>
+                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="lastname" id="lastname"  placeholder="Nom"/>
                                 </div>
                             </div>
                         </div>
@@ -185,7 +56,7 @@ if (isset($firstname, $lastname,$mail, $pseudo, $pass, $pass_validation, $phone,
                             </div>
                         </div>
 
-                        <div class="form-group">
+                         <div class="form-group">
                             <label for="pass" class="cols-sm-2 control-label">Mot de passe</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
@@ -204,7 +75,17 @@ if (isset($firstname, $lastname,$mail, $pseudo, $pass, $pass_validation, $phone,
                                 </div>
                             </div>
                         </div>
-
+                        
+                        <div class="form-group">
+                            <label for="mail" class="cols-sm-2 control-label">E-mail</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="mail" id="mail"  placeholder="Email"/>
+                                </div>
+                            </div>
+                        </div>     
+                       
                         <div class="form-group">
                             <label for="phone" class="cols-sm-2 control-label">Téléphone</label>
                             <div class="cols-sm-10">
@@ -229,7 +110,7 @@ if (isset($firstname, $lastname,$mail, $pseudo, $pass, $pass_validation, $phone,
                             <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Valider</button>
                         </div>
                         <div class="login-register">
-                            <a href="login.html">Déjà un compte ? Cliquez ici pour vous connectez !</a>
+                            <a href="login.php">Déjà un compte ? Cliquez ici pour vous connectez !</a>
                          </div>
                     </form>
                     <p id = "message"><?= $message?:'' ?></p>
@@ -247,7 +128,7 @@ if (isset($firstname, $lastname,$mail, $pseudo, $pass, $pass_validation, $phone,
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">x 
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 
     <!-- Contact Form JavaScript -->
     <!-- Do not edit these files! In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
