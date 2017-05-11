@@ -60,6 +60,9 @@
                         <a href="services.php">Services</a>
                     </li>
                     <li>
+                        <a href="weather.php">Météo</a>
+                    </li>
+                    <li>
                         <a href="pricing.php">Tarifs</a>
                     <li>
                         <a href="about.php">A propos</a>
