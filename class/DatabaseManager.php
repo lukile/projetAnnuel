@@ -12,7 +12,7 @@ class DatabaseManager{
         $password = "";
         
         try{
-        $this->connect = new PDO("mysql:host=".$hostname.";dbname=".$database, $username, $password);
+            $this->connect = new PDO("mysql:host=".$hostname.";dbname=".$database, $username, $password);
         }catch(PDOException $e){
             exit('problème de connexion à la base');
             print_r($e);
@@ -24,8 +24,15 @@ class DatabaseManager{
         $database = "aen";
         $username = "root";
         $password = "";
-        
-       return new PDO("mysql:host=".$hostname.";dbname=".$database, $username, $password);
+
+        try{
+            $this->connect = new PDO("mysql:host=".$hostname.";dbname=".$database, $username, $password);
+            return $this->connect;
+        }catch(PDOException $e){
+            exit('problème de connexion à la base');
+            print_r($e);
+        }
+       //return new PDO("mysql:host=".$hostname.";dbname=".$database, $username, $password);
     
     }
     public static function getSharedInstance(){
@@ -35,7 +42,7 @@ class DatabaseManager{
         return DatabaseManager::$sharedInstance_;
     }
 
-        public function exec($sql, $params){
+    public function exec($sql, $params){
         $statement = $this->connect->prepare($sql);
         if($statement && $statement->execute($params)){
             return true;
