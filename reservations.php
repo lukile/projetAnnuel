@@ -1,6 +1,8 @@
 <?php 
     include "reservation.php";
 
+    $_POST['services'] = null;
+
     $message = null;
 
     $planeLength = filter_input(INPUT_POST, 'planeLength');
@@ -31,6 +33,8 @@
 
     $leconDate = filter_input(INPUT_POST, 'leconDate');
     $leconHeure = filter_input(INPUT_POST, 'leconHeure');
+
+    
 
 //Récupération des valeurs des options du select
 if(isset($_POST['planeSelecter']) && isset($_POST['fuel']) && isset($_POST['category']) && isset($_POST['acousticGroup'], $planeLength, $maxWeight)){
@@ -65,21 +69,34 @@ if(isset($_POST['planeSelecter']) && isset($_POST['fuel']) && isset($_POST['cate
                 exit('problème de connexion à la base');
             }
 
+            
+            if($_POST['services'] == null){
+                echo 'un problème est survenu';
+            }
            
+            if(isset($_POST['services'])){
             foreach($_POST['services'] as $service){
+
+                    $insertion_dateHourParking = "INSERT INTO order_form_service(booking_start_date, booking_end_date, booking_start_hour, booking_end_hour) VALUES(:startDate, :endDate, :startHour, :endHour)";
+                    $insert_prep = $connect->prepare($insertion_dateHourParking);
+                    $insert_exec = $insert_prep->execute(array(':startDate'=>$startDate, ':endDate'=>$endDate, ':startHour'=>$startHour, ':endHour'=>$endHour));
+
+                  }
+
                   $insertion_services = "INSERT INTO services(type) VALUES(:service)";
                   
                   $insert_prep_services = $connect->prepare($insertion_services);
                  
-
                   $inser_exec_services = $insert_prep_services->execute(array(':service'=>$service));
+            }else{
+                      echo 'le stationnement n\'a pas été enregistré';
             }
+
 
             $insertion = "INSERT INTO royalties(landing_type, petroleum_type, rate_type, plane_length, plane_weight) VALUES(:plane, :fuel, :category, :planeLength, :maxWeight)";
             $insertion_acousticGroup = "INSERT INTO coefficient(acoustic_group) VALUES(:acousticGroup)";
 
 
-            $insertion_dateHourParking = "INSERT INTO order_form_service(booking_start_date, booking_end_date, booking_start_hour, booking_end_hour) VALUES(:startDate, :endDate, :startHour, :endHour)";
             $insertion_dateHourAvi = "INSERT INTO order_form_service(booking_start_date, booking_start_hour) VALUES(:aviDate, :aviHeure)";
             $insertion_dateHourAtt = "INSERT INTO order_form_service(booking_start_date, booking_start_hour) VALUES(:attDate, :attHeure)";
             $insertion_dateHourNet = "INSERT INTO order_form_service(booking_start_date, booking_start_hour) VALUES (:netDate, :netHeure)";
@@ -88,7 +105,6 @@ if(isset($_POST['planeSelecter']) && isset($_POST['fuel']) && isset($_POST['cate
             $insertion_dateHourBapt = "INSERT INTO order_form_service(booking_start_date, booking_start_hour) VALUES (:baptDate, :baptHeure)";
             $insertion_dateHourLecon = "INSERT INTO order_form_service(booking_start_date, booking_start_hour) VALUES (:leconDate, :leconHeure)";
 
-            $insert_prep = $connect->prepare($insertion_dateHourParking);
             $insert_prepAvi = $connect->prepare($insertion_dateHourAvi);
             $insert_prepAtt = $connect->prepare($insertion_dateHourAtt);
             $insert_prepNet = $connect->prepare($insertion_dateHourNet);
@@ -97,7 +113,6 @@ if(isset($_POST['planeSelecter']) && isset($_POST['fuel']) && isset($_POST['cate
             $insert_prepBapt = $connect->prepare($insertion_dateHourBapt);
             $insert_prepLecon = $connect->prepare($insertion_dateHourLecon);
 
-            $insert_exec = $insert_prep->execute(array(':startDate'=>$startDate, ':endDate'=>$endDate, ':startHour'=>$startHour, ':endHour'=>$endHour));
             $insert_execAvi = $insert_prepAvi->execute(array(':aviDate'=>$aviDate, ':aviHeure'=>$aviHeure));
             $insert_execAtt = $insert_prepAtt->execute(array(':attDate'=>$attDate, ':attHeure'=>$attHeure));
             $insert_execNet = $insert_prepNet->execute(array(':netDate'=>$netDate, ':netHeure'=>$netHeure));
