@@ -5,30 +5,22 @@
         private $lastname_;
         private $login_;
         private $password_;
-        private $phone_;
         private $mail_;
-        private $emergencyMail_;
+        private $phone_;
+        private $comments_;
         private $activationKey;
         private $active_;
-        private $comments_;
         private $registrationDate_;
         private $applicationFee_;
 
-        public function __construct($id, $firstname = NULL, $lastname = NULL, $login = NULL, $password = NULL, $phone = NULL, $mail = NULL, $emergencyMail = NULL, $activationKey = NULL, $active = 0, $comments = NULL, $registrationDate, $applicationFee = 0.0){
-                $this->id_ = $id;
+        public function __construct($firstname = NULL, $lastname = NULL, $login = NULL, $password = NULL, $mail = NULL, $phone = NULL, $comments = NULL){
                 $this->firstname_ = $firstname;
                 $this->lastname_ = $lastname;
                 $this->login_ = $login;
                 $this->password_ = $password;
                 $this->phone_ = $phone;
                 $this->mail_ = $mail;
-                $this->emergencyMail_ = $emergencyMail;
-                $this->activationKey_ = $activationKey;
-                $this->active_ = $active;
                 $this->comments_ = $comments;
-                $this->registrationDate_ = $registrationDate;
-                $this->applicationFee_ = $applicationFee;
-
             }
             
         public function getId(){
@@ -78,13 +70,6 @@
         }
         public function setMail($mail){
             $this->mail_ = $mail;
-        }
-
-        public function getEmergencyMail(){
-            return $this->emergencyMail_;
-        }
-        public function setEmergencyMail($emergencyMail){
-            $this->emergencyMail_ = $emergencyMail;
         }
 
         public function getActivationKey(){
