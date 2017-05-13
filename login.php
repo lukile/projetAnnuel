@@ -9,13 +9,13 @@
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Inscription
+                <h1 class="page-header">Connexion
                   
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="index.html">Accueil</a>
                     </li>
-                    <li class="active">Inscription</li>
+                    <li class="active">Connexion</li>
                 </ol>
             </div>
         </div>
