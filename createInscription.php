@@ -15,6 +15,7 @@ $pass = md5(filter_input(INPUT_POST, 'pass'));
 $pass_validation = md5(filter_input(INPUT_POST, 'pass_validation'));
 $phone = filter_input(INPUT_POST, 'phone');
 $comments = filter_input(INPUT_POST, 'comments');
+$activationKey = md5(uniqid());
 
 $pass_length = strlen($pass);
 
@@ -46,6 +47,7 @@ if (isset($lastname, $firstname, $mail, $pseudo, $pass, $pass_validation, $phone
                                              $_POST['pass'], 
                                              $_POST['mail'], 
                                              $_POST['phone'],
+                                             $activationKey,
                                              $_POST['comments']); 
 
                             InscriptionDAO::create($user);
