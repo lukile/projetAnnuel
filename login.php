@@ -1,6 +1,7 @@
 <?php 
     include "header.php";
     include "connexion.php";
+    
 ?>    
 
     <!-- Page Content -->
@@ -25,11 +26,11 @@
                     <form class="form-horizontal" method="post" action="#">
                         
                         <div class="form-group">
-                            <label for="pseudo" class="cols-sm-2 control-label">Utilisateur</label>
+                            <label for="mail" class="cols-sm-2 control-label">Mail</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="pseudo" id="pseudo"  placeholder="Nom d'utilisateur"/>
+                                    <input type="text" class="form-control" name="mail" id="mail"  placeholder="Adresse mail utilisée lors de l'inscription"/>
                                 </div>
                             </div>
                         </div>
