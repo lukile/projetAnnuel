@@ -1,7 +1,11 @@
 <!DOCTYPE html>
+<?php 
+        include "function.php";
+?>
 <html lang="en">
 
 <head>
+    
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -70,10 +74,27 @@
                     <li>
                         <a href="contact.php">Contact</a>
                     </li>
-                        <li>
-                         <a href="faq.php">FAQ</a>
-                        </li>
-                        </ul>
+                    <li>
+                        <a href="faq.php">FAQ</a>
+                    </li>
+                    
+                    <?php 
+                        if(isConnected()):
+                    ?>
+                    <li>
+                        <a href="logout.php">Se déconnecter</a>
+                    </li>
+                    <?php
+                        else:
+                    ?>
+                    <li>
+                        <a href="index.php">Page d'accueil</a>       
+                    </li>
+                    <?php
+                        endif;
+                    ?>
+                        
+                </ul>
                     </li>
                 </ul>
             </div>
