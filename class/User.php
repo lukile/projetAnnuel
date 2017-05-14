@@ -13,13 +13,14 @@
         private $registrationDate_;
         private $applicationFee_;
 
-        public function __construct($firstname = NULL, $lastname = NULL, $login = NULL, $password = NULL, $mail = NULL, $phone = NULL, $comments = NULL){
+        public function __construct($firstname = NULL, $lastname = NULL, $login = NULL, $password = NULL, $mail = NULL, $phone = NULL, $activationKey = NULL, $comments = NULL){
                 $this->firstname_ = $firstname;
                 $this->lastname_ = $lastname;
                 $this->login_ = $login;
                 $this->password_ = $password;
                 $this->phone_ = $phone;
                 $this->mail_ = $mail;
+                $this->activationKey_ = $activationKey;
                 $this->comments_ = $comments;
             }
             
