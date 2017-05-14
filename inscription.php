@@ -115,6 +115,7 @@
                     </form>
                     <p id = "message"><?= $message?:'' ?></p>
                 </div>
+                
 <?php 
     include "footer.php";
 ?>   
