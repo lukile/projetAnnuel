@@ -24,16 +24,19 @@ class InscriptionDAO{
             $resultat = $req_prep->fetchColumn();
                     
             if ($resultat == 0){ 
+                $activationKey = md5(uniqid());
+                $user->setActivationKey($activationKey);
                 /* Résultat du comptage = 0 pour ce mail, on peut donc l'enregistrer */
                             
                 /* Pour enregistrer la date actuelle (date/heure/minutes/secondes) on peut utiliser directement la fonction mysql : NOW()*/                
-                $insertion = $manager->exec("INSERT INTO user(firstname, lastname, pseudo, pass, mail, phone, comments, registration_date) VALUES(?,?,?,?,?,?,?,NOW())", [
+                $insertion = $manager->exec("INSERT INTO user(firstname, lastname, pseudo, pass, mail, phone, activation_key, comments, registration_date) VALUES(?,?,?,?,?,?,?,?, NOW())", [
                     $user->getFirstname(),
                     $user->getLastname(),
                     $user->getLogin(),
                     md5($user->getPassword()),
                     $user->getMail(),                                    
                     $user->getPhone(),
+                    $user->getActivationKey(),
                     $user->getComments()
                     ]);
                             
@@ -46,14 +49,14 @@ class InscriptionDAO{
                                     
                     $_SESSION['login'] = $mail;
                                     
-                        return $message = 'Votre inscription est bien enregistrée.';
+                        echo 'Votre inscription est bien enregistrée.';
                                 
                 }else{
-                   return $message = 'Un problème est survenue lors de l\'enregistrement';
+                   echo 'Un problème est survenue lors de l\'enregistrement';
                 }
             /* Le mail est déjà utilisé */            
             }else{   
-                return $message = 'Ce mail existe déjà. Veuillez en choisir un autre.';
+                echo 'Ce mail existe déjà. Veuillez en choisir un autre.';
             }
                                 
         }catch (PDOException $e){
@@ -61,5 +64,7 @@ class InscriptionDAO{
             echo 'Erreur : '.$e->getMessage();
         }  
     }
+    
 }
+
 ?>
