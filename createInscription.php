@@ -15,7 +15,6 @@ $pass = md5(filter_input(INPUT_POST, 'pass'));
 $pass_validation = md5(filter_input(INPUT_POST, 'pass_validation'));
 $phone = filter_input(INPUT_POST, 'phone');
 $comments = filter_input(INPUT_POST, 'comments');
-$activationKey = md5(uniqid());
 
 $pass_length = strlen($pass);
 
@@ -41,6 +40,8 @@ if (isset($lastname, $firstname, $mail, $pseudo, $pass, $pass_validation, $phone
                         if($pass_length > 4){
                             if($pass == $pass_validation){
                             require_once(__DIR__. '/InscriptionDAO.php');
+                            $activationKey = md5(uniqid());
+
                             $user = new User($_POST['firstname'],
                                              $_POST['lastname'],
                                              $_POST['pseudo'],
