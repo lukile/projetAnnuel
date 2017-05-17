@@ -1,5 +1,8 @@
 <?php 
+session_start();
 include "header.php";
+
+include "createReservations.php";
 ?>
     <!-- Page Content -->
     <div class="container">
@@ -12,6 +15,10 @@ include "header.php";
                     <li><a href="index.php">Accueil</a>
                     </li>
                     <li class="active">Réservation</li>
+                     <?php if(!isConnected()):
+                        echo "Pouic";
+                    endif;
+                ?>
                 </ol>
             </div>
         </div>
@@ -373,6 +380,11 @@ include "header.php";
     </div>       
 
     </form>
+    <div>
+    <p id = "message"><?= $message?:'' ?></p>
+    </div>
+    
+
 
          
 <script type="text/javascript" src="calendar/bootstrapv3/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
