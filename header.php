@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php 
-        include "function.php";
+    include "function.php";
 ?>
 <html lang="en">
 
@@ -56,15 +56,9 @@
                     </li>    
                     <li>
                         <a href="login.php">Connexion</a>
-                    </li>    
-                    <li>
-                        <a href="reservation.php">Reservation</a>
-                    </li>
+                    </li>   
                     <li>
                         <a href="services.php">Services</a>
-                    </li>
-                    <li>
-                        <a href="weather.php">Météo</a>
                     </li>
                     <li>
                         <a href="pricing.php">Tarifs</a>
@@ -76,24 +70,21 @@
                     </li>
                     <li>
                         <a href="faq.php">FAQ</a>
+                    </li>   
+                    <?php if(isConnected()): ?>  
+                    <li>
+                        <a href="reservation.php">Reservation</a>
+                    </li>
+                    <li>
+                        <a href="weather.php">Météo</a>
                     </li>
                     
-                    <?php 
-                        if(isConnected()):
-                    ?>
                     <li>
-                        <a href="logout.php">Se déconnecter</a>
+                        <a href="logout.php">Deco</a>   
                     </li>
-                    <?php
-                        else:
-                    ?>
-                    <li>
-                        <a href="index.php">Page d'accueil</a>       
                     </li>
-                    <?php
-                        endif;
-                    ?>
-                        
+                    <?php endif;?>
+                         
                 </ul>
                     </li>
                 </ul>
