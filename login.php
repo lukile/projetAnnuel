@@ -1,4 +1,6 @@
 <?php 
+    session_start();
+
     include "header.php";
     include "connexion.php";
     
@@ -44,8 +46,7 @@
                                 </div>
                             </div>
                         </div>
-
-
+                        
                         <div class="form-group ">
                             <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Connexion</button>
                         </div>
@@ -54,10 +55,9 @@
                          </div>
                     </form>
                     <p id="message"><?= $message?:'' ?><p>
-
+                    <a href="login.php?token="getActivationKey()/>
                 </div>
-        
-
+                
 <?php 
     include "footer.php";
 ?>   
