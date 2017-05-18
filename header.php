@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php 
-    include "function.php";
+    require "function.php";
 ?>
 <html lang="en">
 
