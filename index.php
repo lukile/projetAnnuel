@@ -54,12 +54,6 @@
                 </h1>
             </div>
             
-        <?php if(isConnected()):
-                    echo ' ok';
-                    else:
-                    echo ' nope';
-                    endif;
-                ?>
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">

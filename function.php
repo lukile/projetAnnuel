@@ -12,7 +12,7 @@ function isConnected(){
 
         if(!empty($result)){
             $_SESSION['activation_key'] = generateactivation_key($_SESSION['mail']);
-            echo 'vous êtes connecté';
+            //echo 'vous êtes connecté';
              
             return true;
         }else{

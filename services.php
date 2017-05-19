@@ -185,7 +185,7 @@
                     </li>
                     <li class=""><a href="#service-four" data-toggle="tab"><i class="fa fa-book"></i>Leçons</a>
                     </li>
-                    <li class="active"><a href="#service-five" data-toggle="tab"><i class="fa fa-road"></i>Stationnement</a>
+                    <li class=""><a href="#service-five" data-toggle="tab"><i class="fa fa-road"></i>Stationnement</a>
                     </li>
                     <li class=""><a href="#service-six" data-toggle="tab"><i class="fa fa-car"></i> Avitaillement</a>
                     </li>

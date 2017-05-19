@@ -15,7 +15,8 @@
 
         if(isset($mail, $pass)){
             if(login($_POST['mail'], $_POST["pass"])){
-                $message = 'Vous êtes maintenant connecté !';
+                //$message = 'Vous êtes maintenant connecté !';
+                header('Location:index.php');
             }else{
                 $message = 'La connexion a echoué. Veuillez réessayer ultérieurement';
             }
