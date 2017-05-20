@@ -51,6 +51,8 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                    <?php if(!isConnected()): 
+                    ?>
                     <li>
                         <a href="inscription.php">Inscription</a>
                     </li>    
@@ -70,7 +72,8 @@
                     </li>
                     <li>
                         <a href="faq.php">FAQ</a>
-                    </li>   
+                    </li>
+                    <?php endif;?>   
                     <?php if(isConnected()): ?>  
                     <li>
                         <a href="reservation.php">Reservation</a>
@@ -78,10 +81,22 @@
                     <li>
                         <a href="weather.php">Météo</a>
                     </li>
-                    
+                    <li>
+                        <a href="services.php">Services</a>
+                    </li>
+                    <li>
+                        <a href="pricing.php">Tarifs</a>
+                    <li>
+                        <a href="about.php">A propos</a>
+                    </li>
+                    <li>
+                        <a href="contact.php">Contact</a>
+                    </li>
+                    <li>
+                        <a href="faq.php">FAQ</a>
+                    </li>
                     <li>
                         <a href="logout.php">Deco</a>   
-                    </li>
                     </li>
                     <?php endif;?>
                          
