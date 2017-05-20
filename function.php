@@ -11,12 +11,9 @@ function isConnected(){
         $result = $query->fetch();
 
         if(!empty($result)){
-            $_SESSION['activation_key'] = generateactivation_key($_SESSION['mail']);
-            echo 'vous êtes connecté';
-             
+            $_SESSION['activation_key'] = generateactivation_key($_SESSION['mail']);             
             return true;
         }else{
-            echo 'Vous n\'êtes pas connecté';
             return false;
         }
 
@@ -41,14 +38,17 @@ function getActivationKey(){
 function login($mail, $pass){
     $manager = DatabaseManager::getsharedInstance();
     $connect = $manager->connect();
+
     $query = $connect->prepare("SELECT pass FROM user WHERE mail=:mail");
     $query->execute(["mail"=>$mail]);
     $result = $query->fetch();
+    $pass = md5($pass);
     $pwd = $result["pass"];
-    if(!empty($pwd)){
+
+    if(!empty($pwd) && $pwd == $pass){
         $_SESSION["activation_key"] = generateactivation_key($mail);
         $_SESSION["mail"] = $mail;
-        
+
         return true;
     }else{
         return false;
