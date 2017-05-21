@@ -15,10 +15,7 @@ include "createReservations.php";
                     <li><a href="index.php">Accueil</a>
                     </li>
                     <li class="active">Réservation</li>
-                     <?php if(!isConnected()):
-                        echo "Pouic";
-                    endif;
-                ?>
+
                 </ol>
             </div>
         </div>
