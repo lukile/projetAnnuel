@@ -21,9 +21,7 @@
                     <li class="active">Connexion</li>
                 </ol>
             </div>
-        </div>
-    
-
+        </div> 
 <div class="main-login main-center">
                     <form class="form-horizontal" method="post" action="#">
                         
@@ -55,7 +53,6 @@
                          </div>
                     </form>
                     <p id="message"><?= $message?:'' ?><p>
-                    <a href="login.php?token="getActivationKey()/>
                 </div>
                 
 <?php 
