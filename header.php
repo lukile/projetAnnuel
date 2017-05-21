@@ -61,18 +61,12 @@
                     <li>
                         <a href="login.php">Connexion</a>
                     </li> 
-                    <?php endif; ?>  
                     <li>
                         <a href="services.php">Services</a>
                     </li>
                     <li>
                         <a href="pricing.php">Tarifs</a>
                     </li>
-                    <?php if(isConnected()): ?>  
-                    <li>
-                        <a href="reservation.php">Reservation</a>
-                    </li>
-                <?php endif; ?>
                         <a href="about.php">A propos</a>
                     </li>
                     <li>
@@ -81,9 +75,14 @@
                     <li>
                         <a href="faq.php">FAQ</a>
                     </li>
+                    <li>
+                        <a href="about.php">A propos</a>
+                    </li>
                     <?php endif;?>   
                     <?php if(isConnected()): ?>  
-                    
+                    <li>
+                        <a href="reservation.php">Reservation</a>
+                    </li>
                     <li>
                         <a href="weather.php">Météo</a>
                     </li>
