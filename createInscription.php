@@ -1,6 +1,5 @@
 <?php
 /* Indique le bon format des entêtes (par défaut apache risque de les envoyer au standard ISO-8859-1)*/
-header('Content-type: text/html; charset=UTF-8');
 
 /* Initialisation de la variable du message de réponse*/
 $message = null;

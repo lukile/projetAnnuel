@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php 
-    include "function.php";
+    require "function.php";
 ?>
 <html lang="en">
 
@@ -51,20 +51,28 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <?php if(!isConnected()): 
+
+                    <?php 
+                    if(!isConnected()):
                     ?>
                     <li>
                         <a href="inscription.php">Inscription</a>
                     </li>    
                     <li>
                         <a href="login.php">Connexion</a>
-                    </li>   
+                    </li> 
+                    <?php endif; ?>  
                     <li>
                         <a href="services.php">Services</a>
                     </li>
                     <li>
                         <a href="pricing.php">Tarifs</a>
+                    </li>
+                    <?php if(isConnected()): ?>  
                     <li>
+                        <a href="reservation.php">Reservation</a>
+                    </li>
+                <?php endif; ?>
                         <a href="about.php">A propos</a>
                     </li>
                     <li>
@@ -75,9 +83,7 @@
                     </li>
                     <?php endif;?>   
                     <?php if(isConnected()): ?>  
-                    <li>
-                        <a href="reservation.php">Reservation</a>
-                    </li>
+                    
                     <li>
                         <a href="weather.php">Météo</a>
                     </li>

@@ -11,7 +11,9 @@ function isConnected(){
         $result = $query->fetch();
 
         if(!empty($result)){
+
             $_SESSION['activation_key'] = generateactivation_key($_SESSION['mail']);             
+
             return true;
         }else{
             return false;

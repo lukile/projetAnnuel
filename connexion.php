@@ -16,6 +16,7 @@
         if(isset($mail, $pass)){
             if(login($_POST['mail'], $_POST['pass'])){
                 $message = 'Vous êtes maintenant connecté !';
+
             }else{
                 $message = 'Vous avez saisi les mauvais identifiants !';
             }
