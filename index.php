@@ -1,4 +1,5 @@
 <?php
+    ini_set("diplay_errors", 1);
     session_start();
     include "header.php";
     
