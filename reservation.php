@@ -32,23 +32,23 @@ include "createReservations.php";
         </tr>
     </thead>
     <tbody>
-    <form method="POST" name="form1">
+    <form method="POST" name="form1" >
         <tr>
             <th scope="row">
-                <select name="planeSelecter" class="selectpricker">
+                <select name="planeSelecter" class="selectpricker" required>
                     <option value=""disabled selected> Type d'Avion</option>
                     <option value="monoBiTur">Mono-turbine/Bi-Turbine</option>
                     <option value="monoMulti">Réacteur mono/multi</option>
                 </select>
             </th>
             <th scope="row">
-                <input type="text" name="planeLength" placeholder="Taille appareil en mètre"/>
+                <input type="text" name="planeLength" placeholder="Taille appareil en mètre" required/>
             </th>
             <th>
-                <input type="text" name="maxWeight" placeholder="Poids max au décollage"/>
+                <input type="text" name="maxWeight" placeholder="Poids max au décollage" required/>
             </th>
             <th scope="row">
-                <select name="fuel" class="selectpricker">
+                <select name="fuel" class="selectpricker" required>
                     <option value=""disabled selected> Type de carburant</option>
                     <option value="essJST">JETAI Sans TIC</option>
                     <option value="JAT">JETAI A1 +TRIC</option>
@@ -57,7 +57,7 @@ include "createReservations.php";
                 </select>
             </th>
              <th scope="row">
-                <select name="acousticGroup" class="selectpricker">
+                <select name="acousticGroup" class="selectpricker" required>
                     <option value=""disabled selected> Groupe Acoustique</option>
                     <option value="ga1">1</option>
                     <option value="ga2">2</option>
@@ -68,7 +68,7 @@ include "createReservations.php";
                 </select>
             </th>
             <th scope="row">
-                <select name="category" class="selectpricker">
+                <select name="category" class="selectpricker" required>
                     <option value=""disabled selected>Catégorie</option>
                     <option value="cat1">1</option>
                     <option value="cat2">2</option>
@@ -177,7 +177,7 @@ include "createReservations.php";
             </th>
             <td>
                 <fieldset class="form-group">
-                    <input type="checkbox" id="checkBoxAvi" name="services[]" value="landing">
+                    <input type="checkbox" id="checkBoxAtt" name="services[]" value="landing">
                     <label for="checkBoxAvi"></label>
                 </fieldset>
             </td>
@@ -370,7 +370,7 @@ include "createReservations.php";
     </tbody>
 </table>
         <div class="form-group ">
-             <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Valider</button>
+             <input type="submit" class="btn btn-primary btn-lg btn-block login-button" onsubmit="return verifyChecked(this)"></button>
          </div>
       <div class="col-md-8 red">
         <h3>N'oubliez pas de confirmer votre réservation 24h à l'avance !</h3>
@@ -389,6 +389,7 @@ include "createReservations.php";
 <script type="text/javascript" src="calendar/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
 <script type="text/javascript" src="calendar/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
 <script type="text/javascript">
+
     $('.form_datetime').datetimepicker({
         //language:  'fr',
         weekStart: 1,
