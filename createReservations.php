@@ -1,9 +1,9 @@
 <?php 
     //session_start();
 
-    $_POST['services'] = null;
-
     $message = null;
+
+    $service = null;
 
     $planeLength = filter_input(INPUT_POST, 'planeLength');
     $maxWeight = filter_input(INPUT_POST, 'maxWeight');
@@ -66,89 +66,98 @@ if(isset($_POST['planeSelecter']) && isset($_POST['fuel']) && isset($_POST['cate
                 exit('problème de connexion à la base');
             }
            
-            if(isset($_POST['services']) 
-            || $_POST['services'] == 'parking' 
-            || $_POST['services'] == 'refueling' 
-            || $_POST['services'] == 'landing'
-            || $_POST['services'] == 'inside_cleaning'
-            || $_POST['services'] == 'parachuting'
-            || $_POST['services'] == 'ulm'
-            || $_POST['services'] == 'first_flight'
-            || $_POST['services'] == 'flying_lesson'){
-                echo 'test1';
-            foreach($_POST['services'] as $service){
+            foreach($_POST['services'] as $service){                     
+                    $select_services = "SELECT id from services WHERE type=:service";
+                    $insertion_prep_services = $connect->prepare($select_services);
+                    $insertion_prep_services->execute(array(':service'=>$service));
+                    $fetch_query = $insertion_prep_services->fetch();
+                    $id = $fetch_query['id'];
 
-                echo 'test 1';
+                    
+                    $select_orderFormId = "SELECT id FROM order_form WHERE coefficient_id=:coefficient_id";
+                    $orderFormId_prep = $connect->prepare($select_orderFormId);
+                    $orderFormId_prep->execute(array(':coefficient_id'=>$acousticGroup));
+                    $fetch_orderFormId = $orderFormId_prep->fetch();
+                    $id_orderForm = $fetch_orderFormId['id'];
 
-                    $insertion_dateHourParking = "INSERT INTO order_form_service(booking_start_date, booking_end_date, booking_start_hour, booking_end_hour) VALUES(:startDate, :endDate, :startHour, :endHour)";
-                    $insert_prep = $connect->prepare($insertion_dateHourParking);
-                    $insert_exec = $insert_prep->execute(array(':startDate'=>$startDate, ':endDate'=>$endDate, ':startHour'=>$startHour, ':endHour'=>$endHour));
-
-                  }
-
-                  $insertion_services = "INSERT INTO services(type) VALUES(:service)";
-                  
-                  $insert_prep_services = $connect->prepare($insertion_services);
-                 
-                  $inser_exec_services = $insert_prep_services->execute(array(':service'=>$service));
-            }else{
-                      $message = 'Aucune activité n\'a été selectionnée';
+                    if($service == "parking"){
+                        $insert_parking = "INSERT INTO order_form_service(booking_start_date, booking_end_date, booking_start_hour, booking_end_hour, order_form_id, service_id) VALUES(:startDate, :endDate, :startHour, :endHour, :orderFormId, :coeffId)";
+                        $park_prep = $connect->prepare($insert_parking);
+                        $park_exec = $park_prep->execute(array(':startDate'=>$startDate, ':endDate'=>$endDate, ':startHour'=>$startHour, ':endHour'=>$endHour, ':orderFormId'=>$id_orderForm, ':coeffId'=>$id));
+                    }
+                    if($service == "refueling"){
+                        $insert_refuel = "INSERT INTO order_form_service(booking_start_date, booking_start_hour, order_form_id, service_id) VALUES(:aviDate, :aviHeure, :orderFormId, :coeffId)";
+                        $refuel_prep = $connect->prepare($insert_refuel);
+                        $refuel_exec = $refuel_prep->execute(array(':aviDate'=>$aviDate, ':aviHeure'=>$aviHeure, ':orderFormId'=>$id_orderForm, ':coeffId'=>$id));
+                    }
+                    if($service == "landing"){
+                        $insert_land = "INSERT INTO order_form_service(booking_start_date, booking_start_hour, order_form_id, service_id) VALUES(:attDate, :attHeure, :orderFormId, :coeffId)";
+                        $land_prep = $connect->prepare($insert_land);
+                        $land_exec = $land_prep->execute(array(':attDate'=>$attDate, ':attHeure'=>$attHeure, ':orderFormId'=>$id_orderForm, ':coeffId'=>$id));
+                    }
+                    if($service == "inside_cleaning"){
+                        $insert_inClean = "INSERT INTO order_form_service(booking_start_date, booking_start_hour, order_form_id, service_id) VALUES (:netDate, :netHeure, :orderFormId, :coeffId)";
+                        $inClean_prep = $connect->prepare($insert_inClean);
+                        $inClean_exec = $inClean_prep->execute(array(':netDate'=>$netDate, ':netHeure'=>$netHeure, ':orderFormId'=>$id_orderForm, ':coeffId'=>$id));
+                    }
+                    if($service == "parachuting"){
+                        $insert_para = "INSERT INTO order_form_service(booking_start_date, booking_start_hour, order_form_id, service_id) VALUES(:paraDate, :paraHeure, :orderFormId, :coeffId)";
+                        $para_prep = $connect->prepare($insert_para);
+                        $para_exec = $para_prep->execute(array(':paraDate'=>$paraDate, ':paraHeure'=>$paraHeure, ':orderFormId'=>$id_orderForm, ':coeffId'=>$id));
+                    }
+                    if($service == "ulm"){
+                        $insert_ulm = "INSERT INTO order_form_service(booking_start_date, booking_start_hour, order_form_id, service_id) VALUES(:ulmDate, :ulmHeure, :orderFormId, :coeffId)";
+                        $ulm_prep = $connect->prepare($insert_ulm);
+                        $ulm_exec = $ulm_prep->execute(array(':ulmDate'=>$ulmDate, ':ulmHeure'=>$ulmHeure, ':orderFormId'=>$id_orderForm, ':coeffId'=>$id));
+                    }
+                    if($service == "first_flight"){
+                        $insert_fFlight = "INSERT INTO order_form_service(booking_start_date, booking_start_hour, order_form_id, service_id) VALUES (:baptDate, :baptHeure, :orderFormId, :coeffId)";
+                        $fFlight_prep = $connect->prepare($insert_fFlight);
+                        $fFlight_exec = $fFlight_prep->execute(array(':baptDate'=>$baptDate, ':baptHeure'=>$baptHeure, ':orderFormId'=>$id_orderForm, ':coeffId'=>$id));
+                    }
+                    if($service == "flying_lesson"){
+                        $insert_fLesson = "INSERT INTO order_form_service(booking_start_date, booking_start_hour, order_form_id, service_id) VALUES (:leconDate, :leconHeure, :orderFormId, :coeffId)";
+                        $fLesson_prep = $connect->prepare($insert_fLesson);
+                        $fLesson_exec = $fLesson_prep->execute(array(':leconDate'=>$leconDate, ':leconHeure'=>$leconHeure, ':orderFormId'=>$id_orderForm, ':coeffId'=>$id));
+                    }
             }
 
-
-            $insertion = "INSERT INTO royalties(landing_type, petroleum_type, rate_type, plane_length, plane_weight) VALUES(:plane, :fuel, :category, :planeLength, :maxWeight)";
             $insertion_acousticGroup = "INSERT INTO coefficient(acoustic_group) VALUES(:acousticGroup)";
+            $insert_prep_acousticGroup = $connect->prepare($insertion_acousticGroup);
+            $inser_exec_acousticGroup = $insert_prep_acousticGroup->execute(array(':acousticGroup'=>$acousticGroup));
 
 
-            $insertion_dateHourAvi = "INSERT INTO order_form_service(booking_start_date, booking_start_hour) VALUES(:aviDate, :aviHeure)";
-            $insertion_dateHourAtt = "INSERT INTO order_form_service(booking_start_date, booking_start_hour) VALUES(:attDate, :attHeure)";
-            $insertion_dateHourNet = "INSERT INTO order_form_service(booking_start_date, booking_start_hour) VALUES (:netDate, :netHeure)";
-            $insertion_dateHourPara = "INSERT INTO order_form_service(booking_start_date, booking_start_hour) VALUES(:paraDate, :paraHeure)";
-            $insertion_dateHourUlm = "INSERT INTO order_form_service(booking_start_date, booking_start_hour) VALUES(:ulmDate, :ulmHeure)";
-            $insertion_dateHourBapt = "INSERT INTO order_form_service(booking_start_date, booking_start_hour) VALUES (:baptDate, :baptHeure)";
-            $insertion_dateHourLecon = "INSERT INTO order_form_service(booking_start_date, booking_start_hour) VALUES (:leconDate, :leconHeure)";
+            $select_coeffId = "SELECT id FROM coefficient WHERE acoustic_group =:acoustic_group";
+            $coeffId_prep = $connect->prepare($select_coeffId);
+            $coeffId_prep->execute(array(':acoustic_group'=>$acousticGroup));
+            $fetch_coeffId = $coeffId_prep->fetch();
+            $id_coeffId = $fetch_coeffId['id']; 
 
-            $insert_prepAvi = $connect->prepare($insertion_dateHourAvi);
-            $insert_prepAtt = $connect->prepare($insertion_dateHourAtt);
-            $insert_prepNet = $connect->prepare($insertion_dateHourNet);
-            $insert_prepPara = $connect->prepare($insertion_dateHourPara);
-            $insert_prepUlm = $connect->prepare($insertion_dateHourUlm);
-            $insert_prepBapt = $connect->prepare($insertion_dateHourBapt);
-            $insert_prepLecon = $connect->prepare($insertion_dateHourLecon);
+            $insert_fkCoeffId_orderForm = "INSERT INTO order_form(coefficient_id) VALUES(:id)";
+            $fkCoeffId_orderForm_prep = $connect->prepare($insert_fkCoeffId_orderForm);
+            $fkCoeffId_orderForm_exec = $fkCoeffId_orderForm_prep->execute(array(':id'=>$id_coeffId));
+
+            $insert_fkIds_royalties = "INSERT INTO royalties(service_id, coeff_id) VALUES(:idService, :idCoeff)";
+            $fkIds_royalties_prep = $connect->prepare($insert_fkIds_royalties);
+            $fkIds_royalties_exec = $fkIds_royalties_prep->execute(array('idService'=>$id,':idCoeff'=>$id_coeffId));
+            
+            $insertion = "INSERT INTO royalties(landing_type, petroleum_type, rate_type, plane_length, plane_weight) VALUES(:plane, :fuel, :category, :planeLength, :maxWeight)";
 
             $insert_prep = $connect->prepare($insertion);
-            $insert_prep_acousticGroup = $connect->prepare($insertion_acousticGroup);
 
-            $insert_execAvi = $insert_prepAvi->execute(array(':aviDate'=>$aviDate, ':aviHeure'=>$aviHeure));
-            $insert_execAtt = $insert_prepAtt->execute(array(':attDate'=>$attDate, ':attHeure'=>$attHeure));
-            $insert_execNet = $insert_prepNet->execute(array(':netDate'=>$netDate, ':netHeure'=>$netHeure));
-            $insert_execPara = $insert_prepPara->execute(array(':paraDate'=>$paraDate, ':paraHeure'=>$paraHeure));
-            $insert_execUlm = $insert_prepUlm->execute(array(':ulmDate'=>$ulmDate, ':ulmHeure'=>$ulmHeure));
-            $insert_execBapt = $insert_prepBapt->execute(array(':baptDate'=>$baptDate, ':baptHeure'=>$baptHeure));
-            $insert_execLecon = $insert_prepLecon->execute(array(':leconDate'=>$leconDate, 'leconHeure'=>$leconHeure));
-           
-            
-
+                
+                        
             $inser_exec = $insert_prep->execute(array(':plane'=>$plane, ':fuel'=>$fuel, ':category'=>$category, ':planeLength'=>$planeLength, ':maxWeight'=>$maxWeight));
-            $inser_exec_acousticGroup = $insert_prep_acousticGroup->execute(array(':acousticGroup'=>$acousticGroup));
             
-            if($inser_exec === true 
-            && $inser_exec_acousticGroup === true 
-            && ($insert_execAvi === true
-            || $insert_execAtt === true
-            || $insert_execNet === true
-            || $insert_execPara === true
-            || $insert_execUlm === true
-            || $insert_execBapt === true
-            || $insert_execLecon === true)){
-                $message =  'La réservation est bien enregistrée !';
-            }
         }else{
             $message =  'Tous les champs doivent être renseignés';
         }
     }else{
         $message = 'Tous les champs doivent être renseignés';
     }
+    
+
+ 
 
 
 
