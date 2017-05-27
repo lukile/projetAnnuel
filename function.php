@@ -76,4 +76,9 @@ function logout(){
     header("Location:index.php");
 }
 
+function sendMail(){
+
+
+}
+
 ?>
