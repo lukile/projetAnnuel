@@ -30,7 +30,8 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="mail" id="mail"  placeholder="Adresse mail utilisée lors de l'inscription"/>
+                                    <input type="text" class="form-control" name="mail" id="mail"  placeholder="Adresse mail utilisée lors de l'inscription" required onBlur="validMail(this)"/>
+                                    <div id="msgMail"></div>
                                 </div>
                             </div>
                         </div>
@@ -40,7 +41,7 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                    <input type="password" class="form-control" name="pass" id="pass"  placeholder="saisir le mot de passe"/>
+                                    <input type="password" class="form-control" name="pass" id="pass"  placeholder="saisir le mot de passe" required/>
                                 </div>
                             </div>
                         </div>
