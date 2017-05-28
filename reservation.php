@@ -104,14 +104,14 @@ include "createReservations.php";
             <td>2.76€ /m²</td>
             <td>
             <div class="control-group">
-                <div class="controls input-append date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                <div class="controls input-append date form_date" data-date="" data-date-format="dd-mm-yyyy" data-link-field="dtp_input2" data-link-format="dd-mm-yyyy">
                     <input size="16" type="text" value="" placeholder="date de debut" readonly name="statDateDebut" id="statDateDebut">
                     <span class="add-on"><i class="glyphicon glyphicon-remove icon-remove"></i></span>
                     <span class="add-on"><i class="glyphicon glyphicon-th icon-th"></i></span>
                 </div>
                 <input type="hidden" id="dtp_input2" value="" /><br/>
 
-                <div class="controls input-append date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                <div class="controls input-append date form_date" data-date="" data-date-format="dd-mm-yyyy" data-link-field="dtp_input2" data-link-format="dd-mm-yyyy">
                     <input size="16" type="text" value="" placeholder="Date de fin" readonly name="statDateFin" id="statDateFin">
                     <span class="add-on"><i class="glyphicon glyphicon-remove icon-remove"></i></span>
                     <span class="add-on"><i class="glyphicon glyphicon-th icon-th"></i></span>
@@ -150,7 +150,7 @@ include "createReservations.php";
             <td>1.01€ / L</td>
             <td>
                 <div class="control-group">
-                <div class="controls input-append date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                <div class="controls input-append date form_date" data-date="" data-date-format="dd-mm-yyyy" data-link-field="dtp_input2" data-link-format="dd-mm-yyyy">
                     <input size="16" type="text" value="" readonly name="aviDate" id="aviDate">
                     <span class="add-on"><i class="glyphicon glyphicon-remove icon-remove"></i></span>
                     <span class="add-on"><i class="glyphicon glyphicon-th icon-th"></i></span>
@@ -184,7 +184,7 @@ include "createReservations.php";
             <td>21.60€</td>
             <td>
                 <div class="control-group">
-                <div class="controls input-append date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                <div class="controls input-append date form_date" data-date="" data-date-format="dd-mm-yyyy" data-link-field="dtp_input2" data-link-format="dd-mm-yyyy">
                     <input size="16" type="text" value="" readonly name="attDate" id="attDate">
                     <span class="add-on"><i class="glyphicon glyphicon-remove icon-remove"></i></span>
                     <span class="add-on"><i class="glyphicon glyphicon-th icon-th"></i></span>
@@ -217,7 +217,7 @@ include "createReservations.php";
             <td><a href="contact.php">*Contacter le support</td>
             <td>
                 <div class="control-group">
-                <div class="controls input-append date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                <div class="controls input-append date form_date" data-date="" data-date-format="dd-mm-yyyy" data-link-field="dtp_input2" data-link-format="dd-mm-yyyy">
                     <input size="16" type="text" value="" readonly name="netDate" id="netDate">
                     <span class="add-on"><i class="glyphicon glyphicon-remove icon-remove"></i></span>
                     <span class="add-on"><i class="glyphicon glyphicon-th icon-th"></i></span>
@@ -249,7 +249,7 @@ include "createReservations.php";
             <td>60€</td>
             <td>
                 <div class="control-group">
-                <div class="controls input-append date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                <div class="controls input-append date form_date" data-date="" data-date-format="dd-mm-yyyy" data-link-field="dtp_input2" data-link-format="dd-mm-yyyy">
                     <input size="16" type="text" value="" readonly name="paraDate" id="paraDate">
                     <span class="add-on"><i class="glyphicon glyphicon-remove icon-remove"></i></span>
                     <span class="add-on"><i class="glyphicon glyphicon-th icon-th"></i></span>
@@ -281,7 +281,7 @@ include "createReservations.php";
             <td>120€</td>
             <td>
                 <div class="control-group">
-                <div class="controls input-append date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                <div class="controls input-append date form_date" data-date="" data-date-format="dd-mm-yyyy" data-link-field="dtp_input2" data-link-format="dd-mm-yyyy">
                     <input size="16" type="text" value="" readonly name="ulmDate" id="ulmDate">
                     <span class="add-on"><i class="glyphicon glyphicon-remove icon-remove"></i></span>
                     <span class="add-on"><i class="glyphicon glyphicon-th icon-th"></i></span>
@@ -313,7 +313,7 @@ include "createReservations.php";
             <td>80€</td>
             <td>
                <div class="control-group">
-                <div class="controls input-append date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                <div class="controls input-append date form_date" data-date="" data-date-format="dd-mm-yyyy" data-link-field="dtp_input2" data-link-format="dd-mm-yyyy">
                     <input size="16" type="text" value="" readonly name="baptDate" id="baptDate">
                     <span class="add-on"><i class="glyphicon glyphicon-remove icon-remove"></i></span>
                     <span class="add-on"><i class="glyphicon glyphicon-th icon-th"></i></span>
@@ -345,7 +345,7 @@ include "createReservations.php";
             <td>70€</td>
             <td>
                <div class="control-group">
-                <div class="controls input-append date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                <div class="controls input-append date form_date" data-date="" data-date-format="dd-mm-yyyy" data-link-field="dtp_input2" data-link-format="dd-mm-yyyy">
                     <input size="16" type="text" value="" readonly name="leconDate" id="leconDate">
                     <span class="add-on"><i class="glyphicon glyphicon-remove icon-remove"></i></span>
                     <span class="add-on"><i class="glyphicon glyphicon-th icon-th"></i></span>
@@ -380,10 +380,7 @@ include "createReservations.php";
     <div>
     <p id = "message"><?= $message?:'' ?></p>
     </div>
-    
-
-
-         
+             
 <script type="text/javascript" src="calendar/bootstrapv3/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
 <script type="text/javascript" src="calendar/bootstrapv3/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="calendar/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
