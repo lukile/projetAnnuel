@@ -69,9 +69,6 @@
                         <a href="pricing.php">Tarifs</a>
                     </li>
                     <li>
-                        <a href="about.php">A propos</a>
-                    </li>
-                    <li>
                         <a href="contact.php">Contact</a>
                     </li>
                     <li>
@@ -93,14 +90,15 @@
                     </li>
                     <li>
                         <a href="pricing.php">Tarifs</a>
-                    <li>
-                        <a href="about.php">A propos</a>
-                    </li>
+                    
                     <li>
                         <a href="contact.php">Contact</a>
                     </li>
                     <li>
                         <a href="faq.php">FAQ</a>
+                    </li>
+                    <li>
+                        <a href="about.php">A propos</a>
                     </li>
                     <li>
                         <a href="logout.php">Deco</a>   
