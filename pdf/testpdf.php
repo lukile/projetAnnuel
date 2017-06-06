@@ -70,21 +70,21 @@ $pdf->Cell(34, 5,"[ID]",0,1); //end of line
 // Empty cell vertical space
 $pdf->Cell(189, 10, "",0 ,1);
 
-$pdf->Cell(60,10,"Facturation a Mr",0,1);
+$pdf->Cell(60,10,utf8_decode("Récapitulatif de la réservation"),0,1);
 
-$pdf->Cell(60,5,"FirstName : ",0,0);
-$pdf->Cell(129,5,$firstname,0,1);
-
-$pdf->Cell(60,5,"lastname : ",0,0);
+$pdf->Cell(60,5,"Nom : ",0,0);
 $pdf->Cell(129,5,$lastname,0,1);
 
-$pdf->Cell(60,5,"mail : ",0,0);
+$pdf->Cell(60,5,utf8_decode("Prénom : "),0,0);
+$pdf->Cell(129,5,$firstname,0,1);
+
+$pdf->Cell(60,5,"Email : ",0,0);
 $pdf->Cell(129,5,$mail,0,1);
 
-$pdf->Cell(60,5,"pseudo : ",0,0);
+$pdf->Cell(60,5,"Nom d'utilisateur : ",0,0);
 $pdf->Cell(129,5,$pseudo,0,1);
 
-$pdf->Cell(60,5,"phone : ",0,0);
+$pdf->Cell(60,5,utf8_decode("Téléphone : "),0,0);
 $pdf->Cell(129,5,$phone,0,1);
 
 $pdf->Ln(10);
@@ -142,6 +142,13 @@ $pdf->Cell(35, 5, "xxx E",0 ,1, "R");
 $pdf->Ln(1);
 $pdf->Cell(150,0,"",0,0);
 $pdf->Cell(39,0,"",1,1, "R");
+
+$pdf->Ln(50);
+
+$pdf->SetFont("Arial","",12);
+$pdf->Cell(189, 5, utf8_decode("Merci de vous présenter 30 min avant le début de vos activités"),0,0, "C");
+
+
 
 
 
