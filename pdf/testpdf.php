@@ -1,4 +1,5 @@
-  
+
+
 <?php 
 
 $lastname = filter_input(INPUT_POST, 'lastname');
@@ -38,9 +39,11 @@ $pdf = new PDF();
 $pdf->AliasNbPages("{pages}");
 $pdf->AddPage();
 
+$pdf->SetTitle(utf8_decode("Reservation N° : {number}"));
+
 //Cell (width, height, text, border, end line 0 : continue 1: new line, align : C / L / R);
 $pdf->SetFont("Arial","B","15");
-$pdf->Cell(120, 5, "Aerodrome D'Evreux Normandie",0,0);
+$pdf->Cell(120, 5,utf8_decode("Aérodrome D'Evreux Normandie"),0,0);
 $pdf->Cell(69, 5, "Compagny & Co",0,1);
 
 //Ln saut de ligne
@@ -56,7 +59,7 @@ $pdf->Cell(35, 5,"Date",0,0);
 $pdf->Cell(34, 5,$date,0,1); //end of line
 
 $pdf->Cell(120, 5, "+33 1 59 97 83 92",0 ,0);
-$pdf->Cell(35, 5, "Commande N°",0 ,0);
+$pdf->Cell(35, 5, utf8_decode("Commande N°"),0 ,0);
 $pdf->Cell(34, 5,"1845473",0,1); //end of line
 
 $pdf->Cell(120, 5, "mailtest@gmail.com",0 ,0);
@@ -112,21 +115,33 @@ $pdf->Cell(130, 5, "",0,0);
 $pdf->Cell(25, 5, "",0,0);
 $pdf->Cell(35, 5, "",0,1, "R");
 
+// TT HT
 $pdf->Cell(130, 5, "",0,0);
 $pdf->Cell(25, 5, "Total HT",0,0);
 $pdf->Cell(35, 5, "xxx E",0 ,1, "R");
 
-$pdf->Cell(130, 5, "",0,0);
-$pdf->Cell(25, 5, "Total Taxe",0,0);
-$pdf->Cell(35, 5, "xxx E",0 ,1, "R");
+
+// ligne pour souligné
+$pdf->Ln(1);
+$pdf->Cell(150,0,"",0,0);
+$pdf->Cell(39,0,"",1,1, "R");
 
 $pdf->Cell(130, 5, "",0,0);
-$pdf->Cell(25, 5, "% taxe",0,0);
+$pdf->Cell(25, 5, "TVA 20%",0,0);
 $pdf->Cell(35, 5, "xxx E",0 ,1, "R");
 
+$pdf->Ln(1);
+$pdf->Cell(150,0,"",0,0);
+$pdf->Cell(39,0,"",1,1, "R");
+
+$pdf->SetFont("Arial","B",12);
 $pdf->Cell(130, 5, "",0,0);
 $pdf->Cell(25, 5, "Total TTC",0,0);
 $pdf->Cell(35, 5, "xxx E",0 ,1, "R");
+
+$pdf->Ln(1);
+$pdf->Cell(150,0,"",0,0);
+$pdf->Cell(39,0,"",1,1, "R");
 
 
 
