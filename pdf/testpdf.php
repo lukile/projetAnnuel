@@ -30,8 +30,9 @@ class PDF extends FPDF {
 	}
 }
 
+setlocale(LC_TIME, 'fr_FR.utf8','fra');
 
-
+$date = strftime("%d %B %Y");
 $pdf = new PDF();
 
 $pdf->AliasNbPages("{pages}");
@@ -52,7 +53,7 @@ $pdf->Cell(69, 5,"",0,1); //end of line
 
 $pdf->Cell(120, 5, "France, Paris, 75012",0 ,0);
 $pdf->Cell(35, 5,"Date",0,0);
-$pdf->Cell(34, 5,"dd/mm/yyyy",0,1); //end of line
+$pdf->Cell(34, 5,$date,0,1); //end of line
 
 $pdf->Cell(120, 5, "+33 1 59 97 83 92",0 ,0);
 $pdf->Cell(35, 5, "Commande N°",0 ,0);
