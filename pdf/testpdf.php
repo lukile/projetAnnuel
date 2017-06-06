@@ -10,10 +10,31 @@ $pass_validation = filter_input(INPUT_POST, 'pass_validation');
 $phone = filter_input(INPUT_POST, 'phone');
 $comments = filter_input(INPUT_POST, 'comments');
 
+
 require('fpdf.php');
+class PDF extends FPDF {
+	function Header() {
+		$this->Cell(12);
 
-$pdf = new FPDF();
+		$this->Image("../img/logoAEN.png",10,10,13);
+	}
 
+	function Footer() {
+
+		$this->SetY(-15);
+
+		$this->SetFont("Arial","",8);
+
+		$this->Cell(0,10,"Page ".$this->PageNo()." / {pages}",0,0,"C");
+
+	}
+}
+
+
+
+$pdf = new PDF();
+
+$pdf->AliasNbPages("{pages}");
 $pdf->AddPage();
 
 //Cell (width, height, text, border, end line 0 : continue 1: new line, align : C / L / R);
@@ -33,7 +54,7 @@ $pdf->Cell(120, 5, "France, Paris, 75012",0 ,0);
 $pdf->Cell(35, 5,"Date",0,0);
 $pdf->Cell(34, 5,"dd/mm/yyyy",0,1); //end of line
 
-$pdf->Cell(120, 5, "Phone +33 1 59 97 83 92",0 ,0);
+$pdf->Cell(120, 5, "+33 1 59 97 83 92",0 ,0);
 $pdf->Cell(35, 5, "Commande N°",0 ,0);
 $pdf->Cell(34, 5,"1845473",0,1); //end of line
 
