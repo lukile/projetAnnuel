@@ -97,17 +97,56 @@ $pdf->Cell(35, 5, "Prix HT",1,1);
 
 $pdf->SetFont("Arial","",12);
 
-$pdf->Cell(130, 5, "Reservation 1",1,0);
-$pdf->Cell(25, 5, "10 E ",1,0);
-$pdf->Cell(35, 5, "187,12 E",1,1, "R");
+$pdf->Cell(130, 5, "Reservation 1",0,0);
+$pdf->Cell(25, 5, "10 E ",0,0);
+$pdf->Cell(35, 5, "187,12 E",0,1, "R");
 
-$pdf->Cell(130, 5, "Reservation 2",1,0);
-$pdf->Cell(25, 5, "21 E ",1,0);
-$pdf->Cell(35, 5, "257,78 E",1,1, "R");
+$pdf->Cell(20,5,"",0,0);
+$pdf->Cell(50,5,utf8_decode("Détails de l'activité"),0,0);
+$pdf->Cell(119,5, "",0,1);
 
-$pdf->Cell(130, 5, "Reservation 3",1,0);
-$pdf->Cell(25, 5, "3 E ",1,0);
-$pdf->Cell(35, 5, "87,65 E",1,1, "R");
+$pdf->Cell(20,5,"",0,0);
+$pdf->Cell(50,5,utf8_decode("Date de l'activité"),0,0);
+$pdf->Cell(119,5, "",0,1);
+
+$pdf->Cell(20,5,"",0,0);
+$pdf->Cell(50,5,utf8_decode("Heure de l'activité"),0,0);
+$pdf->Cell(119,5, "",0,1);
+$pdf->ln(2);
+
+$pdf->Cell(130, 5, "Reservation 2",0,0);
+$pdf->Cell(25, 5, "21 E ",0,0);
+$pdf->Cell(35, 5, "257,78 E",0,1, "R");
+
+$pdf->Cell(20,5,"",0,0);
+$pdf->Cell(50,5,utf8_decode("Détails de l'activité"),0,0);
+$pdf->Cell(119,5, "",0,1);
+
+$pdf->Cell(20,5,"",0,0);
+$pdf->Cell(50,5,utf8_decode("Date de l'activité"),0,0);
+$pdf->Cell(119,5, "",0,1);
+
+$pdf->Cell(20,5,"",0,0);
+$pdf->Cell(50,5,utf8_decode("Heure de l'activité"),0,0);
+$pdf->Cell(119,5, "",0,1);
+$pdf->ln(2);
+
+$pdf->Cell(130, 5, "Reservation 3",0,0);
+$pdf->Cell(25, 5, "3 E ",0,0);
+$pdf->Cell(35, 5, "87,65 E",0,1, "R");
+
+$pdf->Cell(20,5,"",0,0);
+$pdf->Cell(50,5,utf8_decode("Détails de l'activité"),0,0);
+$pdf->Cell(119,5, "",0,1);
+
+$pdf->Cell(20,5,"",0,0);
+$pdf->Cell(50,5,utf8_decode("Date de l'activité"),0,0);
+$pdf->Cell(119,5, "",0,1);
+
+$pdf->Cell(20,5,"",0,0);
+$pdf->Cell(50,5,utf8_decode("Heure de l'activité"),0,0);
+$pdf->Cell(119,5, "",0,1);
+$pdf->ln(2);
 
 //resumé
 
@@ -148,33 +187,6 @@ $pdf->Ln(50);
 $pdf->SetFont("Arial","",12);
 $pdf->Cell(189, 5, utf8_decode("Merci de vous présenter 30 min avant le début de vos activités"),0,0, "C");
 
-
-
-
-
-
-
-
-
-
-
-/*$pdf->Cell(0,5,"Welcome {$firstname}",1,1,"C");
-
-$pdf->Cell(60,5,"FirstName : ",1,0);
-$pdf->Cell(60,5,$firstname,1,1);
-
-$pdf->Cell(60,5,"lastname : ",1,0);
-$pdf->Cell(60,5,$lastname,1,1);
-
-$pdf->Cell(60,5,"mail : ",1,0);
-$pdf->Cell(60,5,$mail,1,1);
-
-$pdf->Cell(60,5,"pseudo : ",1,0);
-$pdf->Cell(60,5,$pseudo,1,1);
-
-$pdf->Cell(60,5,"phone : ",1,0);
-$pdf->Cell(60,5,$phone,1,1);
-*/
 
 
 $pdf->Output();
