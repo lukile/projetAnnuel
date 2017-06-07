@@ -1,5 +1,3 @@
-
-
 <?php 
 
 $lastname = filter_input(INPUT_POST, 'lastname');

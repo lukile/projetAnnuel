@@ -24,7 +24,7 @@
 
 </head>
 <div class="main-login main-center">
-                    <form class="form-horizontal" method="POST" action="testpdf.php" name="formInscription">
+                    <form class="form-horizontal" method="POST" action="generatepdf.php" name="formInscription">
                         
                         <div class="form-group">
                             <label for="firstname" class="cols-sm-2 control-label">Prénom</label>
