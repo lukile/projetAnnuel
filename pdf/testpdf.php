@@ -33,11 +33,15 @@ setlocale(LC_TIME, 'fr_FR.utf8','fra');
 
 $date = strftime("%d %B %Y");
 $pdf = new PDF();
+
 define('EURO',chr(128));
 $euro = EURO;
+
+$rand = rand(5000,15000);
+$commande = $rand;
 $pdf->AliasNbPages("{pages}");
 $pdf->AddPage();
-$pdf->SetTitle(utf8_decode("Reservation N° : {number}"));
+$pdf->SetTitle(utf8_decode("Reservation N° : {$rand}"));
 
 //Cell (width, height, text, border, end line 0 : continue 1: new line, align : C / L / R);
 $pdf->SetFont("Arial","B","15");
@@ -58,7 +62,7 @@ $pdf->Cell(34, 5,$date,0,1); //end of line
 
 $pdf->Cell(120, 5, "+33 1 59 97 83 92",0 ,0);
 $pdf->Cell(35, 5, utf8_decode("Commande N°"),0 ,0);
-$pdf->Cell(34, 5,"1845473",0,1); //end of line
+$pdf->Cell(34, 5,"{$commande}",0,1); //end of line
 
 $pdf->Cell(120, 5, "mailtest@gmail.com",0 ,0);
 $pdf->Cell(35, 5, "Numero client ",0 ,0);
