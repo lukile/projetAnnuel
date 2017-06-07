@@ -55,28 +55,6 @@
                                 </div>
                             </div>
                         </div>
-
-                         <div class="form-group">
-                            <label for="pass" class="cols-sm-2 control-label">Mot de passe</label>
-                            <div class="cols-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                    <input type="password" class="form-control" name="pass" id="pass"  placeholder="Saisir le mot de passe" required onBlur="verifyPassLength()"/><br/>
-                                        <div id="msgLength"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="pass_validation" class="cols-sm-2 control-label">Confirmation</label>
-                            <div class="cols-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                    <input type="password" class="form-control" name="pass_validation" id="pass_validation" placeholder="Confirmer le mot de passe" required onBlur="verifyPassAgreement()"/>
-                                    <div id="msgAgreement"></div>
-                                </div>
-                            </div>
-                        </div>
                         
                         <div class="form-group">
                             <label for="mail" class="cols-sm-2 control-label">E-mail</label>
@@ -99,21 +77,8 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="comments" class="cols-sm-2 control-label">Commentaire</label>
-                            <div class="cols-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-comment fa-lg" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="comments" id="comments"  placeholder="Commentaires(facultatif) "/>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="form-group ">
                             <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Valider</button>
                         </div>
-                        <div class="login-register">
-                            <a href="login.php">Déjà un compte ? Cliquez ici pour vous connectez !</a>
-                         </div>
                     </form>
                 </div>

@@ -6,10 +6,8 @@ $lastname = filter_input(INPUT_POST, 'lastname');
 $firstname = filter_input(INPUT_POST, 'firstname');
 $mail = filter_input(INPUT_POST, 'mail');
 $pseudo = filter_input(INPUT_POST, 'pseudo');
-$pass = filter_input(INPUT_POST, 'pass');
-$pass_validation = filter_input(INPUT_POST, 'pass_validation');
 $phone = filter_input(INPUT_POST, 'phone');
-$comments = filter_input(INPUT_POST, 'comments');
+
 
 
 require('fpdf.php');
