@@ -53,10 +53,10 @@ $pdf->Ln(10);
 
 $pdf->SetFont("Arial","",12);
 
-$pdf->Cell(120, 5, "252 Rue du Faubourg Saint Antoine",0 ,0);
+$pdf->Cell(120, 5, "43 Rue des Fleurs",0 ,0);
 $pdf->Cell(69, 5,"",0,1); //end of line
 
-$pdf->Cell(120, 5, "France, Paris, 75012",0 ,0);
+$pdf->Cell(120, 5, "France, Saint-Michel, 68200",0 ,0);
 $pdf->Cell(35, 5,"Date",0,0);
 $pdf->Cell(34, 5,$date,0,1); //end of line
 
@@ -64,7 +64,7 @@ $pdf->Cell(120, 5, "+33 1 59 97 83 92",0 ,0);
 $pdf->Cell(35, 5, utf8_decode("Commande N°"),0 ,0);
 $pdf->Cell(34, 5,"{$commande}",0,1); //end of line
 
-$pdf->Cell(120, 5, "mailtest@gmail.com",0 ,0);
+$pdf->Cell(120, 5, "aen@gmail.com",0 ,0);
 $pdf->Cell(35, 5, "Numero client ",0 ,0);
 $pdf->Cell(34, 5,"[ID]",0,1); //end of line
 
