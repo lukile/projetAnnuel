@@ -35,10 +35,10 @@ setlocale(LC_TIME, 'fr_FR.utf8','fra');
 
 $date = strftime("%d %B %Y");
 $pdf = new PDF();
-
+define('EURO',chr(128));
+$euro = EURO;
 $pdf->AliasNbPages("{pages}");
 $pdf->AddPage();
-
 $pdf->SetTitle(utf8_decode("Reservation N° : {number}"));
 
 //Cell (width, height, text, border, end line 0 : continue 1: new line, align : C / L / R);
@@ -98,7 +98,7 @@ $pdf->Cell(35, 5, "Prix HT",1,1);
 $pdf->SetFont("Arial","",12);
 
 $pdf->Cell(130, 5, "Reservation 1",0,0);
-$pdf->Cell(25, 5, "10 E ",0,0);
+$pdf->Cell(25, 5, utf8_decode("10{$euro}"),0,0);
 $pdf->Cell(35, 5, "187,12 E",0,1, "R");
 
 $pdf->Cell(20,5,"",0,0);

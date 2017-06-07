@@ -374,12 +374,11 @@ include "createReservations.php";
          </div>
       <div class="col-md-8 red">
         <h3>N'oubliez pas de confirmer votre réservation 24h à l'avance !</h3>
-    </div>       
+        <p id = "message"><?= $message?:'' ?></p>
+     </div>       
 
     </form>
-    <div>
-    <p id = "message"><?= $message?:'' ?></p>
-    </div>
+    
              
 <script type="text/javascript" src="calendar/bootstrapv3/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
 <script type="text/javascript" src="calendar/bootstrapv3/bootstrap/js/bootstrap.min.js"></script>
