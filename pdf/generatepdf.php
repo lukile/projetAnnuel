@@ -141,10 +141,6 @@ $pdf->Cell(35, 5, "187,12 E",0,1, "R");
 $pdf->SetFont("Arial","",10);
 
 $pdf->Cell(20,5,"",0,0);
-$pdf->Cell(50,5,utf8_decode("Détails de l'activité"),0,0);
-$pdf->Cell(119,5, "",0,1);
-
-$pdf->Cell(20,5,"",0,0);
 $pdf->Cell(50,5,utf8_decode("Date de l'activité"),0,0);
 $pdf->Cell(119,5, "",0,1);
 
@@ -160,10 +156,6 @@ $pdf->Cell(25, 5, "21 E ",0,0);
 $pdf->Cell(35, 5, "257,78 E",0,1, "R");
 
 $pdf->SetFont("Arial","",10);
-
-$pdf->Cell(20,5,"",0,0);
-$pdf->Cell(50,5,utf8_decode("Détails de l'activité"),0,0);
-$pdf->Cell(119,5, "",0,1);
 
 $pdf->Cell(20,5,"",0,0);
 $pdf->Cell(50,5,utf8_decode("Date de l'activité"),0,0);
@@ -183,8 +175,89 @@ $pdf->Cell(35, 5, "87,65 E",0,1, "R");
 $pdf->SetFont("Arial","",10);
 
 $pdf->Cell(20,5,"",0,0);
-$pdf->Cell(50,5,utf8_decode("Détails de l'activité"),0,0);
+$pdf->Cell(50,5,utf8_decode("Date de l'activité"),0,0);
 $pdf->Cell(119,5, "",0,1);
+
+$pdf->Cell(20,5,"",0,0);
+$pdf->Cell(50,5,utf8_decode("Heure de l'activité"),0,0);
+$pdf->Cell(119,5, "",0,1);
+$pdf->ln(2);
+
+$pdf->SetFont("Arial","",12);
+
+$pdf->Cell(130, 5, "Service 4",0,0);
+$pdf->Cell(25, 5, utf8_decode("10{$euro}"),0,0);
+$pdf->Cell(35, 5, "187,12 E",0,1, "R");
+
+$pdf->SetFont("Arial","",10);
+
+$pdf->Cell(20,5,"",0,0);
+$pdf->Cell(50,5,utf8_decode("Date de l'activité"),0,0);
+$pdf->Cell(119,5, "",0,1);
+
+$pdf->Cell(20,5,"",0,0);
+$pdf->Cell(50,5,utf8_decode("Heure de l'activité"),0,0);
+$pdf->Cell(119,5, "",0,1);
+$pdf->ln(2);
+
+$pdf->SetFont("Arial","",12);
+
+$pdf->Cell(130, 5, "Service 5",0,0);
+$pdf->Cell(25, 5, utf8_decode("10{$euro}"),0,0);
+$pdf->Cell(35, 5, "187,12 E",0,1, "R");
+
+$pdf->SetFont("Arial","",10);
+
+$pdf->Cell(20,5,"",0,0);
+$pdf->Cell(50,5,utf8_decode("Date de l'activité"),0,0);
+$pdf->Cell(119,5, "",0,1);
+
+$pdf->Cell(20,5,"",0,0);
+$pdf->Cell(50,5,utf8_decode("Heure de l'activité"),0,0);
+$pdf->Cell(119,5, "",0,1);
+$pdf->ln(2);
+
+$pdf->SetFont("Arial","",12);
+
+$pdf->Cell(130, 5, "Service 6",0,0);
+$pdf->Cell(25, 5, utf8_decode("10{$euro}"),0,0);
+$pdf->Cell(35, 5, "187,12 E",0,1, "R");
+
+$pdf->SetFont("Arial","",10);
+
+$pdf->Cell(20,5,"",0,0);
+$pdf->Cell(50,5,utf8_decode("Date de l'activité"),0,0);
+$pdf->Cell(119,5, "",0,1);
+
+$pdf->Cell(20,5,"",0,0);
+$pdf->Cell(50,5,utf8_decode("Heure de l'activité"),0,0);
+$pdf->Cell(119,5, "",0,1);
+$pdf->ln(2);
+
+$pdf->SetFont("Arial","",12);
+
+$pdf->Cell(130, 5, "Service 7",0,0);
+$pdf->Cell(25, 5, utf8_decode("10{$euro}"),0,0);
+$pdf->Cell(35, 5, "187,12 E",0,1, "R");
+
+$pdf->SetFont("Arial","",10);
+
+$pdf->Cell(20,5,"",0,0);
+$pdf->Cell(50,5,utf8_decode("Date de l'activité"),0,0);
+$pdf->Cell(119,5, "",0,1);
+
+$pdf->Cell(20,5,"",0,0);
+$pdf->Cell(50,5,utf8_decode("Heure de l'activité"),0,0);
+$pdf->Cell(119,5, "",0,1);
+$pdf->ln(2);
+
+$pdf->SetFont("Arial","",12);
+
+$pdf->Cell(130, 5, "Service 8",0,0);
+$pdf->Cell(25, 5, utf8_decode("10{$euro}"),0,0);
+$pdf->Cell(35, 5, "187,12 E",0,1, "R");
+
+$pdf->SetFont("Arial","",10);
 
 $pdf->Cell(20,5,"",0,0);
 $pdf->Cell(50,5,utf8_decode("Date de l'activité"),0,0);
@@ -229,7 +302,7 @@ $pdf->Ln(1);
 $pdf->Cell(150,0,"",0,0);
 $pdf->Cell(39,0,"",1,1, "R");
 
-$pdf->Ln(50);
+$pdf->Ln(20);
 
 $pdf->SetFont("Arial","",12);
 $pdf->Cell(189, 5, utf8_decode("Merci de vous présenter 30 min avant le début de vos activités"),0,0, "C");
