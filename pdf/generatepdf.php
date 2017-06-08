@@ -50,7 +50,9 @@ class PDF extends FPDF {
 
 setlocale(LC_TIME, 'fr_FR.utf8','fra');
 date_default_timezone_set("Europe/Brussels");
+
 $date =("%d %B %Y");
+
 $pdf = new PDF();
 
 define('EURO',chr(128));
@@ -232,8 +234,6 @@ $pdf->Ln(50);
 
 $pdf->SetFont("Arial","",12);
 $pdf->Cell(189, 5, utf8_decode("Merci de vous présenter 30 min avant le début de vos activités"),0,0, "C");
-
-
 
 $pdf->Output();
 ?>
