@@ -20,7 +20,7 @@ class DatabaseManager{
     }      
 
     public function connect(){
-        $hostname = "db.aen";
+        $hostname = "aen.dt-industries.ovh";
         $database = "aen";
         $username = "aen";
         $password = "AENpassWORD2017!";
