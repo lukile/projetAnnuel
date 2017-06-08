@@ -110,132 +110,58 @@ if(isset($_POST['planeSelecter']) && isset($_POST['fuel']) && isset($_POST['cate
                             }
                         }
                         if($service == "refueling"){
-                            $aviDateFormat = date_create_from_format('d-m-Y', $aviDate);
-                            $formattedAviDate = $aviDateFormat->format('Y-m-d');
-                            
-                            if($formattedAviDate >= strftime('%Y-%m-%d')){
-                                /*if($service == "parking"){*/
-                                    $insert_refuel = "INSERT INTO order_form_service(booking_start_date, booking_start_hour, order_form_id, service_id) VALUES(:aviDate, :aviHeure,:acousticGroup, :coeffId)";
-                                    $refuel_prep = $connect->prepare($insert_refuel);
-                                    $refuel_exec = $refuel_prep->execute(array(':aviDate'=>$aviDate, ':aviHeure'=>$aviHeure, ':acousticGroup'=>$id_orderForm, ':coeffId'=>$id));
-                                /*}else{
-                                    $message = 'Vous devez d\'abord sélectionner le service "stationnement" afin de pouvoir bénéficier de ce service';    
-                                }*/
-                            }else{
-                                $message = 'La date de réservation ne peut s\'effectuer avant la date courante pouet';
+
+                            if(validate($aviDate)){
+                                insertServiceValues($aviDate, $aviHeure, $id_orderForm, $id);
+                                insertRoyalties($plane, $fuel, $category, $planeLength, $maxWeight, $id_orderForm, $acousticGroup);
                             }
-                            echo " services : " .$service;
                         }
+
                         if($service == "landing"){
-                            $attDateFormat = date_create_from_format('d-m-Y', $attDate);
-                            $formattedAttDate = $attDateFormat->format('Y-m-d');      
-
-                            if($formattedAttDate >= strftime('%Y-%m-%d')){
-                                /*if($service == "parking"){ */
-                                    $insert_land = "INSERT INTO order_form_service(booking_start_date, booking_start_hour, order_form_id, service_id) VALUES(:attDate, :attHeure, :acousticGroup, :coeffId)";
-                                    $land_prep = $connect->prepare($insert_land);
-                                    $land_exec = $land_prep->execute(array(':attDate'=>$attDate, ':attHeure'=>$attHeure, ':acousticGroup'=>$id_orderForm, ':coeffId'=>$id));
-                                /*}else{
-                                 $message = 'Vous devez d\'abord sélectionner le service "stationnement" afin de pouvoir bénéficier de ce service';
-                                }*/    
-                            }else{
-                                $message = 'La date de réservation ne peut s\'effectuer avant la date courante';
+                            if(validate($attDate)){
+                                insertServiceValues($attDate, $attHeure, $id_orderForm, $id);
+                                insertRoyalties($plane, $fuel, $category, $planeLength, $maxWeight, $id_orderForm, $acousticGroup);
                             }
                         }
+
                         if($service == "inside_cleaning"){
-                            $netDateFormat = date_create_from_format('d-m-Y', $netDate);
-                            $formattedNetDate = $netDateFormat->format('Y-m-d');
-
-                            if($formattedNetDate >= strftime('%Y-%m-%d')){
-                                /*if($service == "parking"){*/
-                                    $insert_inClean = "INSERT INTO order_form_service(booking_start_date, booking_start_hour, order_form_id, service_id) VALUES (:netDate, :netHeure, :acousticGroup, :coeffId)";
-                                    $inClean_prep = $connect->prepare($insert_inClean);
-                                    $inClean_exec = $inClean_prep->execute(array(':netDate'=>$netDate, ':netHeure'=>$netHeure, ':acousticGroup'=>$id_orderForm, ':coeffId'=>$id));
-                               /* }else{
-                                 $message = 'Vous devez d\'abord sélectionner le service "stationnement" afin de pouvoir bénéficier de ce service';
-                                }*/    
-                            }else{
-                                $message = 'La date de réservation ne peut s\'effectuer avant la date courante';
-                            }                            
+                            if(validate($netDate)){
+                                insertServiceValues($netDate, $netHeure, $id_orderForm, $id);
+                                insertRoyalties($plane, $fuel, $category, $planeLength, $maxWeight, $id, $acousticGroup);
+                            }
                         }
+
                         if($service == "parachuting"){
-                            $paraDateFormat = date_create_from_format('d-m-Y', $paraDate);
-                            $formattedParaDate = $paraDateFormat->format('Y-m-d');
-
-                            if($formattedParaDate >= strftime('%Y-%m-%d')){
-                                $insert_para = "INSERT INTO order_form_service(booking_start_date, booking_start_hour,order_form_id, service_id) VALUES(:paraDate, :paraHeure, :acousticGroup, :coeffId)";
-                                $para_prep = $connect->prepare($insert_para);
-                                $para_exec = $para_prep->execute(array(':paraDate'=>$paraDate, ':paraHeure'=>$paraHeure,  ':acousticGroup'=>$id_orderForm, ':coeffId'=>$id));
-                            }else{
-                                $message = 'La date de réservation ne peut s\'effectuer avant la date courante';
+                            if(validate($paraDate)){
+                                insertServiceValues($paraDate, $paraHeure, $id_orderForm, $id);
+                                insertRoyalties($plane, $fuel, $category, $planeLength, $maxWeight, $id, $acousticGroup);
                             }
                         }
-
-                        if($service == "ulm"){
-                            $ulmDateFormat = date_create_from_format('d-m-Y', $ulmDate);
-                            $formattedUlmDate = $ulmDateFormat->format('Y-m-d');
                             
-                            if($formattedUlmDate >= strftime('%Y-%m-%d')){
-                                $insert_ulm = "INSERT INTO order_form_service(booking_start_date, booking_start_hour,order_form_id, service_id) VALUES(:ulmDate, :ulmHeure, :acousticGroup, :coeffId)";
-                                $ulm_prep = $connect->prepare($insert_ulm);
-                                $ulm_exec = $ulm_prep->execute(array(':ulmDate'=>$ulmDate, ':ulmHeure'=>$ulmHeure,  ':acousticGroup'=>$id_orderForm, ':coeffId'=>$id));
-                            }else{
-                                $message = 'La date de réservation ne peut s\'effectuer avant la date courante';
+                        if($service == "ulm"){
+                            if(validate($ulmDate)){
+                                insertServiceValues($ulmDate, $ulmHeure, $id_orderForm, $id);
+                                insertRoyalties($plane, $fuel, $category, $planeLength, $maxWeight, $id, $acousticGroup);
                             }
                         }
-
+                            
                         if($service == "first_flying"){
-                            $baptDateFormat = date_create_from_format('d-m-Y', $baptDate);
-                            $formattedBaptDate = $baptDateFormat->format('Y-m-d');
-
-                            if($formattedBaptDate >= strftime('%Y-%m-%d')){
-                                $insert_fFlight = "INSERT INTO order_form_service(booking_start_date, booking_start_hour, , order_form_idservice_id) VALUES (:baptDate, :baptHeure,:acousticGroup, :coeffId)";
-                                $fFlight_prep = $connect->prepare($insert_fFlight);
-                                $fFlight_exec = $fFlight_prep->execute(array(':baptDate'=>$baptDate, ':baptHeure'=>$baptHeure,  ':acousticGroup'=>$id_orderForm, ':coeffId'=>$id));
-                            }else{
-                                $message = 'La date de réservation ne peut s\'effectuer avant la date courante';
+                            if(validate($baptDate)){
+                                insertServiceValues($baptDate, $baptHeure, $id_orderForm, $id);
+                                insertRoyalties($plane, $fuel, $category, $planeLength, $maxWeight, $id, $acousticGroup);
                             }
                         }
                         if($service == "flying_lesson"){
-                            $leconDateFormat = date_create_from_format('d-m-Y', $leconDate);
-                            $formattedLeconDate = $leconDateFormat->format('Y-m-d');    
-
-                            if($formattedLeconDate > strftime('%Y-%m-%d')){
-                                $insert_fLesson = "INSERT INTO order_form_service(booking_start_date, booking_start_hour, order_form_id, service_id) VALUES (:leconDate, :leconHeure,:acousticGroup, :coeffId)";
-                                $fLesson_prep = $connect->prepare($insert_fLesson);
-                                $fLesson_exec = $fLesson_prep->execute(array(':leconDate'=>$leconDate, ':leconHeure'=>$leconHeure,  ':acousticGroup'=>$id_orderForm, ':coeffId'=>$id));
-                            }else{
-                                $message = 'La date de réservation ne peut s\'effectuer avant la date courante';
+                            if(validate($leconDate)){
+                                insertServiceValues($leconDate, $leconHeure, $id_orderForm, $id);
+                                insertRoyalties($plane, $fuel, $category, $planeLength, $maxWeight, $id, $acousticGroup);
                             }
                         }
+                        if(empty($message)){
+                            echo'pouic';
+                        }
+                        
                     }
-                
-                
-                
-/*
-                $insert_fkIds_royalties = "INSERT INTO royalties(service_id, coeff_id) VALUES(:idService, :idCoeff)";
-                $fkIds_royalties_prep = $connect->prepare($insert_fkIds_royalties);
-                $fkIds_royalties_exec = $fkIds_royalties_prep->execute(array('idService'=>$id,':idCoeff'=>$id_coeffId));*/
-                
-                $insertion = "INSERT INTO royalties(landing_type, petroleum_type, rate_type, plane_length, plane_weight, service_id, acoustic_group) VALUES(:plane, :fuel, :category, :planeLength, :maxWeight, :idService, :acoustic_group)";
-                $fkIds_royalties_prep = $connect->prepare($insertion);      
-                
-                /*$insert_prep = $connect->prepare($insertion);*/
-                $fkIds_royalties_exec = $fkIds_royalties_prep->execute(array(':plane'=>$plane, ':fuel'=>$fuel, ':category'=>$category, ':planeLength'=>$planeLength, ':maxWeight'=>$maxWeight,'idService'=>$id,':acoustic_group'=>$acousticGroup));
-
-
-                
-                /*$update = "UPDATE order_form_service SET order_form_id=:order_form_id WHERE service_id=:serviceId";
-                $update_prep = $connect->prepare($update);
-                $update_prep->execute(array(':order_form_id'=>$id_orderForm, ':serviceId'=>$id));
-                $fetch_update = $update_prep->fetch();
-                $iddoeir = $fetch_update['order_form_id'];
-*/
-                echo ' doekdoe :  '.$id_orderForm;
-                    
-                            
-/*                $inser_exec = $insert_prep->execute(array(':plane'=>$plane, ':fuel'=>$fuel, ':category'=>$category, ':planeLength'=>$planeLength, ':maxWeight'=>$maxWeight));
-*/
                 }else{
                     $message = "Vous devez sélectionner une activité au moins pour valider la réservation";
                 }
