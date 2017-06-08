@@ -45,38 +45,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <label for="pseudo" class="cols-sm-2 control-label">Utilisateur</label>
-                            <div class="cols-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="pseudo" id="pseudo"  placeholder="Nom d'utilisateur" />
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="mail" class="cols-sm-2 control-label">E-mail</label>
-                            <div class="cols-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="mail" id="mail"  placeholder="Email"  onBlur="validMail(this)"/>
-                                    <div id="msgMail"></div>
-                                </div>
-                            </div>
-                        </div>     
-                       
-                        <div class="form-group">
-                            <label for="phone" class="cols-sm-2 control-label">Téléphone</label>
-                            <div class="cols-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-phone fa-lg" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="phone" id="phone"  placeholder="Numéro de téléphone"/>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="form-group ">
                             <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Valider</button>
                         </div>
