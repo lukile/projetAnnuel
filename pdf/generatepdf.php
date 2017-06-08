@@ -49,8 +49,8 @@ class PDF extends FPDF {
 }
 
 setlocale(LC_TIME, 'fr_FR.utf8','fra');
-
-$date = strftime("%d %B %Y");
+date_default_timezone_set("Europe/Brussels");
+$date =("%d %B %Y");
 $pdf = new PDF();
 
 define('EURO',chr(128));
