@@ -86,6 +86,7 @@ include "createReservations.php";
             <th>Services</th>
             <th>Choix</th>
             <th>A partir de</th>
+            <th>Spécial</th>
             <th>Date</th>
             <th>Heure</th>
         </tr>
@@ -102,6 +103,12 @@ include "createReservations.php";
                 </fieldset>
             </td>
             <td>2.76€ /m²</td>
+            <td>
+            <div class="control-group">
+                <div>
+                    <input size="16" type="hidden" value="" placeholder="">
+                </div>
+             </td>   
             <td>
             <div class="control-group">
                 <div class="controls input-append date form_date" data-date="" data-date-format="dd-mm-yyyy" data-link-field="dtp_input2" data-link-format="dd-mm-yyyy">
@@ -149,6 +156,12 @@ include "createReservations.php";
             </td>
             <td>1.01€ / L</td>
             <td>
+            <div class="control-group">
+                <div>
+                    <input size="16" type="text" value="" placeholder="Quantité en L" name="qteFuel" id="qteFuel">
+                </div>
+             </td>   
+            <td>
                 <div class="control-group">
                 <div class="controls input-append date form_date" data-date="" data-date-format="dd-mm-yyyy" data-link-field="dtp_input2" data-link-format="dd-mm-yyyy">
                     <input size="16" type="text" value="" readonly name="aviDate" id="aviDate">
@@ -183,6 +196,12 @@ include "createReservations.php";
             </td>
             <td>21.60€</td>
             <td>
+            <div class="control-group">
+                <div>
+                    <input size="16" type="hidden" value="" placeholder="">
+                </div>
+             </td>  
+            <td>
                 <div class="control-group">
                 <div class="controls input-append date form_date" data-date="" data-date-format="dd-mm-yyyy" data-link-field="dtp_input2" data-link-format="dd-mm-yyyy">
                     <input size="16" type="text" value="" readonly name="attDate" id="attDate">
@@ -216,6 +235,12 @@ include "createReservations.php";
             </td>
             <td><a href="contact.php">*Contacter le support</td>
             <td>
+            <div class="control-group">
+                <div>
+                    <input size="16" type="hidden" value="" placeholder="">
+                </div>
+             </td>  
+            <td>
                 <div class="control-group">
                 <div class="controls input-append date form_date" data-date="" data-date-format="dd-mm-yyyy" data-link-field="dtp_input2" data-link-format="dd-mm-yyyy">
                     <input size="16" type="text" value="" readonly name="netDate" id="netDate">
@@ -247,6 +272,12 @@ include "createReservations.php";
                 </fieldset>
             </td>
             <td>60€</td>
+            <td>
+            <div class="control-group">
+                <div>
+                    <input size="16" type="hidden" value="" placeholder="">
+                </div>
+             </td>  
             <td>
                 <div class="control-group">
                 <div class="controls input-append date form_date" data-date="" data-date-format="dd-mm-yyyy" data-link-field="dtp_input2" data-link-format="dd-mm-yyyy">
@@ -280,6 +311,12 @@ include "createReservations.php";
             </td>
             <td>120€</td>
             <td>
+            <div class="control-group">
+                <div>
+                    <input size="16" type="hidden" value="" placeholder="">
+                </div>
+             </td>  
+            <td>
                 <div class="control-group">
                 <div class="controls input-append date form_date" data-date="" data-date-format="dd-mm-yyyy" data-link-field="dtp_input2" data-link-format="dd-mm-yyyy">
                     <input size="16" type="text" value="" readonly name="ulmDate" id="ulmDate">
@@ -312,6 +349,12 @@ include "createReservations.php";
             </td>
             <td>80€</td>
             <td>
+            <div class="control-group">
+                <div>
+                    <input size="16" type="hidden" value="" placeholder="">
+                </div>
+             </td>  
+            <td>
                <div class="control-group">
                 <div class="controls input-append date form_date" data-date="" data-date-format="dd-mm-yyyy" data-link-field="dtp_input2" data-link-format="dd-mm-yyyy">
                     <input size="16" type="text" value="" readonly name="baptDate" id="baptDate">
@@ -343,6 +386,12 @@ include "createReservations.php";
                 </fieldset>
             </td>
             <td>70€</td>
+            <td>
+            <div class="control-group">
+                <div>
+                    <input size="16" type="hidden" value="" placeholder="">
+                </div>
+             </td>  
             <td>
                <div class="control-group">
                 <div class="controls input-append date form_date" data-date="" data-date-format="dd-mm-yyyy" data-link-field="dtp_input2" data-link-format="dd-mm-yyyy">
