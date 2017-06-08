@@ -20,10 +20,10 @@ class DatabaseManager{
     }      
 
     public function connect(){
-        $hostname = "localhost";
+        $hostname = "db.aen";
         $database = "aen";
-        $username = "root";
-        $password = "";
+        $username = "aen";
+        $password = "AENpassWORD2017!";
 
         try{
             $this->connect = new PDO("mysql:host=".$hostname.";dbname=".$database, $username, $password);
