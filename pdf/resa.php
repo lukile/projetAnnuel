@@ -1,51 +1,61 @@
 <?php 
 
-$i = 0;
-if( $lastname = filter_input(INPUT_POST, 'lastname')){
-	$lastname = filter_input(INPUT_POST, 'lastname');
-	$i++;
-	
-}
+    $planeSelecter = filter_input(INPUT_POST, 'planeSelecter');
+    $planeLength = filter_input(INPUT_POST, 'planeLength');
+    $maxWeight = filter_input(INPUT_POST, 'maxWeight');
 
-if( $firstname = filter_input(INPUT_POST, 'firstname')){
-	$firstname = filter_input(INPUT_POST, 'firstname');
-	//echo $i." firstname ".$firstname;
-	$i++;
-}
-if($mail = filter_input(INPUT_POST, 'mail')){
-	$mail = filter_input(INPUT_POST, 'mail');
-	$i++;
-}
+    $startDate = filter_input(INPUT_POST, 'statDateDebut');
+    $endDate = filter_input(INPUT_POST, 'statDateFin');
+    $startHour = filter_input(INPUT_POST, 'statHeureDebut');
+    $endHour = filter_input(INPUT_POST, 'statHeureFin');
 
-if($pseudo = filter_input(INPUT_POST, 'pseudo')){
-	$pseudo = filter_input(INPUT_POST, 'pseudo');
-	$i++;
-}
+    $aviDate = filter_input(INPUT_POST, 'aviDate');
+    $aviHeure = filter_input(INPUT_POST, 'aviHeure');
 
-if($phone = filter_input(INPUT_POST, 'phone')){
-	$phone = filter_input(INPUT_POST, 'phone');
-	$i++;
-}
+    $attDate = filter_input(INPUT_POST, 'attDate');
+    $attHeure = filter_input(INPUT_POST, 'attHeure');
+
+    $netDate = filter_input(INPUT_POST, 'netDate');
+    $netHeure = filter_input(INPUT_POST, 'netHeure');
+
+    $paraDate = filter_input(INPUT_POST, 'paraDate');
+    $paraHeure = filter_input(INPUT_POST, 'paraHeure');
+
+    $ulmDate = filter_input(INPUT_POST, 'ulmDate');
+    $ulmHeure = filter_input(INPUT_POST, 'ulmHeure');
+
+    $baptDate = filter_input(INPUT_POST, 'baptDate');
+    $baptHeure = filter_input(INPUT_POST, 'baptHeure');
+
+    $leconDate = filter_input(INPUT_POST, 'leconDate');
+    $leconHeure = filter_input(INPUT_POST, 'leconHeure');
+
+
+$lastname = filter_input(INPUT_POST, 'lastname');
+$firstname = filter_input(INPUT_POST, 'firstname');
+$mail = filter_input(INPUT_POST, 'mail');
+$pseudo = filter_input(INPUT_POST, 'pseudo');
+$phone = filter_input(INPUT_POST, 'phone');
 
 
 
 require('fpdf.php');
 class PDF extends FPDF {
-	function Header() {
-		$this->Cell(12);
+    function Header() {
+        $this->Cell(12);
 
-		$this->Image("../img/logoAEN.png",10,10,13);
-	}
+        $this->Image("../img/logoAEN.png",10,10,13);
+    }
 
-	function Footer() {
+    function Footer() {
 
-		$this->SetY(-15);
+        $this->SetY(-15);
 
-		$this->SetFont("Arial","",8);
+        $this->SetFont("Arial","",8);
 
-		$this->Cell(0,10,"Page ".$this->PageNo()." / {pages}",0,0,"C");
+        $this->Cell(0,10,"Page ".$this->PageNo()." / {pages}",0,0,"C");
 
-	}
+    }
 }
 
 setlocale(LC_TIME, 'fr_FR.utf8','fra');
@@ -93,36 +103,21 @@ $pdf->Cell(189, 10, "",0 ,1);
 
 $pdf->Cell(60,10,utf8_decode("Récapitulatif de la réservation"),0,1);
 
-//echo $i."CACA";
-//echo $lastname."lastname";
-if ($i >= 1){			
-	//echo "pouet";
 $pdf->Cell(60,5,"Nom : ",0,0);
-$pdf->Cell(129,5,$lastname,0,1);
-//echo $lastname."lastname";
-			
-	if($i >= 2){
-		$pdf->Cell(60,5,utf8_decode("Prénom : "),0,0);
-		$pdf->Cell(129,5,$firstname,0,1);
-		
-		if($i >= 3){	
-			$pdf->Cell(60,5,"Email : ",0,0);
-			$pdf->Cell(129,5,$mail,0,1);
-			
-			if($i >= 4){		
-				$pdf->Cell(60,5,"Nom d'utilisateur : ",0,0);
-				$pdf->Cell(129,5,$pseudo,0,1);
-					
-					if($i == 5){
-						$pdf->Cell(60,5,utf8_decode("Téléphone : "),0,0);
-						$pdf->Cell(129,5,$phone,0,1);
-							}
-						}
-					}
-				}
-			}
+$pdf->Cell(129,5,$planeLength,0,1);
 
-						
+$pdf->Cell(60,5,utf8_decode("Prénom : "),0,0);
+$pdf->Cell(129,5,$maxWeight,0,1);
+
+$pdf->Cell(60,5,"Email : ",0,0);
+$pdf->Cell(129,5,$planeSelecter,0,1);
+
+$pdf->Cell(60,5,"Nom d'utilisateur : ",0,0);
+$pdf->Cell(129,5,$pseudo,0,1);
+
+$pdf->Cell(60,5,utf8_decode("Téléphone : "),0,0);
+$pdf->Cell(129,5,$phone,0,1);
+
 $pdf->Ln(10);
 
 $pdf->SetFont("Arial","B",12);
@@ -134,7 +129,7 @@ $pdf->Cell(35, 5, "Prix HT",1,1);
 $pdf->SetFont("Arial","",12);
 
 $pdf->Cell(130, 5, "Reservation 1",0,0);
-$pdf->Cell(25, 5, utf8_decode("10{$euro}"),0,0);
+$pdf->Cell(25, 5, utf8_decode("10"),0,0);
 $pdf->Cell(35, 5, "187,12 E",0,1, "R");
 
 $pdf->Cell(20,5,"",0,0);
