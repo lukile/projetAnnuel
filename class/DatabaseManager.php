@@ -6,11 +6,10 @@ class DatabaseManager{
 
 
     public function __construct(){
-        $hostname = "localhost";
+        $hostname = "aen.dt-industries.ovh";
         $database = "aen";
-        $username = "root";
-        $password = "";
-        
+        $username = "aen";
+        $password = "AENpassWORD2017!";        
         try{
             $this->connect = new PDO("mysql:host=".$hostname.";dbname=".$database, $username, $password);
         }catch(PDOException $e){
