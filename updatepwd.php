@@ -21,27 +21,24 @@ if(isset($_POST['resetPassword']) && $_POST['pass_reset'] && $_POST['pass_valida
   $pass_validate_reset = $_POST['pass_validation_reset'];
 
   if($pass_reset == $pass_validate_reset) {
-  $query = $connect->prepare("UPDATE user set pass='md5($pass_reset)' where mail =  '$mail'");
+
+  $pass_reset = md5($pass_reset);
+  $query = $connect->prepare("UPDATE user set pass='$pass_reset' where mail =  '$mail'");
   $query->execute(["mail" => $_POST['mail']]);
 }
 ?>
-
-<script>
-setTimeout(500, 3);
-</script>
 
 <div class="container">
 
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Inscription
-                  
+                <h1 class="page-header">Rénitialisation de mot de passe
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="index.html">Accueil</a>
                     </li>
-                    <li class="active">Inscription</li>
+                    <li class="active">Rénitialisation réussie</li>
                 </ol>
                 <div>
                     <h4>Changement de mot de passe réussie, redirection vers la page d'accueil.</h4>
@@ -50,13 +47,18 @@ setTimeout(500, 3);
         </div>
                 
 <?php 
-    include "footer.php";
+	//header("Location : index.php");
+    //header("Location : index.php");
 ?>   
+<script>
+setTimeout("location.href='index.php';", 3);
+</script>
+
 <?php
-	header("location:index.php");
-  echo "changement reussi";	
+
+include "footer.php";
+
+	
 }
-
-
 
 ?>

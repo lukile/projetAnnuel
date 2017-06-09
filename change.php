@@ -45,10 +45,10 @@ try{
     $mail->AddAddress($email,'nom');
     $mail->Subject  =  'Reset Password';
     $mail->IsHTML(true);
-    $mail->Body    = 'Click On This Link to Reset Password '.$link.'';
+    $mail->Body    = 'Cliquez sur le lien suivant pour rénitialiser votre mot de passe : '.$link.'';
     if($mail->Send())
     {
-      echo "Check Your Email and Click on the link sent to your email";
+      echo "Veuillez vérifiez dans votre boite mail le lien pour rénitialiser votre mot de passe. Pensez à verifier vos spams !";
     }
     else
     {
