@@ -25,8 +25,7 @@ if($_GET['key'] && $_GET['reset'])
 
     if(count($result) == 1)
     {
-    ?>
-    
+    ?>  
     <div class="container">
 
         <!-- Page Heading/Breadcrumbs -->
@@ -73,7 +72,6 @@ if($_GET['key'] && $_GET['reset'])
                             <button type="submit" name="resetPassword" class="btn btn-primary btn-lg btn-block login-button">Valider</button>
                         </div>
                 </div>
-    
     <?php
   }
 }

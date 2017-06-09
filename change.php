@@ -24,8 +24,8 @@ try{
     if(count($result) == 1)
     {
 
-      $email=($result[0]['mail']);
-      $pass=md5($result[0]['pass']);
+      $email = ($result[0]['mail']);
+      $pass = md5($result[0]['pass']);
    
     $link="<a href='http://localhost/projects/projetAnnuel/reset.php?key=".$email."&reset=".$pass."'>Cliquez pour renitialiser votre mot de passe</a>";
     

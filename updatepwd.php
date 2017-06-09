@@ -29,7 +29,6 @@ if(isset($_POST['resetPassword']) && $_POST['pass_reset'] && $_POST['pass_valida
 ?>
 
 <div class="container">
-
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
@@ -41,15 +40,11 @@ if(isset($_POST['resetPassword']) && $_POST['pass_reset'] && $_POST['pass_valida
                     <li class="active">Rénitialisation réussie</li>
                 </ol>
                 <div>
-                    <h4>Changement de mot de passe réussie, redirection vers la page d'accueil.</h4>
+                    <h4>Changement de mot de passe réussi, redirection vers la page d'accueil.</h4>
                 </div>
             </div>
         </div>
-                
-<?php 
-	//header("Location : index.php");
-    //header("Location : index.php");
-?>   
+                   
 <script>
 setTimeout("location.href='index.php';", 3);
 </script>
@@ -57,7 +52,6 @@ setTimeout("location.href='index.php';", 3);
 <?php
 
 include "footer.php";
-
 	
 }
 

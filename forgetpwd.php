@@ -19,7 +19,6 @@
                 </ol>
             </div>
         </div>
-    
 
       <div class="main-login main-center">
           <form class="form-horizontal" method="post" action="change.php">
@@ -36,21 +35,12 @@
             <div class="form-group ">
               <button type="submit" name="submit_reset" class="btn btn-primary btn-lg btn-block login-button">Envoyer</button>
             </div>
-            
           </form>
         </div>
-    
     <hr>
-
-
- <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Projet annuel 2A, Lucile, Damien, Sacha</p>
-                </div>
-            </div>
-        </footer>
-
+<?php 
+include "footer.php";
+?>
     </div>
     <!-- /.container -->
 
