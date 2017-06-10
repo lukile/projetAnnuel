@@ -56,7 +56,7 @@ if (isset($lastname, $firstname, $mail, $pseudo, $pass, $pass_validation, $phone
                             InscriptionDAO::create($user);
 
                             // METTRE LE LIEN POUR ACTIVER LE COMPTE A LA PLACE DE RESET.PHP L'ENVOIE DU MAIL EST GOOD SINON
-$link="<a href='http://localhost/projects/projetAnnuel/validationemail.php?key=".$mail."&activationKey=".$activationKey."'>ici</a>";
+$link="<a href='http://localhost/projects/projetAnnuel/validationemail.php?mail=".$mail."&activationKey=".$activationKey."'>ici</a>";
     
     require_once('phpmailer/PHPMailerAutoload.php');
 
