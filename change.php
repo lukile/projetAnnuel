@@ -42,7 +42,7 @@ try{
     $mail->Port = 587;
     $mail->From=$mail->Username;
     $mail->FromName='Equipe AEN';
-    $mail->AddAddress($email,'nom');
+    $mail->AddAddress($email,$email);
     $mail->Subject  =  'Reset Password';
     $mail->IsHTML(true);
     $mail->Body    = 'Cliquez sur le lien suivant pour rénitialiser votre mot de passe : '.$link.'';
