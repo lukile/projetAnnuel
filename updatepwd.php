@@ -46,7 +46,7 @@ if(isset($_POST['resetPassword']) && $_POST['pass_reset'] && $_POST['pass_valida
         </div>
                    
 <script>
-setTimeout("location.href='index.php';", 3);
+setTimeout("location.href='index.php';", 4000);
 </script>
 
 <?php

@@ -48,14 +48,44 @@ try{
     $mail->Body    = 'Cliquez sur le lien suivant pour rénitialiser votre mot de passe : '.$link.'';
     if($mail->Send())
     {
-      echo "Veuillez vérifiez dans votre boite mail le lien pour rénitialiser votre mot de passe. Pensez à verifier vos spams !";
+    ?>
+    <div class="container">
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Rénitialisation de mot de passe
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Accueil</a>
+                    </li>
+                    <li class="active">Rénitialisation en cours</li>
+                </ol>
+                <div>
+                    <h4>Veuillez vérifiez dans votre boite mail le lien pour rénitialiser votre mot de passe. Pensez à verifier vos spams !</h4><br>
+                    <h5>Redirection vers la page d'accueil, vous pouvez également fermer cette fenêtre. </h5>
+                </div>
+            </div>
+        </div>
+                   
+<script>
+setTimeout("location.href='index.php';", 4000);
+</script>
+
+<?php
+
+
+    
+}
+      echo "";
     }
     else
     {
       echo "Mail Error - >".$mail->ErrorInfo;
+      echo "L'adresse que vous avez renseigné n'existe pas"; 
     }
-  } 
-}
+    
+  }
+    include "footer.php";
 
 ?>
 
