@@ -6,10 +6,11 @@ class DatabaseManager{
 
 
     public function __construct(){
-        $hostname = "aen.dt-industries.ovh";
+        $hostname = "localhost";
         $database = "aen";
-        $username = "aen";
-        $password = "AENpassWORD2017!";        
+        $username = "root";
+        $password = "";
+        
         try{
             $this->connect = new PDO("mysql:host=".$hostname.";dbname=".$database, $username, $password);
         }catch(PDOException $e){
@@ -19,10 +20,10 @@ class DatabaseManager{
     }      
 
     public function connect(){
-        $hostname = "aen.dt-industries.ovh";
+        $hostname = "localhost";
         $database = "aen";
-        $username = "aen";
-        $password = "AENpassWORD2017!";
+        $username = "root";
+        $password = "";
 
         try{
             $this->connect = new PDO("mysql:host=".$hostname.";dbname=".$database, $username, $password);
