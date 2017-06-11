@@ -7,7 +7,7 @@ include"header.php";
             $username = "root";
             $password = "";
 
-if(isset($_POST['submit_reset']) && $_POST['mail'])
+if(isset($_POST['submit_reset']) && isset($_POST['mail']))
 {
 
 try{
@@ -27,7 +27,7 @@ try{
       $email = ($result[0]['mail']);
       $pass = md5($result[0]['pass']);
    
-    $link="<a href='http://localhost/projects/projetAnnuel/reset.php?key=".$email."&reset=".$pass."'>Cliquez pour renitialiser votre mot de passe</a>";
+    $link="<a href='http://localhost/projet_annuel/reset.php?key=".$email."&reset=".$pass."'>Cliquez pour renitialiser votre mot de passe</a>";
     
     require_once('phpmailer/PHPMailerAutoload.php');
 
