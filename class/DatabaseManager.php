@@ -9,6 +9,7 @@ class DatabaseManager{
         $hostname = "localhost";
         $database = "aen";
         $username = "root";
+
         $password = "";
         
         try{

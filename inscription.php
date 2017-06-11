@@ -117,7 +117,7 @@
                             <a href="login.php">Déjà un compte ? Cliquez ici pour vous connectez !</a>
                          </div>
                     </form>
-                    <p id = "message"><?= $message?:'' ?></p>
+                    <p id = "message"><?= $messag?:'' ?></p>
                 </div>
                 
 <?php 

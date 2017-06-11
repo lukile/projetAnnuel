@@ -2,80 +2,81 @@
 require_once(__DIR__. '/class/DatabaseManager.php');
 include"header.php";
 
-         
-    if($_GET['action']=="reset")
-    {
-        $encrypt = mysqli_real_escape_string($connection,$_GET['encrypt']);
-        $query = "SELECT id FROM users where md5(90*13+id)='".$encrypt."'";
-        $result = mysqli_query($connection,$query);
-        $Results = mysqli_fetch_array($result);
-        if(count($Results)>=1)
-        {
- 
-        }
-        else
-        {
-            $message = 'Invalid key please try again. <a href="http://localhost/projects/projetAnnuel/forgetpwd.php">Forget Password?</a>';
-        }
-    }
+            $hostname = "localhost";
+            $database = "aen";
+            $username = "root";
+            $password = "";
 
-elseif(isset($_POST['action']))
+try{
+    $connect = new PDO('mysql:host='.$hostname.';dbname='.$database, $username, $password);
+ }catch (PDOException $e){
+        exit('problème de connexion à la base');
+      }
+
+
+if($_GET['key'] && $_GET['reset'])
 {
- 
-    $encrypt      = mysqli_real_escape_string($connection,$_POST['action']);
-    $password     = mysqli_real_escape_string($connection,$_POST['password']);
-    $query = "SELECT id FROM users where md5(90*13+id)='".$encrypt."'";
- 
-    $result = mysqli_query($connection,$query);
-    $Results = mysqli_fetch_array($result);
-    if(count($Results)>=1)
+  $mail = $_GET['key'];
+  $pass = $_GET['reset'];
+
+  $query = $connect->prepare("SELECT mail,pass FROM user WHERE mail = '$mail' and md5(pass)='$pass'");
+  $query->execute(["mail" => $_GET['key']]);
+  $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    if(count($result) == 1)
     {
-        $query = "update users set password='".md5($password)."' where id='".$Results['id']."'";
-        mysqli_query($connection,$query);
- 
-        $message = "Your password changed sucessfully <a href=\"http://demo.phpgang.com/login-signup-in-php/\">click here to login</a>.";
-    }
-    else
-    {
-        $message = 'Invalid key please try again. <a href="http://demo.phpgang.com/login-signup-in-php/#forget">Forget Password?</a>';
-    }
-}
-else
-{
-    header("location: /login-signup-in-php");
+    ?>  
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Rénitialisation mot de passe
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Accueil</a>
+                    </li>
+                    <li class="active">Rénitialisation</li>
+                </ol>
+            </div>
+        </div>
+
+         <div class="main-login main-center">
+                    <form class="form-horizontal" method="POST" action="updatepwd.php" name="formInscription">
+                              <input type="hidden" class="form-control" value="<?php echo $mail;?>" name="mail" id="pass_reset"  placeholder="Saisir le mot de passe" required onBlur="verifyPassLength()"/><br/>
+                        </div>
+
+                         <div class="form-group">
+                            <label for="pass" class="cols-sm-2 control-label"> Nouveau mot de passe</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                    <input type="password" class="form-control" name="pass_reset" id="pass_reset"  placeholder="Saisir le mot de passe" required onBlur="verifyPassLength()"/><br/>
+                                        <div id="msgLength"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pass_validation" class="cols-sm-2 control-label">Confirmation du nouveau mot de passe</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                    <input type="password" class="form-control" name="pass_validation_reset" id="pass_validation_reset" placeholder="Confirmer le mot de passe" required onBlur="verifyPassAgreement()"/>
+                                    <div id="msgAgreement"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <button type="submit" name="resetPassword" class="btn btn-primary btn-lg btn-block login-button">Valider</button>
+                        </div>
+                </div>
+    <?php
+  }
 }
 ?>
 
-<script>
-function mypasswordmatch()
-{
-    var pass1 = $("#password").val();
-    var pass2 = $("#password2").val();
-    if (pass1 != pass2)
-    {
-        alert("Passwords do not match");
-        return false;
-    }
-    else
-    {
-        $( "#reset" ).submit();
-    }
-}
-</script>
 
-<script>
-function mypasswordmatch()
-{
-    var pass1 = $("#password").val();
-    var pass2 = $("#password2").val();
-    if (pass1 != pass2)
-    {
-        alert("Passwords do not match");
-        return false;
-    }
-    else
-    {
-        $( "#reset" ).submit();
-    }
-}
-</script>
+
+

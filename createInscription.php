@@ -56,18 +56,18 @@ if (isset($lastname, $firstname, $mail, $pseudo, $pass, $pass_validation, $phone
                                              $applicationFee); 
 
                             InscriptionDAO::create($user);
-                                                        
+
                         }else{
-                            $message = 'Les deux mots de passe doivent être identiques';
+                            $messag = 'Les deux mots de passe doivent être identiques';
                         }
                     }else{    
-                        $message = 'Le mot de passe doit faire plus de 4 caractères'; 
+                        $messag = 'Le mot de passe doit faire plus de 4 caractères'; 
                     }
                 }else{
-                    $message = 'Le format de l\'adresse mail est incorrect ';
+                    $messag = 'Le format de l\'adresse mail est incorrect ';
                 }
             }else{            
-                $message = 'Tous les champs doivent être renseignés';
+                $messag = 'Tous les champs doivent être renseignés';
             }
         }
 ?>
