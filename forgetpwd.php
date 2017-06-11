@@ -21,11 +21,11 @@
       <div class="main-login main-center">
           <form class="form-horizontal" method="post" action="change.php">
             <div class="form-group">
-              <label for="email" class="cols-sm-2 control-label">E-mail</label>
+              <label for="mail" class="cols-sm-2 control-label">E-mail</label>
                 <div class="cols-sm-10">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control" name="email" id="email"  placeholder="Email"/>
+                    <input type="text" class="form-control" name="mail" id="mail"  placeholder="Email"/>
                 </div>
               </div>
             </div>
