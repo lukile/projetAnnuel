@@ -13,7 +13,8 @@
         private $registrationDate_;
         private $applicationFee_;
 
-        public function __construct($firstname = NULL, $lastname = NULL, $login = NULL, $password = NULL, $mail = NULL, $phone = NULL, $activationKey = NULL, $comments = NULL){
+        public function __construct($admin = NULL, $firstname = NULL, $lastname = NULL, $login = NULL, $password = NULL, $mail = NULL, $phone = NULL, $activationKey = NULL, $active = NULL, $comments = NULL, $applicationFee = NULL){
+                $this->admin_ = $admin;
                 $this->firstname_ = $firstname;
                 $this->lastname_ = $lastname;
                 $this->login_ = $login;
@@ -21,7 +22,9 @@
                 $this->phone_ = $phone;
                 $this->mail_ = $mail;
                 $this->activationKey_ = $activationKey;
+                $this->active_ = $active;
                 $this->comments_ = $comments;
+                $this->applicationFee_ = $applicationFee;
             }
             
         public function getId(){
@@ -29,6 +32,13 @@
         }
         public function setId($id){
             $this->id_ = $id;
+        }
+
+        public function getAdmin(){
+            return $this->admin_;
+        }
+        public function setAdmin($admin){
+            $this->admin_ = $admin;
         }
 
         public function getFirstname(){
