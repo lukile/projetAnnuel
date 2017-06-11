@@ -86,7 +86,8 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                    <input type="password" class="form-control" name="pass" id="pass"  placeholder="Saisir le mot de passe" required/>
+                                    <input type="password" class="form-control" name="pass" id="pass"  placeholder="Saisir le mot de passe" required  onblur="verifyPassLength()"/>
+                                    <div id="msgLength"></div>
                                 </div>
                             </div>
                         </div>
@@ -96,7 +97,8 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                    <input type="password" class="form-control" name="pass_validation" id="pass_validation"  placeholder="Confirmer le mot de passe" required/>
+                                    <input type="password" class="form-control" name="pass_validation" id="pass_validation"  placeholder="Confirmer le mot de passe" required onBlur="verifyPassAgreement()"/>
+                                    <div id="msgAgreement"></div>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +108,8 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="mail" id="mail"  placeholder="Email"value="<?php echo (isset($_POST['mail'])) ? $_POST['mail']:"";?>"/>
+                                    <input type="text" class="form-control" name="mail" id="mail"  placeholder="Email" onblur="validMail(this)" value="<?php echo (isset($_POST['mail'])) ? $_POST['mail']:"";?>"/>
+                                    <div id="msgMail"></div>
                                 </div>
                             </div>
                         </div>     
