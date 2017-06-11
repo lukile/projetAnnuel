@@ -2,7 +2,7 @@
 session_start();
 
 include "header.php";
-$listUsers = connect()->query("SELECT id, firstname, lastname, pseudo, mail, phone, comments, registration_date, application_fee FROM user");
+$listUsers = connect()->query("SELECT id, firstname, lastname, pseudo, mail, phone, comments, registration_date, active, application_fee FROM user");
 
 ?>
 <div class="container">
@@ -21,13 +21,14 @@ $listUsers = connect()->query("SELECT id, firstname, lastname, pseudo, mail, pho
                     <th>Phone</th>
                     <th>Commentaires</th>
                     <th>Date d'inscription</th>
-                    <th>Frais supplémentaires</th>
+                    <th>Etat compte <br>1 = actif<br>0 = inactif</th>
+                    <th>Frais de dossier</th>
                     <th>Modification</th>
                 </tr>
                 </thead>
                 <tbody>
 <?php                    while($data = $listUsers->fetch()){ ?>
-
+                    <tr>
                     <td><?php echo $data['id']; ?> </td>
                     <td><?php echo $data['firstname']; ?> </td>
                     <td><?php echo $data['lastname']; ?> </td>
@@ -36,9 +37,11 @@ $listUsers = connect()->query("SELECT id, firstname, lastname, pseudo, mail, pho
                     <td><?php echo $data['phone']; ?> </td>
                     <td><?php echo $data['comments']; ?> </td>
                     <td><?php echo $data['registration_date']; ?> </td>
+                    <td><?php echo $data['active']; ?></td>
                     <td><?php echo $data['application_fee'].'<br>'; ?> </td>
                     
                     <td><a href="modifyUser.php?id=<?php echo $data['id']?>">Modifier</a></td>
+                    </tr>    
 <?php } ?>
                </tbody>
             </table>
