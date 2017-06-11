@@ -56,7 +56,7 @@ if (isset($lastname, $firstname, $mail, $pseudo, $pass, $pass_validation, $phone
                                              $applicationFee); 
 
                             InscriptionDAO::create($user);
-
+                            
                             $link="<a href='http://localhost/projects/projetAnnuel/validationemail.php?mail=".$mail."&activationKey=".$activationKey."'>ici</a>";
     
                             require_once('phpmailer/PHPMailerAutoload.php');
