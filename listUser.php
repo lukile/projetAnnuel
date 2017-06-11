@@ -19,7 +19,8 @@ include "header.php";
                     <th>Phone</th>
                     <th>Commentaires</th>
                     <th>Date d'inscription</th>
-                    <th>Frais supplémentaires</th>
+                    <th>Etat compte <br>1 = actif<br>0 = inactif</th>
+                    <th>Frais de dossier</th>
                 </tr>
                 </thead>
                 <tbody>
