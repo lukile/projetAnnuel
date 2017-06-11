@@ -61,7 +61,8 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                    <input type="password" class="form-control" name="pass" id="pass"  placeholder="Saisir le mot de passe" required/>
+                                    <input type="password" class="form-control" name="pass" id="pass"  placeholder="Saisir le mot de passe" onblur="verifyPassLength()" required/>
+                                    <div id="msgLength"></div>
                                 </div>
                             </div>
                         </div>
@@ -71,7 +72,8 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                    <input type="password" class="form-control" name="pass_validation" id="pass_validation"  placeholder="Confirmer le mot de passe" required/>
+                                    <input type="password" class="form-control" name="pass_validation" id="pass_validation"  placeholder="Confirmer le mot de passe" onBlur="verifyPassAgreement()" required/>
+                                     <div id="msgAgreement"></div>
                                 </div>
                             </div>
                         </div>
@@ -81,7 +83,8 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="mail" id="mail"  placeholder="Email"/>
+                                    <input type="text" class="form-control" name="mail" id="mail"  placeholder="Email" required onblur="validMail(this)"/>
+                                     <div id="msgMail"></div>
                                 </div>
                             </div>
                         </div>     
@@ -91,7 +94,7 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-phone fa-lg" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="phone" id="phone"  placeholder="Numéro de téléphone"/>
+                                    <input type="text" class="form-control" name="phone" id="phone"  placeholder="Numéro de téléphone" required/>
                                 </div>
                             </div>
                         </div>
@@ -125,6 +128,7 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/verify.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 
