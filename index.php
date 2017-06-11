@@ -1,5 +1,4 @@
 <?php
-    ini_set("diplay_errors", 1);
     session_start();
     include "header.php";
     
@@ -92,7 +91,7 @@
         <!-- /.row -->
 
         <!-- Portfolio Section -->
-      <!--  <div class="row">
+        <div class="row">
             <div class="col-lg-12">
                 <h2 class="page-header">Portfolio Heading</h2>
             </div>
@@ -128,7 +127,7 @@
             </div>
         </div>
         <!-- /.row -->
-            
+
         <!-- Features Section -->
         <div class="row">
             <div class="col-lg-12">
