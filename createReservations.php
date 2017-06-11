@@ -113,14 +113,14 @@ if(isset($_POST['planeSelecter']) && isset($_POST['fuel']) && isset($_POST['cate
 
                             if(validate($aviDate)){
                                 insertServiceValues($aviDate, $aviHeure, $id_orderForm, $id);
-                                insertRoyalties($plane, $fuel, $category, $planeLength, $maxWeight, $id_orderForm, $acousticGroup);
+                                insertRoyalties($plane, $fuel, $category, $planeLength, $maxWeight, $id, $acousticGroup);
                             }
                         }
 
                         if($service == "landing"){
                             if(validate($attDate)){
                                 insertServiceValues($attDate, $attHeure, $id_orderForm, $id);
-                                insertRoyalties($plane, $fuel, $category, $planeLength, $maxWeight, $id_orderForm, $acousticGroup);
+                                insertRoyalties($plane, $fuel, $category, $planeLength, $maxWeight, $id, $acousticGroup);
                             }
                         }
 
@@ -157,10 +157,6 @@ if(isset($_POST['planeSelecter']) && isset($_POST['fuel']) && isset($_POST['cate
                                 insertRoyalties($plane, $fuel, $category, $planeLength, $maxWeight, $id, $acousticGroup);
                             }
                         }
-                        if(empty($message)){
-                            echo'pouic';
-                        }
-                        
                     }
                 }else{
                     $message = "Vous devez sélectionner une activité au moins pour valider la réservation";
