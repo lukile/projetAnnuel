@@ -29,7 +29,8 @@ class InscriptionDAO{
                 /* Résultat du comptage = 0 pour ce mail, on peut donc l'enregistrer */
                             
                 /* Pour enregistrer la date actuelle (date/heure/minutes/secondes) on peut utiliser directement la fonction mysql : NOW()*/                
-                $insertion = $manager->exec("INSERT INTO user(firstname, lastname, pseudo, pass, mail, phone, activation_key, comments, registration_date) VALUES(?,?,?,?,?,?,?,?, NOW())", [
+                $insertion = $manager->exec("INSERT INTO user(admin,firstname, lastname, pseudo, pass, mail, phone, activation_key, active, comments, registration_date, application_fee) VALUES(?,?,?,?,?,?,?,?,?,?, NOW(),?)", [
+                    $user->getAdmin(),
                     $user->getFirstname(),
                     $user->getLastname(),
                     $user->getLogin(),
@@ -37,7 +38,9 @@ class InscriptionDAO{
                     $user->getMail(),                                    
                     $user->getPhone(),
                     $user->getActivationKey(),
-                    $user->getComments()
+                    $user->getActive(),
+                    $user->getComments(),
+                    $user->getApplicationFee(),
                     ]);
                             
             /* Si l'insertion s'est faite correctement...*/
