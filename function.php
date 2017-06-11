@@ -85,25 +85,21 @@ function validate($startDate){
     return true;
 }
 
-function insertServiceValues($startDate, $startHour, $orderFormId, $serviceId){
-    $manager = DatabaseManager::getsharedInstance();
-    $connect = $manager->connect(); 
+function insertServiceValues($startDate, $endDate, $startHour, $orderFormId, $serviceId){
    
-    $select = "INSERT INTO order_form_service(booking_start_date, booking_start_hour, order_form_id, service_id) VALUES(:startDate, :startHour, :orderFormId, :serviceId)";
-    $prep = $connect->prepare($select);
-    $exec = $prep->execute(array(':startDate'=>$startDate, ':startHour'=>$startHour, ':orderFormId'=>$orderFormId, ':serviceId'=>$serviceId));
-    echo 'insertion ok';
+    $select = "INSERT INTO order_form_service(booking_start_date, booking_end_date, booking_start_hour, order_form_id, service_id) VALUES(:startDate, :endDate, :startHour, :orderFormId, :serviceId)";
+    $prep = connect()->prepare($select);
+    $exec = $prep->execute(array(':startDate'=>$startDate, ':endDate'=>$endDate, ':startHour'=>$startHour, ':orderFormId'=>$orderFormId, ':serviceId'=>$serviceId));
+
     return $exec;
 }
-function insertRoyalties($plane, $fuel, $category, $planeLength, $maxWeight, $idService, $acousticGroup){
+function insertRoyalties($plane, $fuel, $qutyFuel, $category, $planeLength, $maxWeight, $idService, $acousticGroup){
     $manager = DatabaseManager::getsharedInstance();
     $connect = $manager->connect();
-    $insert = "INSERT INTO royalties(landing_type, petroleum_type, rate_type, plane_length, plane_weight, service_id, acoustic_group) VALUES(:plane, :fuel, :category, :planeLength, :maxWeight, :idService, :acoustic_group)";
+    $insert = "INSERT INTO royalties(landing_type, petroleum_type, fuel_quantity, rate_type, plane_length, plane_weight, service_id, acoustic_group) VALUES(:plane, :fuel, :qutyFuel, :category, :planeLength, :maxWeight, :idService, :acoustic_group)";
     $insert_prep = $connect->prepare($insert);
-    $insert_exec = $insert_prep->execute(array(':plane'=>$plane, ':fuel'=>$fuel, ':category'=>$category, ':planeLength'=>$planeLength, ':maxWeight'=>$maxWeight,'idService'=>$idService,':acoustic_group'=>$acousticGroup));
-}
-
-
+    $insert_exec = $insert_prep->execute(array(':plane'=>$plane, ':fuel'=>$fuel, ':qutyFuel'=>$qutyFuel, ':category'=>$category, ':planeLength'=>$planeLength, ':maxWeight'=>$maxWeight,'idService'=>$idService,':acoustic_group'=>$acousticGroup));
+} 
 
 function displayListUsers(){
   $listUsers = connect()->query("SELECT firstname, lastname, pseudo, mail, phone, comments, registration_date, active, application_fee FROM user");
