@@ -14,8 +14,9 @@
         $pass = trim($pass) != '' ? $pass : null;
 
         if(isset($mail, $pass)){
+            
             if(login($_POST['mail'], $_POST['pass'])){
-                $message = 'Vous êtes maintenant connecté !';
+                $message = 'Vous êtes maintenant connecté '.$_POST['mail'];
 
             }else{
                 $message = 'Vous avez saisi les mauvais identifiants !';
