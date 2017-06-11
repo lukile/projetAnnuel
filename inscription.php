@@ -69,6 +69,7 @@
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
                                     <input type="password" class="form-control" name="pass" id="pass"  placeholder="Saisir le mot de passe"  onblur="verifyPassLength()" required/>
+                                    <div id="msgLength"></div>
                                 </div>
                             </div>
                         </div>
@@ -78,8 +79,8 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                    <input type="password" class="form-control" name="pass_validation" id="pass_validation"  placeholder="Confirmer le mot de passe" required/>
-                                    <div id="msgLength"></div>
+                                    <input type="password" class="form-control" name="pass_validation" id="pass_validation"  placeholder="Confirmer le mot de passe" onBlur="verifyPassAgreement()" required/>
+                                   <div id="msgAgreement"></div>
                                 </div>
                             </div>
                         </div>
