@@ -35,7 +35,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <li><a href = "createUser.pho">Créer un utilisateur</a>
+                                <li><a href = "createUser.php">Créer un utilisateur</a>
                             </h4>
                         </div>
                     </div>
