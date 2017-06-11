@@ -51,8 +51,50 @@ class InscriptionDAO{
                         session_start();
                                     
                     $_SESSION['login'] = $mail;
-                                    
-                        echo 'Votre inscription est bien enregistrée.';
+
+                    ?>
+                    <div class="container">
+            <!-- Page Heading/Breadcrumbs -->
+            <div class="row">
+                <div class="col-lg-12">
+                        </li>
+                    </ol>
+                    <div>
+                        <h4>Veuillez vérifiez dans votre boite mail le lien pour activer votre mot de passe. Pensez à verifier vos spams !</h4><br>
+                        <h5>Redirection vers la page d'accueil, vous pouvez également fermer cette fenêtre. </h5>
+                    </div>
+                </div>
+            </div>
+            <?php
+                    echo 'Votre inscription est bien enregistrée.';
+
+                        $link="<a href='http://localhost/projects/projetAnnuel/validationemail.php?mail=".$mail."&activationKey=".$activationKey."'>ici</a>";
+    
+                    require_once('phpmailer/PHPMailerAutoload.php');
+
+                        $message = new PHPMailer();
+                        $message->CharSet = "utf-8";
+                        $message->IsSMTP();
+                        $message->SMTPAuth = true;                  
+                        $message->Username = "aensld@zoho.eu";
+                        $message->Password = "!PassAENsld";
+                        $message->SMTPSecure = "tls";  
+                        $message->Host = "smtp.zoho.eu";
+                        $message->Port = 587;
+                        $message->From=$message->Username;
+                        $message->FromName='Equipe AEN';
+                        $message->AddAddress($mail,$mail);
+                        $message->Subject  =  'Activation de compte';
+                        $message->IsHTML(true);
+                        $message->Body    = 'Cliquez sur le lien suivant pour activer votre compte  : '.$link.'';
+                        $message->Send();
+
+            ?>
+             <script>
+            setTimeout("location.href='index.php';", 4000);
+            </script>    
+
+            <?php
                                 
                 }else{
                    echo 'Un problème est survenue lors de l\'enregistrement';

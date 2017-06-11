@@ -57,26 +57,6 @@ if (isset($lastname, $firstname, $mail, $pseudo, $pass, $pass_validation, $phone
 
                             InscriptionDAO::create($user);
                             
-                            $link="<a href='http://localhost/projects/projetAnnuel/validationemail.php?mail=".$mail."&activationKey=".$activationKey."'>ici</a>";
-    
-                            require_once('phpmailer/PHPMailerAutoload.php');
-                            $message = new PHPMailer();
-                            $message->CharSet = "utf-8";
-                            $message->IsSMTP();
-                            $message->SMTPAuth = true;                  
-                            $message->Username = "aensld@zoho.eu";
-                            $message->Password = "!PassAENsld";
-                            $message->SMTPSecure = "tls";  
-                            $message->Host = "smtp.zoho.eu";
-                            $message->Port = 587;
-                            $message->From=$message->Username;
-                            $message->FromName='Equipe AEN';
-                            $message->AddAddress($mail,$mail);
-                            $message->Subject  =  'Activation de compte';
-                            $message->IsHTML(true);
-                            $message->Body    = 'Cliquez sur le lien suivant pour activer votre compte  : '.$link.'';
-                            $message->Send();
-
                         }else{
                             $messag = 'Les deux mots de passe doivent être identiques';
                         }

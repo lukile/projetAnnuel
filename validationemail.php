@@ -24,17 +24,22 @@ $mail = $_GET['mail'];
 //echo $activationKey;
 //echo $mail;
 
-$query = $connect->prepare("SELECT id FROM user WHERE mail='$mail'");
+$requete = $connect->query("SELECT activation_key FROM user WHERE mail='$mail'");
+$resultat = $requete->fetch();
+//echo $resultat[0];
+//echo $resultat['activation_key'];
+
+$query = $connect->prepare("SELECT id FROM user WHERE activation_key='$resultat[0]'");
 
 //Executer et récupérer l'information
-$query->execute(["mail"=>$_GET['mail']]);
+$query->execute(["activation_key"=>$resultat[0]]);
 $results = $query->fetch();
 
 if( !empty($results) ){
 	//il existe on prépare une autre requête
-	$query = $connect->prepare("UPDATE user SET active = 1 WHERE mail='$mail'");
+	$query = $connect->prepare("UPDATE user SET active = 1 WHERE activation_key='$resultat[0]'");
 	//On execute la nouvelle requete
-	$query->execute(["mail"=>$_GET['mail']]);
+	$query->execute(["activation_key"=>$resultat[0]]);
 
 }else{
 	die("Erreur a la fin, bdd pas mise a jour");
