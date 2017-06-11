@@ -106,7 +106,7 @@ function insertRoyalties($plane, $fuel, $category, $planeLength, $maxWeight, $id
 
 
 function displayListUsers(){
-  $listUsers = connect()->query("SELECT firstname, lastname, pseudo, mail, phone, comments, registration_date, application_fee FROM user");
+  $listUsers = connect()->query("SELECT firstname, lastname, pseudo, mail, phone, comments, registration_date, active, application_fee FROM user");
 
     while($data = $listUsers->fetch()){
         echo '<tr> <td>'.$data['firstname'].'</td>';
@@ -116,6 +116,7 @@ function displayListUsers(){
         echo '<td>'.$data['phone'].'</td>';
         echo '<td>'.$data['comments'].'</td>';
         echo '<td>'.$data['registration_date'].'</td>';
+        echo '<td>'.$data['active'].'</td>';
         echo '<td>'.$data['application_fee'].'</td> </tr>';
     }  
 }
