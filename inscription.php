@@ -1,14 +1,11 @@
 <?php  
     session_start();
 
-    ini_set('display_errors', 1);
-
     header('Content-type: text/html; charset=UTF-8');
 
     include "header.php";
     include "createInscription.php";
 ?>    
-
     <!-- Page Content -->
     <div class="container">
 
@@ -31,7 +28,7 @@
     
 
 <div class="main-login main-center">
-                    <form class="form-horizontal" method="POST" action="#" name="formInscription">
+                    <form class="form-horizontal" method="POST" action="#">
                         
                         <div class="form-group">
                             <label for="firstname" class="cols-sm-2 control-label">Prénom</label>
@@ -68,8 +65,7 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                    <input type="password" class="form-control" name="pass" id="pass"  placeholder="Saisir le mot de passe" required onBlur="verifyPassLength()"/><br/>
-                                        <div id="msgLength"></div>
+                                    <input type="password" class="form-control" name="pass" id="pass"  placeholder="Saisir le mot de passe" required/>
                                 </div>
                             </div>
                         </div>
@@ -79,8 +75,7 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                    <input type="password" class="form-control" name="pass_validation" id="pass_validation" placeholder="Confirmer le mot de passe" required onBlur="verifyPassAgreement()"/>
-                                    <div id="msgAgreement"></div>
+                                    <input type="password" class="form-control" name="pass_validation" id="pass_validation"  placeholder="Confirmer le mot de passe" required/>
                                 </div>
                             </div>
                         </div>
@@ -90,8 +85,7 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="mail" id="mail"  placeholder="Email" required onBlur="validMail(this)"/>
-                                    <div id="msgMail"></div>
+                                    <input type="text" class="form-control" name="mail" id="mail"  placeholder="Email" required/>
                                 </div>
                             </div>
                         </div>     
@@ -101,7 +95,7 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-phone fa-lg" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="phone" id="phone" required placeholder="Numéro de téléphone"/>
+                                    <input type="text" class="form-control" name="phone" id="phone"  placeholder="Numéro de téléphone" required/>
                                 </div>
                             </div>
                         </div>
