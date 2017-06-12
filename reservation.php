@@ -99,6 +99,7 @@ include "createReservations.php";
             <td>
                 <fieldset class="form-group">
                     <input type="checkbox" id="checkBoxStat" name="services[]" value="parking">
+                    <input type="hidden" name="priceParking" value="2.76">
                     <label for="checkBoxStat"></label>
                 </fieldset>
             </td>
