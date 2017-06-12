@@ -40,13 +40,13 @@ if(isset($_POST['resetPassword']) && $_POST['pass_reset'] && $_POST['pass_valida
                     <li class="active">Rénitialisation réussie</li>
                 </ol>
                 <div>
-                    <h4>Changement de mot de passe réussi, redirection vers la page d'accueil.</h4>
+                    <h4>Changement de mot de passe réussi, redirection vers la page de connexion.</h4>
                 </div>
             </div>
         </div>
                    
 <script>
-setTimeout("location.href='index.php';", 4000);
+setTimeout("location.href='login.php';", 4000);
 </script>
 
 <?php

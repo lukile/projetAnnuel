@@ -24,7 +24,7 @@ include "createReservations.php";
     <thead>
         <tr>
             <th>Avion</th>
-            <th>Taille</th>
+            <th>Envergure</th>
             <th>Masse maximum</th>
             <th>Carburant</th>
             <th>Groupe Acoustique</th>
@@ -43,6 +43,8 @@ include "createReservations.php";
             </th>
             <th scope="row">
                 <input type="text" name="planeLength" placeholder="Taille appareil en mètre" required/>
+                <input type="text" name="planeWidth" placeholder="Taille appareil en largeur" required/>
+
             </th>
             <th>
                 <input type="text" name="maxWeight" placeholder="Poids max au décollage" required/>
