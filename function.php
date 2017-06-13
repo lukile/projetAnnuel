@@ -102,12 +102,22 @@ function insertOrderFormValues($startDate, $endDate, $startHour, $orderFormId, $
     return $exec;
 }
 
-function insertRoyalties($plane, $fuel, $qutyFuel, $category, $planeLength, $maxWeight, $idService, $acousticGroup){
+function insertRoyalties($plane, $fuel, $qutyFuel, $category, $planeLength, $maxWeight, $planeWidth, $idService, $acousticGroup){
     $manager = DatabaseManager::getsharedInstance();
     $connect = $manager->connect();
-    $insert = "INSERT INTO royalties(landing_type, petroleum_type, fuel_quantity, rate_type, plane_length, plane_weight, service_id, acoustic_group) VALUES(:plane, :fuel, :qutyFuel, :category, :planeLength, :maxWeight, :idService, :acoustic_group)";
+    $insert = "INSERT INTO royalties(landing_type, petroleum_type, fuel_quantity, rate_type, plane_length, plane_weight, wingspan, service_id, acoustic_group) 
+    VALUES(:plane, :fuel, :qutyFuel, :category, :planeLength, :maxWeight, :planeWidth, :idService, :acoustic_group)";
     $insert_prep = $connect->prepare($insert);
-    $insert_exec = $insert_prep->execute(array(':plane'=>$plane, ':fuel'=>$fuel, ':qutyFuel'=>$qutyFuel, ':category'=>$category, ':planeLength'=>$planeLength, ':maxWeight'=>$maxWeight,'idService'=>$idService,':acoustic_group'=>$acousticGroup));
+    $insert_exec = $insert_prep->execute(array(':plane'=>$plane, 
+        ':fuel'=>$fuel, 
+        ':qutyFuel'=>$qutyFuel, 
+        ':category'=>$category, 
+        ':planeLength'=>$planeLength, 
+        ':maxWeight'=>$maxWeight,
+        ':planeWidth'=>$planeWidth,
+        'idService'=>$idService,
+        ':acoustic_group'=>$acousticGroup
+        ));
 
     return $connect->lastInsertId();
 } 
