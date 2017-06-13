@@ -135,7 +135,7 @@ $pdf->Cell(35, 5, "Prix HT",1,1);
 $pdf->SetFont("Arial","",12);
 
 $pdf->Cell(130, 5, "Service 1",0,0);
-$pdf->Cell(25, 5, utf8_decode("10{$euro}"),0,0);
+$pdf->Cell(25, 5, utf8_decode("10 E"),0,0);
 $pdf->Cell(35, 5, "187,12 E",0,1, "R");
 
 $pdf->SetFont("Arial","",10);
@@ -186,7 +186,7 @@ $pdf->ln(2);
 $pdf->SetFont("Arial","",12);
 
 $pdf->Cell(130, 5, "Service 4",0,0);
-$pdf->Cell(25, 5, utf8_decode("10{$euro}"),0,0);
+$pdf->Cell(25, 5, utf8_decode("10 E"),0,0);
 $pdf->Cell(35, 5, "187,12 E",0,1, "R");
 
 $pdf->SetFont("Arial","",10);
@@ -203,7 +203,7 @@ $pdf->ln(2);
 $pdf->SetFont("Arial","",12);
 
 $pdf->Cell(130, 5, "Service 5",0,0);
-$pdf->Cell(25, 5, utf8_decode("10{$euro}"),0,0);
+$pdf->Cell(25, 5, utf8_decode("10 E"),0,0);
 $pdf->Cell(35, 5, "187,12 E",0,1, "R");
 
 $pdf->SetFont("Arial","",10);
@@ -220,7 +220,7 @@ $pdf->ln(2);
 $pdf->SetFont("Arial","",12);
 
 $pdf->Cell(130, 5, "Service 6",0,0);
-$pdf->Cell(25, 5, utf8_decode("10{$euro}"),0,0);
+$pdf->Cell(25, 5, utf8_decode("10 E"),0,0);
 $pdf->Cell(35, 5, "187,12 E",0,1, "R");
 
 $pdf->SetFont("Arial","",10);
@@ -237,7 +237,7 @@ $pdf->ln(2);
 $pdf->SetFont("Arial","",12);
 
 $pdf->Cell(130, 5, "Service 7",0,0);
-$pdf->Cell(25, 5, utf8_decode("10{$euro}"),0,0);
+$pdf->Cell(25, 5, utf8_decode("10 E"),0,0);
 $pdf->Cell(35, 5, "187,12 E",0,1, "R");
 
 $pdf->SetFont("Arial","",10);
@@ -254,7 +254,7 @@ $pdf->ln(2);
 $pdf->SetFont("Arial","",12);
 
 $pdf->Cell(130, 5, "Service 8",0,0);
-$pdf->Cell(25, 5, utf8_decode("10{$euro}"),0,0);
+$pdf->Cell(25, 5, utf8_decode("10 E"),0,0);
 $pdf->Cell(35, 5, "187,12 E",0,1, "R");
 
 $pdf->SetFont("Arial","",10);
