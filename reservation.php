@@ -72,9 +72,9 @@ include "createReservations.php";
             <th scope="row">
                 <select name="category" class="selectpricker" required>
                     <option value=""disabled selected>Catégorie</option>
-                    <option value="cat1">1</option>
-                    <option value="cat2">2</option>
-                    <option value="cat3">3</option>
+                    <option name="cat1" value="9.38">1</option>
+                    <option name="cat2" value="4.42">2</option>
+                    <option name="cat3" value="7.29">3</option>
                 </select>
             </th>
         </tr>
@@ -96,12 +96,12 @@ include "createReservations.php";
     <tbody>
         <tr>
             <th scope="row">Stationnement
-                <input type="hidden" id="priceStat" name="priceStat" value="2.76" />
+                <input type="hidden" id="priceStat" name="priceStat" value="2.30" />
             </th>
             <td>
                 <fieldset class="form-group">
                     <input type="checkbox" id="checkBoxStat" name="services[]" value="parking">
-                    <input type="hidden" name="priceParking" value="2.76">
+                    <input type="hidden" name="priceParking" value="2.30">
                     <label for="checkBoxStat"></label>
                 </fieldset>
             </td>
@@ -149,7 +149,7 @@ include "createReservations.php";
         </tr>
         <tr>
             <th scope="row">Avitaillement
-                <input type="hidden" id="priceAvi" name="priceStat" value="2" />
+                <input type="hidden" id="priceAvi" name="priceAvitail" value="1.01" />
             </th>
             <td>
                 <fieldset class="form-group">
@@ -274,11 +274,11 @@ include "createReservations.php";
                     <label for="checkBoxPara"></label>
                 </fieldset>
             </td>
-            <td>60€</td>
+            <td>80€</td>
             <td>
             <div class="control-group">
                 <div>
-                    <input size="16" type="hidden" value="" placeholder="">
+                    <input size="16" type="hidden" value="80€" placeholder="">
                 </div>
              </td>  
             <td>
@@ -316,7 +316,7 @@ include "createReservations.php";
             <td>
             <div class="control-group">
                 <div>
-                    <input size="16" type="hidden" value="" placeholder="">
+                    <input size="16" type="hidden" value="120" placeholder="">
                 </div>
              </td>  
             <td>
@@ -354,7 +354,7 @@ include "createReservations.php";
             <td>
             <div class="control-group">
                 <div>
-                    <input size="16" type="hidden" value="" placeholder="">
+                    <input size="16" type="hidden" value="80" placeholder="">
                 </div>
              </td>  
             <td>
@@ -392,7 +392,7 @@ include "createReservations.php";
             <td>
             <div class="control-group">
                 <div>
-                    <input size="16" type="hidden" value="" placeholder="">
+                    <input size="16" type="hidden" value="70" placeholder="">
                 </div>
              </td>  
             <td>
