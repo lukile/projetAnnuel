@@ -37,8 +37,8 @@ include "createReservations.php";
             <th scope="row">
                 <select name="planeSelecter" class="selectpricker" required>
                     <option value=""disabled selected> Type d'Avion</option>
-                    <option value="monoBiTur">Mono-turbine/Bi-Turbine</option>
-                    <option value="monoMulti">Réacteur mono/multi</option>
+                    <option name="monoBiTur" value="">Mono-turbine/Bi-Turbine</option>
+                    <option name="monoMulti" value="">Réacteur mono/multi</option>
                 </select>
             </th>
             <th scope="row">
@@ -52,21 +52,21 @@ include "createReservations.php";
             <th scope="row">
                 <select name="fuel" class="selectpricker" required>
                     <option value=""disabled selected> Type de carburant</option>
-                    <option value="essJST">JETAI Sans TIC</option>
-                    <option value="JAT">JETAI A1 +TRIC</option>
-                    <option value="AV100">AVGAS 100LL</option>
-                    <option value="AV100T">AVGAS 100LL TIC</option>
+                    <option name="essJST" value="1.01">JETAI Sans TIC</option>
+                    <option name="JAT" value="1.36">JETAI A1 +TIC</option>
+                    <option name="AV100" value="1.50">AVGAS 100LL sans TIC</option>
+                    <option name="AV100T" value="1.92">AVGAS 100LL TIC</option>
                 </select>
             </th>
              <th scope="row">
                 <select name="acousticGroup" class="selectpricker" required>
                     <option value=""disabled selected> Groupe Acoustique</option>
-                    <option value="ga1">1</option>
-                    <option value="ga2">2</option>
-                    <option value="ga3">3</option>
-                    <option value="ga4">4</option>
-                    <option value="ga5a">5a</option>
-                    <option value="ga5b">5b</option>
+                    <option name="ga1" value="1.300">1</option>
+                    <option name="ga2" value="1.200">2</option>
+                    <option name="ga3" value="1.150">3</option>
+                    <option name="ga4" value="1.000">4</option>
+                    <option name="ga5a" value="0.850">5a</option>
+                    <option name="ga5b" value="0.700">5b</option>
                 </select>
             </th>
             <th scope="row">
