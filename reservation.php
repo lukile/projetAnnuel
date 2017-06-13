@@ -43,7 +43,7 @@ include "createReservations.php";
             </th>
             <th scope="row">
                 <input type="text" name="planeLength" placeholder="Taille appareil en mètre" required/>
-                <input type="text" name="planeWidth" placeholder="Taille appareil en largeur" required/>
+                <input type="text" name="planeWidth" placeholder="Envergure(taille ailes)" required/>
 
             </th>
             <th>
