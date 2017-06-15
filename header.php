@@ -101,6 +101,15 @@
                     </li>
                     <li>
                         <a href="pricing.php">Tarifs</a>
+                    <li>
+                    <?php
+                    if(isAdmin()):
+                        ?>
+                    <li>
+                        <a href="admin.php">Admin</a>
+                    </li>   
+                
+                <?php endif; ?>    
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">A propos <b class="caret"></b></a>
                         <ul class="dropdown-menu">
