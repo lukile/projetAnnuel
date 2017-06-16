@@ -47,6 +47,14 @@
                             </h4>
                         </div>
                     </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <li><a href = "displayMsg.php">Affichage des messages utilisateurs</a>
+                            </h4>
+                        </div>
+                    </div>
                     <!-- /.panel -->
                 </div>
                 <!-- /.panel-group -->

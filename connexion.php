@@ -18,6 +18,13 @@
             if(login($_POST['mail'], $_POST['pass'])){
                 $message = 'Vous êtes maintenant connecté '.$_POST['mail'];
 
+                ?>
+                <script>
+                    setTimeout("location.href='index.php';", 500);
+                </script>
+                
+                <?php    
+
             }else{
                 $message = 'Vous avez saisi les mauvais identifiants !';
             }
