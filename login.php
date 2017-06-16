@@ -53,9 +53,10 @@
                          </div>
                     </form>
                     <p id="message"><?= $message?:'' ?><p>
-                        <script>
                         
-                        </script>
+                        <!--<script>
+                            setTimeout("location.href='login.php';", 4000);
+                        </script> -->
                 </div>
                 
 <?php 

@@ -2,6 +2,8 @@
 session_start();
 
 include "header.php";
+//include "modifyMsg.php";
+
 $listMsg = connect()->query("SELECT id, statut, userMessage, mail, content FROM messages");
 
 ?>
@@ -29,7 +31,20 @@ $listMsg = connect()->query("SELECT id, statut, userMessage, mail, content FROM 
                     <td><?php echo $data['content']; ?> </td>
                     <td><?php echo $data['statut']; ?> </td>
                     
+                   <!-- <td><button onclick="readMsg('.$data['id'].')" id="msg<?php //echo $data['id']?>">Valider</button></td> -->
+                    <?php 
+                        if($data['statut'] == 0){
+                    ?>
                     <td><a href="modifyMsg.php?id=<?php echo $data['id']?>">Modifier</a></td>
+                    <?php }else{?>
+                           <div id="readgreen">
+                            <td><p color="green">LU</p></td>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                <!--  <?php  //echo'<td><button id="msg' .$data['id'].'" onclick="readMsg('.$data['id'].')">Modifier</button>'; ?>
+               <?php  // echo'<td><button id="button_animal_' .$id.'" onclick="modifyAnimal('.$data['id'].')">Modifier</button>'; ?> -->
                     </tr>    
 <?php } ?>
                </tbody>
