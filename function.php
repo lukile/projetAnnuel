@@ -103,26 +103,29 @@ function insertOrderFormValues($startDate, $endDate, $startHour, $endHour, $orde
     return $exec;
 }
 
-function insertRoyalties($plane, $fuel, $qutyFuel, $category, $htPrice, $ttcPrice, $planeLength, $maxWeight, $planeWidth, $surface, $idService, $acousticGroup){
+function insertRoyalties($plane, $fuel, $qutyFuel, $category, $planeLength, $maxWeight, $planeWidth, $surface, $htPrice, $ttcPrice, $ffa, $idService, $acousticGroup){
     $manager = DatabaseManager::getsharedInstance();
     $connect = $manager->connect();
-    $insert = "INSERT INTO royalties(landing_type, petroleum_type, fuel_quantity, rate_type, HT_price, TTC_price, plane_length, plane_weight, wingspan, parking_surface, service_id, acoustic_group) 
-    VALUES(:plane, :fuel, :qutyFuel, :category, :htPrice, :ttcPrice, :planeLength, :maxWeight, :planeWidth, :surface, :idService, :acoustic_group)";
+
+    $insert = "INSERT INTO royalties(landing_type, petroleum_type, fuel_quantity, rate_type, plane_length, plane_weight, wingspan, parking_surface, HT_price, TTC_price, ffa, service_id, acoustic_group) 
+    VALUES(:plane, :fuel, :qutyFuel, :category, :planeLength, :maxWeight, :planeWidth, :surface, :htPrice, :ttcPrice, :ffa, :idService, :acoustic_group)";
+    
     $insert_prep = $connect->prepare($insert);
+    
     $insert_exec = $insert_prep->execute(array(':plane'=>$plane, 
         ':fuel'=>$fuel, 
         ':qutyFuel'=>$qutyFuel, 
         ':category'=>$category, 
-        ':htPrice'=>$htPrice,
-        ':ttcPrice'=>$ttcPrice,
         ':planeLength'=>$planeLength, 
         ':maxWeight'=>$maxWeight,
         ':planeWidth'=>$planeWidth,
         ':surface'=>$surface,
-        'idService'=>$idService,
+        ':htPrice'=>$htPrice,
+        ':ttcPrice'=>$ttcPrice,
+        ':ffa'=>$ffa,
+        ':idService'=>$idService,
         ':acoustic_group'=>$acousticGroup
         ));
-
         
     return $connect->lastInsertId();
 } 
