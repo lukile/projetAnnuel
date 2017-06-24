@@ -85,15 +85,16 @@ function validate($startDate){
     return true;
 }
 
-function insertOrderFormValues($startDate, $endDate, $startHour, $orderFormId, $serviceId, $lastInsertId){
+function insertOrderFormValues($startDate, $endDate, $startHour, $endHour, $orderFormId, $serviceId, $lastInsertId){
    
-    $select = "INSERT INTO order_form_service(booking_start_date, booking_end_date, booking_start_hour, order_form_id, service_id, royalties_id) 
-    VALUES(:startDate, :endDate, :startHour, :orderFormId, :serviceId, :royalties_id)";
+    $select = "INSERT INTO order_form_service(booking_start_date, booking_end_date, booking_start_hour, booking_end_hour, order_form_id, service_id, royalties_id) 
+    VALUES(:startDate, :endDate, :startHour, :endHour, :orderFormId, :serviceId, :royalties_id)";
     $prep = connect()->prepare($select);
     $exec = $prep->execute(array(
         ':startDate'=>$startDate, 
         ':endDate'=>$endDate, 
-        ':startHour'=>$startHour, 
+        ':startHour'=>$startHour,
+        ':endHour'=>$endHour, 
         ':orderFormId'=>$orderFormId, 
         ':serviceId'=>$serviceId,
         ':royalties_id'=>$lastInsertId
@@ -102,23 +103,27 @@ function insertOrderFormValues($startDate, $endDate, $startHour, $orderFormId, $
     return $exec;
 }
 
-function insertRoyalties($plane, $fuel, $qutyFuel, $category, $planeLength, $maxWeight, $planeWidth, $idService, $acousticGroup){
+function insertRoyalties($plane, $fuel, $qutyFuel, $category, $htPrice, $ttcPrice, $planeLength, $maxWeight, $planeWidth, $surface, $idService, $acousticGroup){
     $manager = DatabaseManager::getsharedInstance();
     $connect = $manager->connect();
-    $insert = "INSERT INTO royalties(landing_type, petroleum_type, fuel_quantity, rate_type, plane_length, plane_weight, wingspan, service_id, acoustic_group) 
-    VALUES(:plane, :fuel, :qutyFuel, :category, :planeLength, :maxWeight, :planeWidth, :idService, :acoustic_group)";
+    $insert = "INSERT INTO royalties(landing_type, petroleum_type, fuel_quantity, rate_type, HT_price, TTC_price, plane_length, plane_weight, wingspan, parking_surface, service_id, acoustic_group) 
+    VALUES(:plane, :fuel, :qutyFuel, :category, :htPrice, :ttcPrice, :planeLength, :maxWeight, :planeWidth, :surface, :idService, :acoustic_group)";
     $insert_prep = $connect->prepare($insert);
     $insert_exec = $insert_prep->execute(array(':plane'=>$plane, 
         ':fuel'=>$fuel, 
         ':qutyFuel'=>$qutyFuel, 
         ':category'=>$category, 
+        ':htPrice'=>$htPrice,
+        ':ttcPrice'=>$ttcPrice,
         ':planeLength'=>$planeLength, 
         ':maxWeight'=>$maxWeight,
         ':planeWidth'=>$planeWidth,
+        ':surface'=>$surface,
         'idService'=>$idService,
         ':acoustic_group'=>$acousticGroup
         ));
 
+        
     return $connect->lastInsertId();
 } 
 
