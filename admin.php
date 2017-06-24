@@ -1,6 +1,10 @@
 <?php 
     session_start();
     include "header.php";
+    if(!isAdmin()){
+        header('Location:index.php');
+        die();
+    }
 ?>    
 
     <!-- Page Content -->
