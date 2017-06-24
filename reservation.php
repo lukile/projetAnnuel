@@ -24,7 +24,7 @@ include "createReservations.php";
     <thead>
         <tr>
             <th>Avion</th>
-            <th>Envergure</th>
+            <th>Surface</th>
             <th>Masse maximum</th>
             <th>Carburant</th>
             <th>Groupe Acoustique</th>
@@ -37,8 +37,8 @@ include "createReservations.php";
             <th scope="row">
                 <select name="planeSelecter" class="selectpricker" required>
                     <option value=""disabled selected> Type d'Avion</option>
-                    <option name="monoBiTur" value="">Mono-turbine/Bi-Turbine</option>
-                    <option name="monoMulti" value="">Réacteur mono/multi</option>
+                    <option value="monoBiTur">Mono-turbine/Bi-Turbine</option>
+                    <option value="monoMulti">Réacteur mono/multi</option>
                 </select>
             </th>
             <th scope="row">
@@ -47,34 +47,44 @@ include "createReservations.php";
 
             </th>
             <th>
-                <input type="text" name="maxWeight" placeholder="Poids max au décollage" required/>
+                <input type="text" name="maxWeight" placeholder="Poids max décollage (en T)" required/>
             </th>
             <th scope="row">
                 <select name="fuel" class="selectpricker" required>
                     <option value=""disabled selected> Type de carburant</option>
-                    <option name="essJST" value="1.01">JETAI Sans TIC</option>
-                    <option name="JAT" value="1.36">JETAI A1 +TIC</option>
-                    <option name="AV100" value="1.50">AVGAS 100LL sans TIC</option>
-                    <option name="AV100T" value="1.92">AVGAS 100LL TIC</option>
+                    <option value="essJST 1.01">JETAI Sans TIC</option>
+                    <option value="JAT 1.36">JETAI A1 +TIC</option>
+                    <option value="AV100 1.50">AVGAS 100LL sans TIC</option>
+                    <option value="AV100T 1.92">AVGAS 100LL TIC</option>
                 </select>
-            </th>
-             <th scope="row">
+            <th scope="row">
+
                 <select name="acousticGroup" class="selectpricker" required>
                     <option value=""disabled selected> Groupe Acoustique</option>
-                    <option name="ga1" value="1.300">1</option>
-                    <option name="ga2" value="1.200">2</option>
-                    <option name="ga3" value="1.150">3</option>
-                    <option name="ga4" value="1.000">4</option>
-                    <option name="ga5a" value="0.850">5a</option>
-                    <option name="ga5b" value="0.700">5b</option>
+                    <option value="ga1" >1</option>
+                    <option value="ga2" >2</option>
+                    <option value="ga3" >3</option>
+                    <option value="ga4" >4</option>
+                    <option value="ga5a" >5a</option>
+                    <option value="ga5b" >5b</option>
                 </select>
             </th>
+                <select name="ffa" class="selectpricker" required>
+                    <option value=""disabled selected>Adhésion au FFA</option>
+                    <option value="74" >Licence + assurance</option>
+                    <option value="114" >Licence + assurance + revue mensuelle "Info pilote"</option>
+                    <option value="0" >Je possède déjà une licence</option>
+                    <option value="0" >Je ne participe pas aux activités de l'aéroclub</option>
+                </select>
+                Obligatoire pour les activités de l'aéroclub
+            </th>
+
             <th scope="row">
                 <select name="category" class="selectpricker" required>
                     <option value=""disabled selected>Catégorie</option>
-                    <option name="cat1" value="9.38">1</option>
-                    <option name="cat2" value="4.42">2</option>
-                    <option name="cat3" value="7.29">3</option>
+                    <option value="cat1">1</option>
+                    <option value="cat2">2</option>
+                    <option value="cat3">3</option>
                 </select>
             </th>
         </tr>
@@ -97,6 +107,7 @@ include "createReservations.php";
         <tr>
             <th scope="row">Stationnement
                 <input type="hidden" id="priceStat" name="priceStat" value="2.30" />
+            <br/>
             </th>
             <td>
                 <fieldset class="form-group">
@@ -146,6 +157,17 @@ include "createReservations.php";
                 </div>
                 <input type="hidden" id="dtp_input3" value="" /><br/>
             </td>
+        </tr>
+        <tr>
+            <th scope="row">Mon avion doit être abrité
+            <td>
+                <fieldset class="form-group">
+                    <input type="checkbox" id="shelter" name="shelter" value="shelter">
+                    <input type="hidden" name="shelter" value="">
+                    <label for="checkboxShelter"></label>
+                </fieldset>
+            </td>           
+        </th>
         </tr>
         <tr>
             <th scope="row">Avitaillement
@@ -416,8 +438,9 @@ include "createReservations.php";
                 <input type="hidden" id="dtp_input3" value="" /><br/>
             </div>
             </td>
-            </td>
+
         </tr>
+        
         
     </tbody>
 </table>
