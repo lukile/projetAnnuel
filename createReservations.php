@@ -49,7 +49,8 @@
 
 
 //Récupération des valeurs des options du select
-if(isset($_POST['planeSelecter']) && isset($_POST['fuel']) && isset($_POST['category']) && isset($_POST['acousticGroup'], $planeLength, $maxWeight, $planeWidth)){
+if(isset($_POST['ffa'], $_POST['planeSelecter']) && isset($_POST['fuel']) && isset($_POST['category']) && isset($_POST['acousticGroup'], $planeLength, $maxWeight, $planeWidth)){
+    $ffa = $_POST['ffa'];
     $plane = $_POST['planeSelecter'];
     $fuel = $_POST['fuel'];
     $acousticGroup = $_POST['acousticGroup'];
@@ -117,15 +118,31 @@ if(isset($_POST['planeSelecter']) && isset($_POST['fuel']) && isset($_POST['cate
 
                             if($formattedStartDate > strftime('%Y-%m-%d')){
                                 if($formattedEndDate >= $formattedStartDate){
-                                    echo ' price parking : '.$priceParking;
                                     $htPrice = $priceParking * $surface;
-                                    echo ' price parking : '.$priceParking;
-                                 //   $ttcPrice = $surface *   ;
-
-                                    $lastInsertId = insertRoyalties($plane, $fuel, 0, $category, $priceParking, $ttcPrice, $planeLength, $maxWeight, $planeWidth, $surface, $id, $acousticGroup);
+                                    $computedPrice = ($htPrice * 20)/100;
+                                    $ttcPrice = $computedPrice + $htPrice;
+                                        echo ' pouet '.$_POST['landing'];
+                                        echo ' shelter ' .$_POST['shelter'];
+                                    if($_POST['shelter']){
+                                        if($maxWeight < 0.5 && $surface < 60 || $maxWeight < 0.5 && $surface >= 60 || $maxWeight < 0.5 && $surface < 100 ||$maxWeight >= 0.5 && $surface < 60 || $maxWeight < 1 && $surface < 60){
+                                          echo ' max weight '.$maxWeight;
+                                          echo ' surface '.$surface;
+                                          // $startDate = new DateTime($startDate);
+                                           //echo $startDate;
+                                           //if($startDate > 30){
+                                            $category = "cat2";
+                                            $htPrice = 116.67;
+                                            $ttcPrice = 140;
+                                            //}
+                                        }
+                                    echo ' cat '.$category;
+                                    echo ' ht price '.$htPrice;
+                                    echo 'ttc '.$ttcPrice;
+                                    }
+                                    
+                                    $lastInsertId = insertRoyalties($plane, $fuel, 0, $category, $planeLength, $maxWeight, $planeWidth, $surface, $htPrice, $ttcPrice, $ffa, $id, $acousticGroup);
                                     insertOrderFormValues($startDate, $endDate, $startHour, $endHour, $id_orderForm, $id, $lastInsertId);             
-     
-                                   
+                                    }
 
                                 }else{
                                     $message = 'La date de fin ne peut pas être antérieure à la date de début';
@@ -133,52 +150,58 @@ if(isset($_POST['planeSelecter']) && isset($_POST['fuel']) && isset($_POST['cate
                             }else{
                                 $message = 'La date de réservation ne peut s\'effectuer avant la date courante. Piou';
                             }
-                        }
+                        
                         if($service == "refueling"){
                             if(validate($aviDate)){
                                 
-                                $lastInsertId = insertRoyalties($plane, $fuel, $qteFuel, $category, $planeLength, $maxWeight, $planeWidth, $surface, $id, $acousticGroup);
+                                $fuelValues = explode(' ', $fuel);
+                                $fuel = $fuelValues[0];
+                                $htPrice = $fuelValues[1] * $qteFuel;
+                                $computedPrice = ($htPrice * 20)/100;
+                                $ttcPrice = $computedPrice + $htPrice;
+
+                                $lastInsertId = insertRoyalties($plane, $fuel, $qteFuel, $category, $planeLength, $maxWeight, $planeWidth, $surface, $htPrice, $ttcPrice, $ffa, $id, $acousticGroup);
                                 insertOrderFormValues($aviDate, $aviDate, $aviHeure, $aviHeure, $id_orderForm, $id, $lastInsertId);             
                                }
                         }
 
                         if($service == "landing"){
                             if(validate($attDate)){
-                                $lastInsertId = insertRoyalties($plane, $fuel, 0, $category, $planeLength, $maxWeight, $planeWidth, $surface, $id, $acousticGroup);
+                                $lastInsertId = insertRoyalties($plane, $fuel, 0, $category, $planeLength, $maxWeight, $planeWidth, $surface, $ffa, $id, $acousticGroup);
                                 insertOrderFormValues($attDate, $attDate, $attHeure, $attHeure, $id_orderForm, $id, $lastInsertId);
                             }
                         }
 
                         if($service == "inside_cleaning"){
                             if(validate($netDate)){
-                                $lastInsertId = insertRoyalties($plane, $fuel, 0, $category, $planeLength, $maxWeight, $planeWidth, $surface, $id, $acousticGroup);
+                                $lastInsertId = insertRoyalties($plane, $fuel, 0, $category, $planeLength, $maxWeight, $planeWidth, $surface, $ffa, $id, $acousticGroup);
                                 insertOrderFormValues($netDate, $netDate, $netHeure, $netHeure, $id_orderForm, $id, $lastInsertId);
                             }
                         }
 
                         if($service == "parachuting"){
                             if(validate($paraDate)){
-                                $lastInsertId = insertRoyalties($plane, $fuel, 0, $category, $planeLength, $maxWeight, $planeWidth, $surface, $id, $acousticGroup);
+                                $lastInsertId = insertRoyalties($plane, $fuel, 0, $category, $planeLength, $maxWeight, $planeWidth, $surface, $ffa, $id, $acousticGroup);
                                 insertOrderFormValues($paraDate, $paraDate, $paraHeure, $paraHeure, $id_orderForm, $id, $lastInsertId);
                             }
                         }
                             
                         if($service == "ulm"){
                             if(validate($ulmDate)){
-                                $lastInsertId = insertRoyalties($plane, $fuel, 0, $category, $planeLength, $maxWeight, $planeWidth, $surface, $id, $acousticGroup);
+                                $lastInsertId = insertRoyalties($plane, $fuel, 0, $category, $planeLength, $maxWeight, $planeWidth, $surface, $ffa, $id, $acousticGroup);
                                 insertOrderFormValues($ulmDate, $ulmDate, $ulmHeure, $ulmHeure,  $id_orderForm, $id, $lastInsertId);
                             }
                         }
                             
                         if($service == "first_flying"){
                             if(validate($baptDate)){
-                                $lastInsertId = insertRoyalties($plane, $fuel, 0, $category, $planeLength, $maxWeight, $planeWidth, $surface, $id, $acousticGroup);
+                                $lastInsertId = insertRoyalties($plane, $fuel, 0, $category, $planeLength, $maxWeight, $planeWidth, $surface, $ffa, $id, $acousticGroup);
                                 insertOrderFormValues($baptDate, $baptDate, $baptHeure, $baptHeure, $id_orderForm, $id, $lastInsertId);
                             }
                         }
                         if($service == "flying_lesson"){
                             if(validate($leconDate)){
-                                $lastInsertId = insertRoyalties($plane, $fuel, 0, $category, $planeLength, $maxWeight, $planeWidth, $surface, $id, $acousticGroup);
+                                $lastInsertId = insertRoyalties($plane, $fuel, 0, $category, $planeLength, $maxWeight, $planeWidth, $surface, $ffa, $id, $acousticGroup);
                                 insertOrderFormValues($leconDate, $leconDate, $leconHeure, $leconHeure, $id_orderForm, $id, $lastInsertId);
                             }
                         }
