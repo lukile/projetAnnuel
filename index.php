@@ -122,7 +122,33 @@
                             <li class="list-group-item"><strong>Température minimale</strong> : <?php echo $fetch_query['tempsmin'] - 273.15?>°C</li>
                             <li class="list-group-item"><strong>Température maximale</strong> : <?php echo $fetch_query['tempsmax'] - 273.15?>°C</li>
                             <li class="list-group-item"><strong>Vitesse du vent</strong> : <?php echo $fetch_query['windspeed']?> m/s</li>
-                            <li class="list-group-item"><strong>Direction du vent</strong> : <?php echo $fetch_query['winddegree']?> degré</li>
+                            <li class="list-group-item"><strong>Direction du vent</strong> : <?php 
+                            if($fetch_query['winddegree'] >= 0 && $fetch_query['winddegree'] <  45 || $fetch_query['winddegree'] == 360){
+                                echo "Nord";
+                            }
+                            if($fetch_query['winddegree'] >= 45 && $fetch_query['winddegree'] < 90 ){
+                                 echo "Nord-Est";
+                            }
+                            if($fetch_query['winddegree'] >= 90 && $fetch_query['winddegree'] < 135){
+                                echo "Est";
+                            }
+                            if($fetch_query['winddegree'] >= 135 && $fetch_query['winddegree'] < 180){
+                                echo "Sud-Est";
+                            }
+                            if($fetch_query['winddegree'] >= 180 && $fetch_query['winddegree'] < 225){
+                                echo "Sud";
+                            }
+                            if($fetch_query['winddegree'] >= 225 && $fetch_query['winddegree'] < 270){
+                                echo "Sud-Ouest";
+                            }
+                            if($fetch_query['winddegree'] >= 270 && $fetch_query['winddegree'] < 315){
+                                echo "Ouest";
+                            }
+                            if($fetch_query['winddegree'] >= 315 && $fetch_query['winddegree'] < 360){
+                                echo "Norf-Ouest";
+                            }
+                                
+                             ?> </li>
                             </li>
                         </ul>
                     </div>
