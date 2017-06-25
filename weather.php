@@ -64,18 +64,19 @@
 	                        <li class="list-group-item"><strong>Pression atmosphérique</strong> : <?php echo $fetch_query['pressure']?>hPa</li>
 	                        <li class="list-group-item"><strong>Température minimale</strong> : <?php echo $fetch_query['temp_min']?>°C</li>
 	                        <li class="list-group-item"><strong>Température maximale</strong> : <?php echo $fetch_query['temp_max']?>°C</li>
-	                        <li class="list-group-item"><strong>Vitesse du vent</strong> : <?php echo $fetch_query['wind_speed']?> km/h</li>
+	                        <li class="list-group-item"><strong>Vitesse du vent</strong> : <?php echo $fetch_query['wind_speed']?> m/s</li>
 	                        <li class="list-group-item"><strong>Direction du vent</strong> : <?php echo $fetch_query['wind_degree']?></li>
 	                        </li>
 	                    </ul>
 	                </div>
 	            </div>
 	        </div>
-	    </div>        
-
-
-</body>
+	  
 <?php 
 	include "footer.php";
-?>		
+?>	
+  </div>        
+
+
+</body>	
 
