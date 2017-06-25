@@ -177,4 +177,25 @@ function msgRead() {
     }
 
 }
+
+
+function isActive() {
+    // on verifie que les sessions existent
+    if (!empty($_SESSION['activation_key'])) {
+    // si oui on se connecte à la bdd
+        $db = connect();
+    // est ce qu'il existe un user avec l'email de SESSION[email]
+    // et l'access token SESSION[accesstoken]
+        $query = $db->prepare('SELECT active FROM user WHERE activation_key=:activation_key');
+        $query->execute(['activation_key' => $_SESSION['activation_key']]);
+        $result = $query->fetch();
+    // si oui on regenere un accesstoken et on retourne vrai
+        if ( $result[0] == '1' ) {
+            return true;
+        }
+    } else {
+        return false;
+    }
+}
 ?>
+

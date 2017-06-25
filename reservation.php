@@ -19,6 +19,17 @@ include "createReservations.php";
                 </ol>
             </div>
         </div>
+
+        <?php 
+            if(!isActive()):
+         ?>       
+                <div class="col-md-12 red">
+        <h3>Votre compte n'est pas activé, veuillez l'activer avant d'accéder aux réservations.</h3></br>
+     </div>       
+
+    <?php
+        endif;
+    ?>
             
 <table class="table">
     <thead>
@@ -166,7 +177,39 @@ include "createReservations.php";
                     <input type="hidden" name="shelter" value="">
                     <label for="checkboxShelter"></label>
                 </fieldset>
-            </td>           
+            </td>     
+                  <td></td>
+            <td>
+            <div class="control-group">
+                <div>
+                    <input size="16" type="hidden" value="" placeholder="">
+                </div>
+             </td>   
+            <td>
+            <div class="control-group">
+                <div class="controls">
+                    <input size="16" type="hidden" value="" >
+                </div>
+                <input type="hidden" id="dtp_input2" value="" /><br/>
+
+                <div class="controls">
+                    <input size="16" type="hidden">
+                </div>
+            </div>
+            </td>
+
+            <td>
+            <div class="control-group">
+                <div class="controls">
+                    <input size="16" type="hidden">
+                </div>
+                <input type="hidden" id="dtp_input3" value="" /><br/>
+
+            </div>
+             <div class="controls">
+                    <input size="16" type="hidden" value="">
+                <input type="hidden" id="dtp_input3" value="" /><br/>
+            </td>
         </th>
         </tr>
         <tr>
@@ -444,13 +487,27 @@ include "createReservations.php";
         
     </tbody>
 </table>
+<?php 
+    if(isActive()):
+        ?>
         <div class="form-group ">
              <input type="submit" class="btn btn-primary btn-lg btn-block login-button" onsubmit="return verifyChecked(this)"></button>
          </div>
       <div class="col-md-8 red">
         <h3>N'oubliez pas de confirmer votre réservation 24h à l'avance !</h3>
         <p id = "message"><?= $message?:'' ?></p>
-     </div>       
+     </div>     
+     <?php 
+     endif;
+        if(!isActive()):
+            ?>
+            <div class="form-group ">
+             <input type="submit" class="btn btn-primary btn-lg btn-block login-button" disabled="disabled"></button>
+         </div>
+
+          <?php 
+            endif;
+            ?>
 
     </form>
     
