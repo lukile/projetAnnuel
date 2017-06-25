@@ -1,6 +1,7 @@
 <?php
     session_start();
     include "header.php";
+   // include "function.php";
     
 ?>    
     <!-- Header Carousel -->
@@ -53,41 +54,77 @@
                     Aérodrome D'Evreux Normandie
                 </h1>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3 col-xs-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-check"></i> Pour tous et pour toutes</h4>
+                        <h4><i class="fa fa-fw fa-check"></i> Pour tous,pour toutes et la famille</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Vous êtes pilote, ou tout simplement passioné par le monde et les activités aéronautiques ? Vous souhaitez vous perfectionner sur une flotte d'avions modernes et équipé ? Ou tout simplement effectuer votre premiere chute libre ? L'Aérodrome d'Evreux Normandie est fait pour vous !</p>
+                        <p>Vous êtes pilote, ou tout simplement passioné par le monde et les activités aéronautiques ? Vous souhaitez vous perfectionner sur une flotte d'avions modernes et équipé ? Ou tout simplement effectuer votre premiere chute libre ? </p>
+                        <p> L'Aérodrome d'Evreux Normandie est fait pour vous !</p>
                         <a href="#" class="btn btn-default">Voir plus</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3 col-xs-4 ">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4><i class="fa fa-fw fa-gift"></i> Une histoire mais surtout un loisir</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Créée en 1978, l'AEN est un équipement qui participe au développement de l'Eure. Situé à 4 km du centre-ville et à moins de 100km de Paris. De plus, un aéroclub localisé dans l'aérodrome offre une panoplie d'activités très demandées dans la region.</p>
+                        <p>Créée en 1978, l'AEN est un équipement qui participe au développement de l'Eure. Situé à 4 km du centre-ville et à moins de 100km de Paris. </p>
+                        <p>De plus, un aéroclub localisé dans l'aérodrome offre une panoplie d'activités très demandées dans la region pour les amateurs de sensations fortes.</p>
                         <a href="#" class="btn btn-default"> Voir plus</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3 col-xs-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4><i class="fa fa-fw fa-compass"></i>Un grand nombre d'activités</h4>
                     </div>
                     <div class="panel-body">
-                        <p>L'aérodrome propose également au grand public, par le biais d'une association nommée Aéroclub, la possibilité de s'initier à toutes les activités liées au monde des aéronefs.
-                            Nous offrons également les données météorologiques de notre région afin de faciliter le choix de vos activités.</p>
+                        <p>L'aérodrome propose également au grand public, par le biais d'une association nommée Aéroclub, la possibilité de s'initier à toutes les activités liées au monde des aéronefs.</p>
+                         <p>   Nous offrons également les données météorologiques de notre région afin de faciliter le choix de vos activités.</p>
+                            <p></p>
                         <a href="#" class="btn btn-default">Voir plus</a>
                     </div>
                 </div>
             </div>
-        </div>
+            <?php
+                $db = connect();
+                $select_meteo = "SELECT * from meteo ";
+                $insertion_prep_meteo = $db->prepare($select_meteo);
+                $insertion_prep_meteo->execute();
+                $fetch_query = $insertion_prep_meteo->fetch();
+
+            
+
+            ?>
+            <div class="row">
+                <div class="col-md-3 col-xs-4">
+                    <div class="panel panel-default text-center">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Météo</h3>
+                        </div>
+                        <div class="panel-body">
+                            <span class="price">SOLEIL</span>
+                            <span class="period"><?php echo $fetch_query['weather']?></span>
+                        </div>
+                        <ul class="list-group">
+                            <li class="list-group-item"><strong>Température actuelle</strong> : <?php echo $fetch_query['temp_now']?>°C</li>
+                            <li class="list-group-item"><strong>Pression atmosphérique</strong> : <?php echo $fetch_query['pressure']?>hPa</li>
+                            <li class="list-group-item"><strong>Température minimale</strong> : <?php echo $fetch_query['temp_min']?>°C</li>
+                            <li class="list-group-item"><strong>Température maximale</strong> : <?php echo $fetch_query['temp_max']?>°C</li>
+                            <li class="list-group-item"><strong>Vitesse du vent</strong> : <?php echo $fetch_query['wind_speed']?> km/h</li>
+                            <li class="list-group-item"><strong>Direction du vent</strong> : <?php echo $fetch_query['wind_degree']?></li>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>        
+        
         <!-- /.row -->
 
         <!-- Portfolio Section -->
@@ -164,6 +201,7 @@
                     <a class="btn btn-lg btn-default btn-block" href="#">Call to Action</a>
                 </div>
             </div>
+        </div>
         </div>
         <hr>
 

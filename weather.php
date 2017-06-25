@@ -66,7 +66,6 @@
 	                        <li class="list-group-item"><strong>Température maximale</strong> : <?php echo $fetch_query['temp_max']?>°C</li>
 	                        <li class="list-group-item"><strong>Vitesse du vent</strong> : <?php echo $fetch_query['wind_speed']?> km/h</li>
 	                        <li class="list-group-item"><strong>Direction du vent</strong> : <?php echo $fetch_query['wind_degree']?></li>
-	                        <li class="list-group-item"><a href="inscription.php" class="btn btn-primary">S'inscrire !</a>
 	                        </li>
 	                    </ul>
 	                </div>
