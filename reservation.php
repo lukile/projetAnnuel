@@ -162,9 +162,8 @@ include "createReservations.php";
             <th scope="row">Mon avion doit être abrité
             <td>
                 <fieldset class="form-group">
-                    <input type="checkbox" id="shelter" name="shelter" value="shelter">
-                    <input type="hidden" name="shelter" value="">
-                    <label for="checkboxShelter"></label>
+                    <input type="radio" name="shelter" value="Oui">Oui
+                    <input type="radio" name="shelter" value="Non">Non
                 </fieldset>
             </td>           
         </th>
