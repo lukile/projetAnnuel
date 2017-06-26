@@ -1,5 +1,12 @@
 <?php 
 
+require_once("class/ComputePriceService.php");
+require_once("class/OrderFormManager.php");
+
+require_once("class/Service.php");
+require_once("class/User.php");
+require_once("class/OrderFormService.php");
+
     if(!isConnected()){
         header("Location:login.php");
         die();
@@ -7,44 +14,50 @@
 
     $message = null;
 
-    $service = null;
-
     //Get Europe current locale time 
     setlocale(LC_TIME, 'fr_FR');
     date_default_timezone_set("Europe/Brussels");
 
+    $service = null;
+
     $planeLength = filter_input(INPUT_POST, 'planeLength');
     $planeWidth = filter_input(INPUT_POST, 'planeWidth');
     $maxWeight = filter_input(INPUT_POST, 'maxWeight');
-
-    $startDate = filter_input(INPUT_POST, 'statDateDebut');
+    
     $endDate = filter_input(INPUT_POST, 'statDateFin');
     $startHour = filter_input(INPUT_POST, 'statHeureDebut');
     $endHour = filter_input(INPUT_POST, 'statHeureFin');
     $priceParking = filter_input(INPUT_POST, "priceParking");
+    $shelter = filter_input(INPUT_POST, 'shelter');
 
-    $aviDate = filter_input(INPUT_POST, 'aviDate');
     $aviHeure = filter_input(INPUT_POST, 'aviHeure');
     $qteFuel = filter_input(INPUT_POST, 'qteFuel');
 
-    $attDate = filter_input(INPUT_POST, 'attDate');
     $attHeure = filter_input(INPUT_POST, 'attHeure');
 
-    $netDate = filter_input(INPUT_POST, 'netDate');
     $netHeure = filter_input(INPUT_POST, 'netHeure');
 
-    $paraDate = filter_input(INPUT_POST, 'paraDate');
     $paraHeure = filter_input(INPUT_POST, 'paraHeure');
 
-    $ulmDate = filter_input(INPUT_POST, 'ulmDate');
     $ulmHeure = filter_input(INPUT_POST, 'ulmHeure');
 
-    $baptDate = filter_input(INPUT_POST, 'baptDate');
     $baptHeure = filter_input(INPUT_POST, 'baptHeure');
 
-    $leconDate = filter_input(INPUT_POST, 'leconDate');
     $leconHeure = filter_input(INPUT_POST, 'leconHeure');
+    $serviceDateArray = [
+        "parking" => filter_input(INPUT_POST, 'statDateDebut'), 
+        "refueling" => filter_input(INPUT_POST, 'aviDate'),
+        "landing" => filter_input(INPUT_POST, 'attDate'),
+        "inside_cleaning" => filter_input(INPUT_POST, 'netDate'),
+        "parachuting" => filter_input(INPUT_POST, 'paraDate'), 
+        "ulm" => filter_input(INPUT_POST, 'ulmDate'),
+        "first_flying" => filter_input(INPUT_POST, 'baptDate'), 
+        "flying_lesson" => filter_input(INPUT_POST, 'leconDate')
+    ];
 
+    $serviceHourArray = ["parking" => $startHour, "refueling" => $aviHeure, "landing" => $attHeure,
+                        "inside_cleaning" => $netHeure, "parachuting" => $paraHeure, "ulm" => $ulmHeure, 
+                        "first_flying" => $baptHeure, "flying_lesson" => $leconHeure];
     $surface = $planeLength * $planeWidth;
 
 
@@ -84,126 +97,69 @@ if(isset($_POST['ffa'], $_POST['planeSelecter']) && isset($_POST['fuel']) && iss
 
             if(isset($_POST["services"])){
                          
-            
-                foreach($_POST['services'] as $service){            
-                        
-                        $select_services = "SELECT id from services WHERE type=:service";
-                        $insertion_prep_services = $connect->prepare($select_services);
-                        $insertion_prep_services->execute(array(':service'=>$service));
-                        $fetch_query = $insertion_prep_services->fetch();
-                        $id = $fetch_query['id'];
-
-                         $select_userId = "SELECT id FROM user WHERE mail=:mail";
-                        $prep_userId = $connect->prepare($select_userId);
-                        $prep_userId->execute(array(':mail'=>$_SESSION['mail']));
-                        $fetch_userId = $prep_userId->fetch();
-                        $idUser = $fetch_userId['id'];
+                $fuelValues = explode(' ', $fuel);
+                foreach($_POST['services'] as $service){ 
+                        $idService = Service::getIdFromService($service);
+                        $idUser = User::getIdFromDb();
+                         
 
                         $insert_fkCoeffId_orderForm = "INSERT INTO order_form(validation, user_id, acoustic_group) VALUES(0, :userId, :acoustic_group)";
                         $fkCoeffId_orderForm_prep = $connect->prepare($insert_fkCoeffId_orderForm);
                         $fkCoeffId_orderForm_exec = $fkCoeffId_orderForm_prep->execute(array(':userId'=>$idUser,':acoustic_group'=>$acousticGroup));
                        
-                        $select_orderFormId = "SELECT id FROM order_form WHERE acoustic_group=:acoustic_group";
-                        $orderFormId_prep = $connect->prepare($select_orderFormId);
-                        $orderFormId_prep->execute(array(':acoustic_group'=>$acousticGroup));
-                        $fetch_orderFormId = $orderFormId_prep->fetch();
-                        $id_orderForm = $fetch_orderFormId['id'];
+                        $id_orderForm = $connect->lastInsertId();
                         
-                        if($service == "parking"){
-                            $startDateFormat = date_create_from_format('d-m-Y', $startDate);
-                            $formattedStartDate = $startDateFormat->format('Y-m-d');    
+                        $computePriceService = ComputePriceService::getSharedInstance();
+                        $orderFormManager = OrderFormManager::getSharedInstance();
 
-                            $endDateFormat = date_create_from_format('d-m-Y', $endDate);
-                            $formattedEndDate = $endDateFormat->format('Y-m-d');
-
-                            if($formattedStartDate > strftime('%Y-%m-%d')){
-                                if($formattedEndDate >= $formattedStartDate){
-                                    $htPrice = $priceParking * $surface;
-                                    $computedPrice = ($htPrice * 20)/100;
-                                    $ttcPrice = $computedPrice + $htPrice;
-                                        echo ' pouet '.$_POST['landing'];
-                                        echo ' shelter ' .$_POST['shelter'];
-                                    if($_POST['shelter']){
-                                        if($maxWeight < 0.5 && $surface < 60 || $maxWeight < 0.5 && $surface >= 60 || $maxWeight < 0.5 && $surface < 100 ||$maxWeight >= 0.5 && $surface < 60 || $maxWeight < 1 && $surface < 60){
-                                          echo ' max weight '.$maxWeight;
-                                          echo ' surface '.$surface;
-                                          // $startDate = new DateTime($startDate);
-                                           //echo $startDate;
-                                           //if($startDate > 30){
-                                            $category = "cat2";
-                                            $htPrice = 116.67;
-                                            $ttcPrice = 140;
-                                            //}
-                                        }
-                                    echo ' cat '.$category;
-                                    echo ' ht price '.$htPrice;
-                                    echo 'ttc '.$ttcPrice;
-                                    }
-                                    
-                                    $lastInsertId = insertRoyalties($plane, $fuel, 0, $category, $planeLength, $maxWeight, $planeWidth, $surface, $htPrice, $ttcPrice, $ffa, $id, $acousticGroup);
-                                    insertOrderFormValues($startDate, $endDate, $startHour, $endHour, $id_orderForm, $id, $lastInsertId);             
-                                    }
-
-                                }else{
-                                    $message = 'La date de fin ne peut pas être antérieure à la date de début';
-                                }
-                            }else{
-                                $message = 'La date de réservation ne peut s\'effectuer avant la date courante. Piou';
-                            }
+                        $serviceStartDate = $orderFormManager->findInArray($service, $serviceDateArray, "");
                         
-                        if($service == "refueling"){
-                            if(validate($aviDate)){
-                                
-                                $fuelValues = explode(' ', $fuel);
-                                $fuel = $fuelValues[0];
-                                $htPrice = $fuelValues[1] * $qteFuel;
-                                $computedPrice = ($htPrice * 20)/100;
-                                $ttcPrice = $computedPrice + $htPrice;
+                        $serviceEndDate = ($service == "parking") ? $endDate : $serviceStartDate;
+                        $serviceStartHour = $orderFormManager->findInArray($service, $serviceHourArray, "");
+                        
+                        $serviceEndHour = ($service == "parking") ? $endHour : $serviceStartHour;
 
-                                $lastInsertId = insertRoyalties($plane, $fuel, $qteFuel, $category, $planeLength, $maxWeight, $planeWidth, $surface, $htPrice, $ttcPrice, $ffa, $id, $acousticGroup);
-                                insertOrderFormValues($aviDate, $aviDate, $aviHeure, $aviHeure, $id_orderForm, $id, $lastInsertId);             
-                               }
+                        $serviceHtPriceArray = [
+                            "refueling" => $computePriceService->refuelingHTPrice($fuelValues, $qteFuel),
+                            "landing" => $computePriceService->landingHTPrice($plane),
+                            "parachuting" => 80,
+                            "ulm" => 120,
+                            "first_flying" => 70,
+                            "flying_lesson" => 99999,
+                            "parking" => ($shelter == "Oui") 
+                                ? $computePriceService->priceHTShelter($priceParking, $surface, $maxWeight)
+                                : $computePriceService->computeHTParkingPrice($priceParking, $surface)
+                        ];
+                        $serviceHtPrice = $orderFormManager->findInArray($service, $serviceHtPriceArray);
+
+                        $serviceTtcPriceArray = [
+                            "landing" => $computePriceService->landingTTCPrice($plane, $serviceStartHour),
+                            "refueling" => $computePriceService->refuelingTTCPrice($fuelValues, $qteFuel),
+                            "parking" => ($shelter == "Oui") 
+                                ? $computePriceService->priceTTCShelter($priceParking, $surface, $maxWeight)
+                                :$computePriceService->computeTTCParkingPrice($priceParking, $surface)
+                        ];
+                        
+                        $serviceTtcPrice = $orderFormManager->findInArray($service, $serviceTtcPriceArray);
+                        
+                        $serviceCategory = "";
+                        if ($service == "parking" && $shelter == "Oui") {
+                            $serviceCategory = $computePriceService->categoryShelter($maxWeight, $surface);
                         }
 
-                        if($service == "landing"){
-                            if(validate($attDate)){
-                                $lastInsertId = insertRoyalties($plane, $fuel, 0, $category, $planeLength, $maxWeight, $planeWidth, $surface, $ffa, $id, $acousticGroup);
-                                insertOrderFormValues($attDate, $attDate, $attHeure, $attHeure, $id_orderForm, $id, $lastInsertId);
-                            }
-                        }
+                        $fuel = $computePriceService->typeRefueling($fuelValues);  
+                        $qteFuel = ($service == "refueling") ? $qteFuel : 0;
+                        
+                        $serviceObject = new Service();
+                        $serviceObject->setName($service);
+                        
+                        try {
+                            $orderFormService = new OrderFormService($serviceStartDate, $serviceEndDate, $serviceStartHour, $serviceEndHour, $id_orderForm, $idService, null);
+                            $royalty = new Royalty($fuel, $plane, $qteFuel, $serviceCategory, $planeLength, $maxWeight, $planeWidth, $surface, $serviceHtPrice, $serviceTtcPrice, $ffa, $idService, $acousticGroup);
 
-                        if($service == "inside_cleaning"){
-                            if(validate($netDate)){
-                                $lastInsertId = insertRoyalties($plane, $fuel, 0, $category, $planeLength, $maxWeight, $planeWidth, $surface, $ffa, $id, $acousticGroup);
-                                insertOrderFormValues($netDate, $netDate, $netHeure, $netHeure, $id_orderForm, $id, $lastInsertId);
-                            }
-                        }
-
-                        if($service == "parachuting"){
-                            if(validate($paraDate)){
-                                $lastInsertId = insertRoyalties($plane, $fuel, 0, $category, $planeLength, $maxWeight, $planeWidth, $surface, $ffa, $id, $acousticGroup);
-                                insertOrderFormValues($paraDate, $paraDate, $paraHeure, $paraHeure, $id_orderForm, $id, $lastInsertId);
-                            }
-                        }
-                            
-                        if($service == "ulm"){
-                            if(validate($ulmDate)){
-                                $lastInsertId = insertRoyalties($plane, $fuel, 0, $category, $planeLength, $maxWeight, $planeWidth, $surface, $ffa, $id, $acousticGroup);
-                                insertOrderFormValues($ulmDate, $ulmDate, $ulmHeure, $ulmHeure,  $id_orderForm, $id, $lastInsertId);
-                            }
-                        }
-                            
-                        if($service == "first_flying"){
-                            if(validate($baptDate)){
-                                $lastInsertId = insertRoyalties($plane, $fuel, 0, $category, $planeLength, $maxWeight, $planeWidth, $surface, $ffa, $id, $acousticGroup);
-                                insertOrderFormValues($baptDate, $baptDate, $baptHeure, $baptHeure, $id_orderForm, $id, $lastInsertId);
-                            }
-                        }
-                        if($service == "flying_lesson"){
-                            if(validate($leconDate)){
-                                $lastInsertId = insertRoyalties($plane, $fuel, 0, $category, $planeLength, $maxWeight, $planeWidth, $surface, $ffa, $id, $acousticGroup);
-                                insertOrderFormValues($leconDate, $leconDate, $leconHeure, $leconHeure, $id_orderForm, $id, $lastInsertId);
-                            }
+                            $orderFormManager->insertOrderFormService($orderFormService, $royalty, $serviceObject);
+                        } catch (Exception $e) {
+                            $message = $e->getMessage();
                         }
                     }
                 }else{
