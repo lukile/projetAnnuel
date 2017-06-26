@@ -19,6 +19,24 @@ include "createReservations.php";
                 </ol>
             </div>
         </div>
+
+        <?php 
+            if(!isActive()):
+         ?>       
+                <div class="col-md-12 red">
+        <h3>Votre compte n'est pas activé, veuillez l'activer avant d'accéder aux réservations.</h3></br>
+     </div>       
+
+    <?php
+        endif;
+    ?>
+    <select name="ffa" class="selectpricker form-control" required>
+                <option value=""disabled selected>Adhésion au FFA</option>
+                <option value="74" >Licence + assurance</option>
+                <option value="114" >Licence + assurance + revue mensuelle "Info pilote"</option>
+                <option value="0" >Je possède déjà une licence</option>
+                <option value="0" >Je ne participe pas aux activités de l'aéroclub</option>
+    </select>
             
 <table class="table">
     <thead>
@@ -35,22 +53,22 @@ include "createReservations.php";
     <form method="POST" name="form1" >
         <tr>
             <th scope="row">
-                <select name="planeSelecter" class="selectpricker" required>
+                <select name="planeSelecter" class="form-control" class="selectpricker" required>
                     <option value=""disabled selected> Type d'Avion</option>
                     <option value="monoBiTur">Mono-turbine/Bi-Turbine</option>
                     <option value="monoMulti">Réacteur mono/multi</option>
                 </select>
             </th>
             <th scope="row">
-                <input type="text" name="planeLength" placeholder="Taille appareil en mètre" required/>
-                <input type="text" name="planeWidth" placeholder="Envergure(taille ailes)" required/>
+                <input type="text" name="planeLength" class="form-control" placeholder="Taille appareil en mètre" required/>
+                <input type="text" name="planeWidth" class="form-control" placeholder="Envergure(taille ailes)" required/>
 
             </th>
             <th>
-                <input type="text" name="maxWeight" placeholder="Poids max décollage (en T)" required/>
+                <input type="text" name="maxWeight"  class="form-control" placeholder="Poids max décollage (en T)" required/>
             </th>
             <th scope="row">
-                <select name="fuel" class="selectpricker" required>
+                <select name="fuel" class="selectpricker form-control" required>
                     <option value=""disabled selected> Type de carburant</option>
                     <option value="essJST 1.01">JETAI Sans TIC</option>
                     <option value="JAT 1.36">JETAI A1 +TIC</option>
@@ -59,7 +77,7 @@ include "createReservations.php";
                 </select>
             <th scope="row">
 
-                <select name="acousticGroup" class="selectpricker" required>
+                <select name="acousticGroup" class="selectpricker form-control" required>
                     <option value=""disabled selected> Groupe Acoustique</option>
                     <option value="ga1" >1</option>
                     <option value="ga2" >2</option>
@@ -69,7 +87,8 @@ include "createReservations.php";
                     <option value="ga5b" >5b</option>
                 </select>
             </th>
-                <select name="ffa" class="selectpricker" required>
+            <!-- <th>
+                <select name="ffa" class="selectpricker form-control" required>
                     <option value=""disabled selected>Adhésion au FFA</option>
                     <option value="74" >Licence + assurance</option>
                     <option value="114" >Licence + assurance + revue mensuelle "Info pilote"</option>
@@ -77,10 +96,10 @@ include "createReservations.php";
                     <option value="0" >Je ne participe pas aux activités de l'aéroclub</option>
                 </select>
                 Obligatoire pour les activités de l'aéroclub
-            </th>
+            </th> -->
 
             <th scope="row">
-                <select name="category" class="selectpricker" required>
+                <select name="category" class="selectpricker form-control" required>
                     <option value=""disabled selected>Catégorie</option>
                     <option value="cat1">1</option>
                     <option value="cat2">2</option>
@@ -124,7 +143,7 @@ include "createReservations.php";
                 </div>
              </td>   
             <td>
-            <div class="control-group">
+            <div class="form-group">
                 <div class="controls input-append date form_date" data-date="" data-date-format="dd-mm-yyyy" data-link-field="dtp_input2" data-link-format="dd-mm-yyyy">
                     <input size="16" type="text" value="" placeholder="date de debut" readonly name="statDateDebut" id="statDateDebut">
                     <span class="add-on"><i class="glyphicon glyphicon-remove icon-remove"></i></span>
@@ -165,7 +184,39 @@ include "createReservations.php";
                     <input type="radio" name="shelter" value="Oui">Oui
                     <input type="radio" name="shelter" value="Non">Non
                 </fieldset>
-            </td>           
+            </td>     
+                  <td></td>
+            <td>
+            <div class="control-group">
+                <div>
+                    <input size="16" type="hidden" value="" placeholder="">
+                </div>
+             </td>   
+            <td>
+            <div class="control-group">
+                <div class="controls">
+                    <input size="16" type="hidden" value="" >
+                </div>
+                <input type="hidden" id="dtp_input2" value="" /><br/>
+
+                <div class="controls">
+                    <input size="16" type="hidden">
+                </div>
+            </div>
+            </td>
+
+            <td>
+            <div class="control-group">
+                <div class="controls">
+                    <input size="16" type="hidden">
+                </div>
+                <input type="hidden" id="dtp_input3" value="" /><br/>
+
+            </div>
+             <div class="controls">
+                    <input size="16" type="hidden" value="">
+                <input type="hidden" id="dtp_input3" value="" /><br/>
+            </td>
         </th>
         </tr>
         <tr>
@@ -443,13 +494,27 @@ include "createReservations.php";
         
     </tbody>
 </table>
+<?php 
+    if(isActive()):
+        ?>
         <div class="form-group ">
              <input type="submit" class="btn btn-primary btn-lg btn-block login-button" onsubmit="return verifyChecked(this)"></button>
          </div>
       <div class="col-md-8 red">
         <h3>N'oubliez pas de confirmer votre réservation 24h à l'avance !</h3>
         <p id = "message"><?= $message?:'' ?></p>
-     </div>       
+     </div>     
+     <?php 
+     endif;
+        if(!isActive()):
+            ?>
+            <div class="form-group ">
+             <input type="submit" class="btn btn-primary btn-lg btn-block login-button" disabled="disabled"></button>
+         </div>
+
+          <?php 
+            endif;
+            ?>
 
     </form>
     

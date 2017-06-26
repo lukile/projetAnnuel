@@ -59,6 +59,13 @@
                             </h4>
                         </div>
                     </div>
+                     <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <li><a href = "checkUser.php">Verification des utilisateurs</a>
+                            </h4>
+                        </div>
+                    </div>
                     <!-- /.panel -->
                 </div>
                 <!-- /.panel-group -->
