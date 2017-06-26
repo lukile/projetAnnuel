@@ -40,24 +40,6 @@ function getActivationKey(){
     }
 }
 
-function login($mail, $pass){
-
-    $query = connect()->prepare("SELECT pass FROM user WHERE mail=:mail");
-    $query->execute(["mail"=>$mail]);
-    $result = $query->fetch();
-    $pass = md5($pass);
-    $pwd = $result["pass"];
-
-    if(!empty($pwd) && $pwd == $pass){
-        $_SESSION["activation_key"] = generateactivation_key($mail);
-        $_SESSION["mail"] = $mail;
-
-        return true;
-    }else{
-        return false;
-    }    
-}
-
 function generateactivation_key($mail){
     $activation_key = md5(uniqid());
 
@@ -75,6 +57,8 @@ function logout(){
 }
 
 function validate($startDate){
+    if($startDate == "") return true;
+
     $dateFormat = date_create_from_format('d-m-Y', $startDate);
     $formattedDate = $dateFormat->format('Y-m-d');
     if($formattedDate < strftime('%Y-%m-%d')){
@@ -84,52 +68,6 @@ function validate($startDate){
     }
     return true;
 }
-
-function insertOrderFormValues($startDate, $endDate, $startHour, $endHour, $orderFormId, $serviceId, $lastInsertId){
-   
-    $select = "INSERT INTO order_form_service(booking_start_date, booking_end_date, booking_start_hour, booking_end_hour, order_form_id, service_id, royalties_id) 
-    VALUES(:startDate, :endDate, :startHour, :endHour, :orderFormId, :serviceId, :royalties_id)";
-    $prep = connect()->prepare($select);
-    $exec = $prep->execute(array(
-        ':startDate'=>$startDate, 
-        ':endDate'=>$endDate, 
-        ':startHour'=>$startHour,
-        ':endHour'=>$endHour, 
-        ':orderFormId'=>$orderFormId, 
-        ':serviceId'=>$serviceId,
-        ':royalties_id'=>$lastInsertId
-        ));
-
-    return $exec;
-}
-
-function insertRoyalties($plane, $fuel, $qutyFuel, $category, $planeLength, $maxWeight, $planeWidth, $surface, $htPrice, $ttcPrice, $ffa, $idService, $acousticGroup){
-    $manager = DatabaseManager::getsharedInstance();
-    $connect = $manager->connect();
-
-    $insert = "INSERT INTO royalties(landing_type, petroleum_type, fuel_quantity, rate_type, plane_length, plane_weight, wingspan, parking_surface, HT_price, TTC_price, ffa, service_id, acoustic_group) 
-    VALUES(:plane, :fuel, :qutyFuel, :category, :planeLength, :maxWeight, :planeWidth, :surface, :htPrice, :ttcPrice, :ffa, :idService, :acoustic_group)";
-    
-    $insert_prep = $connect->prepare($insert);
-    
-    $insert_exec = $insert_prep->execute(array(':plane'=>$plane, 
-        ':fuel'=>$fuel, 
-        ':qutyFuel'=>$qutyFuel, 
-        ':category'=>$category, 
-        ':planeLength'=>$planeLength, 
-        ':maxWeight'=>$maxWeight,
-        ':planeWidth'=>$planeWidth,
-        ':surface'=>$surface,
-        ':htPrice'=>$htPrice,
-        ':ttcPrice'=>$ttcPrice,
-        ':ffa'=>$ffa,
-        ':idService'=>$idService,
-        ':acoustic_group'=>$acousticGroup
-        ));
-        
-    return $connect->lastInsertId();
-} 
-
 
 function displayListUsers(){
   $listUsers = connect()->query("SELECT firstname, lastname, pseudo, mail, phone, comments, registration_date, active, application_fee FROM user");
@@ -177,4 +115,8 @@ function msgRead() {
     }
 
 }
+
+
+ 
+
 ?>
