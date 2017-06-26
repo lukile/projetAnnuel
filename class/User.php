@@ -1,4 +1,5 @@
 <?php
+require_once("/../function.php");
     class User{
         private $id_;
         private $firstname_;
@@ -12,6 +13,7 @@
         private $active_;
         private $registrationDate_;
         private $applicationFee_;
+        private static $instance;
 
         public function __construct($admin = NULL, $firstname = NULL, $lastname = NULL, $login = NULL, $password = NULL, $mail = NULL, $phone = NULL, $activationKey = NULL, $active = NULL, $comments = NULL, $applicationFee = NULL){
                 $this->admin_ = $admin;
@@ -26,6 +28,14 @@
                 $this->comments_ = $comments;
                 $this->applicationFee_ = $applicationFee;
             }
+
+        public static function getIdFromDb() {
+            $select_userId = "SELECT id FROM user WHERE mail=:mail";
+            $prep_userId = connect()->prepare($select_userId);
+            $prep_userId->execute(array(':mail'=>$_SESSION['mail']));
+            $fetch_userId = $prep_userId->fetch();
+            return $fetch_userId['id'];
+        }
             
         public function getId(){
             return $this->id_;
