@@ -1,6 +1,6 @@
 <?php 
-session_start();
-include "function.php";
+//session_start();
+//include "function.php";
 //include "checkUser.php";
 if(isset($_GET['id']) && isset($_GET['mail'])){
 		$id = $_GET['id'];
