@@ -25,25 +25,12 @@ require_once("class/OrderFormService.php");
     $maxWeight = filter_input(INPUT_POST, 'maxWeight');
     
     $endDate = filter_input(INPUT_POST, 'statDateFin');
-    $startHour = filter_input(INPUT_POST, 'statHeureDebut');
     $endHour = filter_input(INPUT_POST, 'statHeureFin');
     $priceParking = filter_input(INPUT_POST, "priceParking");
     $shelter = filter_input(INPUT_POST, 'shelter');
 
-    $aviHeure = filter_input(INPUT_POST, 'aviHeure');
     $qteFuel = filter_input(INPUT_POST, 'qteFuel');
 
-    $attHeure = filter_input(INPUT_POST, 'attHeure');
-
-    $netHeure = filter_input(INPUT_POST, 'netHeure');
-
-    $paraHeure = filter_input(INPUT_POST, 'paraHeure');
-
-    $ulmHeure = filter_input(INPUT_POST, 'ulmHeure');
-
-    $baptHeure = filter_input(INPUT_POST, 'baptHeure');
-
-    $leconHeure = filter_input(INPUT_POST, 'leconHeure');
     $serviceDateArray = [
         "parking" => filter_input(INPUT_POST, 'statDateDebut'), 
         "refueling" => filter_input(INPUT_POST, 'aviDate'),
@@ -55,45 +42,34 @@ require_once("class/OrderFormService.php");
         "flying_lesson" => filter_input(INPUT_POST, 'leconDate')
     ];
 
-    $serviceHourArray = ["parking" => $startHour, "refueling" => $aviHeure, "landing" => $attHeure,
-                        "inside_cleaning" => $netHeure, "parachuting" => $paraHeure, "ulm" => $ulmHeure, 
-                        "first_flying" => $baptHeure, "flying_lesson" => $leconHeure];
+    $serviceHourArray = [
+        "parking" => filter_input(INPUT_POST, 'statHeureDebut'), 
+        "refueling" => filter_input(INPUT_POST, 'aviHeure'), 
+        "landing" => filter_input(INPUT_POST, 'attHeure'),
+        "inside_cleaning" => filter_input(INPUT_POST, 'netHeure'), 
+        "parachuting" => filter_input(INPUT_POST, 'paraHeure'), 
+        "ulm" => filter_input(INPUT_POST, 'ulmHeure'), 
+        "first_flying" => filter_input(INPUT_POST, 'baptHeure'), 
+        "flying_lesson" => filter_input(INPUT_POST, 'leconHeure')
+    ];
+    
     $surface = $planeLength * $planeWidth;
 
 
 //Récupération des valeurs des options du select
-if(isset($_POST['ffa'], $_POST['planeSelecter']) && isset($_POST['fuel']) && isset($_POST['category']) && isset($_POST['acousticGroup'], $planeLength, $maxWeight, $planeWidth)){
+if(isset($_POST['ffa']) && isset($_POST['planeSelecter']) && isset($_POST['fuel']) && isset($_POST['acousticGroup'], $planeLength, $maxWeight, $planeWidth)){
     $ffa = $_POST['ffa'];
     $plane = $_POST['planeSelecter'];
     $fuel = $_POST['fuel'];
     $acousticGroup = $_POST['acousticGroup'];
-    $category = $_POST['category'];
 
     $planeLength = trim($planeLength) != '' ? $planeLength : null;
     $planeWidth = trim($planeWidth) != '' ? $planeWidth : null;
     $maxWeight = trim($maxWeight) != '' ? $maxWeight : null;
 
-    if(isset($plane, $fuel, $category, $acousticGroup, $planeLength, $maxWeight, $planeWidth)){
-            $hostname = "localhost";
-            $database = "aen";
-            $username = "root";
-            $password = "";
-
-            /* Désactive l'éumlateur de requêtes préparées (hautement recommandé)  */
-            $pdo_options[PDO::ATTR_EMULATE_PREPARES] = false;
-                    
-            /* Active le mode exception */
-            $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-                    
-            /* Indique le charset */
-            $pdo_options[PDO::MYSQL_ATTR_INIT_COMMAND] = "SET NAMES utf8";
-                    
-            /* Connexion */
-            try{
-                $connect = new PDO('mysql:host='.$hostname.';dbname='.$database, $username, $password, $pdo_options);
-            }catch (PDOException $e){
-                exit('problème de connexion à la base');
-            }
+    if(isset($plane, $fuel, $acousticGroup, $planeLength, $maxWeight, $planeWidth)){
+            $manager = DatabaseManager::getSharedInstance();
+            $connect = $manager->connect();
 
             if(isset($_POST["services"])){
                          
@@ -121,11 +97,11 @@ if(isset($_POST['ffa'], $_POST['planeSelecter']) && isset($_POST['fuel']) && iss
 
                         $serviceHtPriceArray = [
                             "refueling" => $computePriceService->refuelingHTPrice($fuelValues, $qteFuel),
-                            "landing" => $computePriceService->landingHTPrice($plane),
+                            "landing" => $computePriceService->landingHTPrice($plane, $serviceStartDate, $serviceEndDate),
                             "parachuting" => 80,
                             "ulm" => 120,
-                            "first_flying" => 70,
-                            "flying_lesson" => 99999,
+                            "first_flying" => 80,
+                            "flying_lesson" => 70,
                             "parking" => ($shelter == "Oui") 
                                 ? $computePriceService->priceHTShelter($priceParking, $surface, $maxWeight)
                                 : $computePriceService->computeHTParkingPrice($priceParking, $surface)
