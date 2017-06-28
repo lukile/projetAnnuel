@@ -1,6 +1,7 @@
 <?php
 
 require_once("DatabaseManager.php");
+require_once("/function.php");
 
 class ComputePriceService{
     private static $instance;
@@ -102,11 +103,19 @@ class ComputePriceService{
 
     }
 
-    function landingHTPrice($plane){
-        if($plane == "monoMulti"){
-            
-            $htPrice = 34.50;
+    function landingHTPrice($plane, $startDate, $endDate){
+        $dateFormat = date_create_from_format('d-m-Y', $startDate);
+        $formattedDate = $dateFormat->format('Y-m-d');
+        
 
+        $start = strtotime($formattedDate);
+        $end = strtotime($formattedDate);
+
+        echo 'start date '.$start. ' end date '.$end;
+        $jouvre = getOpenDays($start, $end);
+        echo 'il y a '.$jouvre.' jour ouvrés entre le '.date('d/m/Y', $start). ' et le '.date('d/m/Y', $end); 
+        if($plane == "monoMulti"){           
+            $htPrice = 34.50;
         }else if($plane == "monoBiTur"){
             $htPrice = 41.75;
         }
@@ -115,14 +124,6 @@ class ComputePriceService{
     }
 
     public function landingTTCPrice($plane, $attHeure){
-        // $dayHourStart = "22:00:00";
-        // $dayHourEnd = "06:00:00";
-        // if($attHeure < $dayHourStart && $attHeure > $dayHourEnd){
-
-        // echo 'heure att ok '.$attHeure;
-        // }else {
-        //     echo 'nope';
-        // }
         $htPrice = null;
          if($plane == "monoMulti"){
             $ttcPrice = 41.40;
