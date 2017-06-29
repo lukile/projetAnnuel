@@ -43,33 +43,45 @@ include "createReservations.php";
     </thead>
     <tbody>
     <form method="POST" name="form1" >
-        <tr>        
+        <tr>    
+        <div class="col-md-2">    
             <th scope="row">
-                <select name="planeSelecter" class="form-control" class="selectpricker" required>
+                
+                <select name="planeSelecter" class="form-control" class="selectpicker" required>
                     <option value=""disabled selected> Type d'Avion</option>
                     <option value="monoBiTur">Mono-turbine/Bi-Turbine</option>
                     <option value="monoMulti">Réacteur mono/multi</option>
                 </select>
             </th>
+       </div>
+       <div class="col-md-2">
             <th scope="row">
                 <input type="text" name="planeLength" class="form-control" placeholder="Taille appareil en mètre" required/>
                 <input type="text" name="planeWidth" class="form-control" placeholder="Envergure(taille ailes)" required/>
+             </th>
+        </div>
 
-            </th>
-            <th>
+        <div class="col-md-2">
+            <th scope="row">
                 <input type="text" name="maxWeight"  class="form-control" placeholder="Poids max décollage (en T)" required/>
             </th>
+        </div>
+            
+        <div class="col-md-2">
             <th scope="row">
-                <select name="fuel" class="selectpricker form-control" required>
+                <select name="fuel" class="selectpicker form-control" required>
                     <option value=""disabled selected> Type de carburant</option>
                     <option value="essJST 1.01">JETAI Sans TIC</option>
                     <option value="JAT 1.36">JETAI A1 +TIC</option>
                     <option value="AV100 1.50">AVGAS 100LL sans TIC</option>
                     <option value="AV100T 1.92">AVGAS 100LL TIC</option>
                 </select>
+            </th>
+        </div>
+       
+        <div class="col-md-2">    
             <th scope="row">
-
-                <select name="acousticGroup" class="selectpricker form-control" required>
+                 <select name="acousticGroup" class="selectpicker form-control" required>
                     <option value=""disabled selected> Groupe Acoustique</option>
                     <option value="ga1" >1</option>
                     <option value="ga2" >2</option>
@@ -79,8 +91,11 @@ include "createReservations.php";
                     <option value="ga5b" >5b</option>
                 </select>
             </th>
-             <th>
-                <select name="ffa" class="selectpricker form-control" required>
+        </div>
+            
+        <div class="col-md-2">     
+            <th scope="row">
+                 <select name="ffa" class="selectpicker form-control" data-width="120px" required>
                     <option value=""disabled selected>Adhésion au FFA</option>
                     <option value="74" >Licence + assurance</option>
                     <option value="114" >Licence + assurance + revue mensuelle "Info pilote"</option>
@@ -88,6 +103,7 @@ include "createReservations.php";
                     <option value="0" >Je ne participe pas aux activités de l'aéroclub</option>
                 </select>
             </th> 
+        </div>
         </tr>
 
     </tbody>       
