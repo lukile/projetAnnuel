@@ -97,7 +97,7 @@ if(isset($_POST['ffa']) && isset($_POST['planeSelecter']) && isset($_POST['fuel'
 
                         $serviceHtPriceArray = [
                             "refueling" => $computePriceService->refuelingHTPrice($fuelValues, $qteFuel),
-                            "landing" => $computePriceService->landingHTPrice($plane, $serviceStartDate, $serviceEndDate),
+                            "landing" => $computePriceService->landingHTPrice($plane, $serviceStartDate, $serviceStartHour, $acousticGroup),
                             "parachuting" => 80,
                             "ulm" => 120,
                             "first_flying" => 80,
@@ -106,10 +106,13 @@ if(isset($_POST['ffa']) && isset($_POST['planeSelecter']) && isset($_POST['fuel'
                                 ? $computePriceService->priceHTShelter($priceParking, $surface, $maxWeight)
                                 : $computePriceService->computeHTParkingPrice($priceParking, $surface)
                         ];
+                        // $startHour = filter_input(INPUT_POST, 'attHeure');
+                        // $dayornight = $computePriceService->dayOrNightPeriod($acousticGroup, $startHour);
+
                         $serviceHtPrice = $orderFormManager->findInArray($service, $serviceHtPriceArray);
 
                         $serviceTtcPriceArray = [
-                            "landing" => $computePriceService->landingTTCPrice($plane, $serviceStartHour),
+                            "landing" => $computePriceService->landingTTCPrice($plane, $serviceStartDate, $serviceStartHour, $acousticGroup),
                             "refueling" => $computePriceService->refuelingTTCPrice($fuelValues, $qteFuel),
                             "parking" => ($shelter == "Oui") 
                                 ? $computePriceService->priceTTCShelter($priceParking, $surface, $maxWeight)
