@@ -30,14 +30,6 @@ include "createReservations.php";
     <?php
         endif;
     ?>
-    <select name="ffa" class="selectpricker form-control" required>
-                <option value=""disabled selected>Adhésion au FFA</option>
-                <option value="74" >Licence + assurance</option>
-                <option value="114" >Licence + assurance + revue mensuelle "Info pilote"</option>
-                <option value="0" >Je possède déjà une licence</option>
-                <option value="0" >Je ne participe pas aux activités de l'aéroclub</option>
-    </select>
-            
 <table class="table">
     <thead>
         <tr>
@@ -51,7 +43,7 @@ include "createReservations.php";
     </thead>
     <tbody>
     <form method="POST" name="form1" >
-        <tr>
+        <tr>        
             <th scope="row">
                 <select name="planeSelecter" class="form-control" class="selectpricker" required>
                     <option value=""disabled selected> Type d'Avion</option>
@@ -87,7 +79,7 @@ include "createReservations.php";
                     <option value="ga5b" >5b</option>
                 </select>
             </th>
-            <!-- <th>
+             <th>
                 <select name="ffa" class="selectpricker form-control" required>
                     <option value=""disabled selected>Adhésion au FFA</option>
                     <option value="74" >Licence + assurance</option>
@@ -95,17 +87,7 @@ include "createReservations.php";
                     <option value="0" >Je possède déjà une licence</option>
                     <option value="0" >Je ne participe pas aux activités de l'aéroclub</option>
                 </select>
-                Obligatoire pour les activités de l'aéroclub
-            </th> -->
-
-            <th scope="row">
-                <select name="category" class="selectpricker form-control" required>
-                    <option value=""disabled selected>Catégorie</option>
-                    <option value="cat1">1</option>
-                    <option value="cat2">2</option>
-                    <option value="cat3">3</option>
-                </select>
-            </th>
+            </th> 
         </tr>
 
     </tbody>       
