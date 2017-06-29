@@ -66,6 +66,13 @@
                             </h4>
                         </div>
                     </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <li><a href = "displayReservations.php">Affichage des réservations</a>
+                            </h4>
+                        </div>
+                    </div>
                     <!-- /.panel -->
                 </div>
                 <!-- /.panel-group -->

@@ -114,7 +114,7 @@
                         </div>
                         <div class="panel-body">
                             <span class="price"><!--<?php echo $d['icone']?>--></span>
-                            <span class="period"><?php echo $fetch_query['description']?></span>
+                            <span class="period"><?php echo utf8_decode($fetch_query['description'])?></span>
                         </div>
                         <ul class="list-group">
                             <li class="list-group-item"><strong>Température actuelle</strong> : <?php echo $fetch_query['tempnow'] - 273.15?>°C</li>

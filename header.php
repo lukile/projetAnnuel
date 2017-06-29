@@ -93,9 +93,9 @@
                     <li>
                         <a href="reservation.php">Reservation</a>
                     </li>
-                    <li>
+                   <!-- <li>
                         <a href="weather.php">Météo</a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="services.php">Services</a>
                     </li>

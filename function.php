@@ -189,5 +189,10 @@ function getOpenDays($startDate, $endDate){
         return $publicDays;
     }
 }
+
+function displayServices(){
+  
+}
+
 ?>
 
