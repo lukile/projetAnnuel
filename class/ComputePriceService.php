@@ -1,6 +1,9 @@
 <?php
 
+require_once("Coefficient.php");
+
 require_once("DatabaseManager.php");
+require_once("DateHourManager.php");
 require_once("/function.php");
 
 class ComputePriceService{
@@ -93,7 +96,7 @@ class ComputePriceService{
         return $htPrice;
     }
 
-    function refuelingTTCPrice($fuelValues, $qteFuel){
+    public function refuelingTTCPrice($fuelValues, $qteFuel){
         $htPrice = $this->refuelingHTPrice($fuelValues, $qteFuel);
         
         $computedPrice = ($htPrice * 20)/100;
@@ -103,36 +106,48 @@ class ComputePriceService{
 
     }
 
-    function landingHTPrice($plane, $startDate, $endDate){
-        $dateFormat = date_create_from_format('d-m-Y', $startDate);
-        $formattedDate = $dateFormat->format('Y-m-d');
+    public function landingHTPrice($plane, $date, $hour, $acousticGroup){
+        $dateManager = new DateHourManager();
+        $start = $dateManager->formatDate($date);
+        $end = $start;
+
+        $openDays = $dateManager->getOpenDays($start, $end);
+
+        $coefficient = new Coefficient();
+        $period = $coefficient->dayOrNightPeriod($acousticGroup, $hour);
         
-
-        $start = strtotime($formattedDate);
-        $end = strtotime($formattedDate);
-
-        echo 'start date '.$start. ' end date '.$end;
-        $jouvre = getOpenDays($start, $end);
-        echo 'il y a '.$jouvre.' jour ouvrés entre le '.date('d/m/Y', $start). ' et le '.date('d/m/Y', $end); 
-        if($plane == "monoMulti"){           
-            $htPrice = 34.50;
-        }else if($plane == "monoBiTur"){
-            $htPrice = 41.75;
+        if($plane == "monoMulti" && $openDays == 0){           
+            $htPrice = 34.50 * $period;
+        }elseif($plane == "monoBiTur" && $openDays == 0){
+            $htPrice = 41.75 * $period;
+        }elseif($plane == "monoMulti" && $openDays > 0){
+            $htPrice = 31.17 * $period;
+        }elseif($plane == "monoBiTur" && $openDays > 0){
+            $htPrice = 37.17 * $period;
         }
-
         return $htPrice;
     }
 
-    public function landingTTCPrice($plane, $attHeure){
-        $htPrice = null;
-         if($plane == "monoMulti"){
-            $ttcPrice = 41.40;
+    public function landingTTCPrice($plane, $date, $hour, $acousticGroup){
+        $dateManager = new DateHourManager();
+        $start = $dateManager->formatDate($date);
+        $end = $start;
 
-        }else if($plane == "monoBiTur"){
-            $htPrice = 49.40;
+        $openDays = $dateManager->getOpenDays($start, $end);
+
+        $coefficient = new Coefficient();
+        $period = $coefficient->dayOrNightPeriod($acousticGroup, $hour);
+
+         if($plane == "monoMulti" && $openDays == 0){
+            $ttcPrice = 41.40 * $period;
+        }elseif($plane == "monoBiTur" && $openDays == 0){
+            $ttcPrice = 49.40 * $period;
+        }elseif($plane == "monoMulti" && $openDays > 0){
+            $ttcPrice = 37.40 * $period;
+        }elseif($plane == "monoBiTur" && $openDays > 0){
+            $ttcPrice = 44.60 * $period;
         }
-
-        return $htPrice;
+        return $ttcPrice;
     }
 
     private function connect(){
@@ -141,7 +156,7 @@ class ComputePriceService{
 
         return $connect;
     }
+    
+    }
 
-
-}
 ?>
