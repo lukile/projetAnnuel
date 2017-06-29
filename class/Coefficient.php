@@ -1,34 +1,56 @@
 <?php 
-    class Coefficient{
-        private $acousticGroup_;
-        private $period_;
-        private $helicopterUlm_;
+require_once("DatabaseManager.php");
+require_once("DateHourManager.php");
 
-        public function __construct($acousticGroup, $period, $helicopterUlm){
-            $this->acousticGroup_ = $acousticGroup;
-            $this->period_ = $period;
-            $this->helicopterUlm_ = $helicopterUlm;
-        }
+    class Coefficient{
+        private $acousticGroup;
+        private $dayPeriod;
+        private $nightPeriod;
 
         public function getAcousticGroup(){
-            return $this->acousticGroup_;
+            return $this->acousticGroup;
         }
         public function setAcousticGroup($acousticGroup){
-            $this->acousticGRoup_ = $acousticGroup;
+            $this->acousticGroup = $acousticGroup;
         }
 
-        public function getPeriod(){
-            return $this->period_;
+        public function getDayPeriod(){
+            return $this->dayPeriod;
         }
-        public function setPeriod($period){
-            $this->period_ = $period;
+        public function setDayPeriod($dayPeriod){
+            $this->dayPeriod = $dayPeriod;
         }
 
-        public function getHelicopterUlm(){
-            return $this->helicopterUlm_;
+        public function getNightPeriod(){
+            return $this->$nightPeriod;
         }
-        public function setHelicopterUlm($helicopterUlm){
-            $this->helicopterUlm_ = $helicopterUlm;
+        public function setNightPeriod($nightPeriod){
+            $this->nightPeriod = $nightPeriod;
+        }
+
+        public function dayOrNightPeriod($acousticGroup, $hour){
+            $hourManager = new DateHourManager();
+            
+            $request = connect()->prepare("SELECT day_period, night_period
+                        FROM coefficient 
+                        WHERE acoustic_group=:acousticGroup");
+            $request->execute(array(':acousticGroup'=>$acousticGroup));
+            $result = $request->fetch(PDO::FETCH_OBJ);
+
+            $dayPeriod = $result->day_period;
+            $nightPeriod = $result->night_period;
+   
+            $startHour = date('06:00:00');
+            $endHour = date('22:00:00'); 
+
+            $formattedHour = $hourManager->formatHour($hour);
+           
+            if($formattedHour > $startHour && $formattedHour < $endHour){
+                return $dayPeriod;
+
+            }elseif($formattedHour < $startHour || $formattedHour > $endHour){
+                return $nightPeriod;
+            }
         }
     }
 ?>
