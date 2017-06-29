@@ -1,5 +1,6 @@
 <?php 
 require_once(__DIR__. "/class/DatabaseManager.php");
+// require_once("createReservations.php");
 
 function connect(){
     $manager = DatabaseManager::getsharedInstance();
@@ -188,6 +189,26 @@ function getOpenDays($startDate, $endDate){
 
         return $publicDays;
     }
+
 }
+
+    function isParked($order_form_id){
+    if(!empty($order_form_id)){
+        $request = connect()->prepare ("SELECT service_id FROM order_form_service WHERE order_form_id=:order_form_id");
+        $request->execute(array(':order_form_id'=>$order_form_id));
+        $result = $request->fetch(PDO::FETCH_OBJ);
+
+        $parkingId = $result->service_id;
+        
+        if($parkingId == 3){
+            return true;
+        }else{
+            return false;
+        }
+    }else{
+        continue;
+    }
+}
+
 ?>
 
