@@ -72,18 +72,15 @@ if(isset($_POST['ffa']) && isset($_POST['planeSelecter']) && isset($_POST['fuel'
             $connect = $manager->connect();
 
             if(isset($_POST["services"])){
-                         
+                $idUser = User::getIdFromDb();
+                $insert_fkCoeffId_orderForm = "INSERT INTO order_form(validation, user_id, acoustic_group) VALUES(0, :userId, :acoustic_group)";
+                $fkCoeffId_orderForm_prep = $connect->prepare($insert_fkCoeffId_orderForm);
+                $fkCoeffId_orderForm_prep->execute(array(':userId'=>$idUser,':acoustic_group'=>$acousticGroup));
+                $id_orderForm = $connect->lastInsertId();
+
                 $fuelValues = explode(' ', $fuel);
                 foreach($_POST['services'] as $service){ 
                         $idService = Service::getIdFromService($service);
-                        $idUser = User::getIdFromDb();
-                         
-
-                        $insert_fkCoeffId_orderForm = "INSERT INTO order_form(validation, user_id, acoustic_group) VALUES(0, :userId, :acoustic_group)";
-                        $fkCoeffId_orderForm_prep = $connect->prepare($insert_fkCoeffId_orderForm);
-                        $fkCoeffId_orderForm_exec = $fkCoeffId_orderForm_prep->execute(array(':userId'=>$idUser,':acoustic_group'=>$acousticGroup));
-                       
-                        $id_orderForm = $connect->lastInsertId();
                         
                         $computePriceService = ComputePriceService::getSharedInstance();
                         $orderFormManager = OrderFormManager::getSharedInstance();
@@ -97,7 +94,7 @@ if(isset($_POST['ffa']) && isset($_POST['planeSelecter']) && isset($_POST['fuel'
 
                         $serviceHtPriceArray = [
                             "refueling" => $computePriceService->refuelingHTPrice($fuelValues, $qteFuel),
-                            "landing" => $computePriceService->landingHTPrice($plane, $serviceStartDate, $serviceEndDate),
+                            "landing" => $computePriceService->landingHTPrice($service, $plane, $serviceStartDate, $serviceStartHour, $acousticGroup, $id_orderForm),
                             "parachuting" => 80,
                             "ulm" => 120,
                             "first_flying" => 80,
@@ -106,10 +103,11 @@ if(isset($_POST['ffa']) && isset($_POST['planeSelecter']) && isset($_POST['fuel'
                                 ? $computePriceService->priceHTShelter($priceParking, $surface, $maxWeight)
                                 : $computePriceService->computeHTParkingPrice($priceParking, $surface)
                         ];
+
                         $serviceHtPrice = $orderFormManager->findInArray($service, $serviceHtPriceArray);
 
                         $serviceTtcPriceArray = [
-                            "landing" => $computePriceService->landingTTCPrice($plane, $serviceStartHour),
+                            "landing" => $computePriceService->landingTTCPrice($service, $plane, $serviceStartDate, $serviceStartHour, $acousticGroup, $id_orderForm),
                             "refueling" => $computePriceService->refuelingTTCPrice($fuelValues, $qteFuel),
                             "parking" => ($shelter == "Oui") 
                                 ? $computePriceService->priceTTCShelter($priceParking, $surface, $maxWeight)
@@ -124,14 +122,14 @@ if(isset($_POST['ffa']) && isset($_POST['planeSelecter']) && isset($_POST['fuel'
                         }
 
                         $fuel = $computePriceService->typeRefueling($fuelValues);  
-                        $qteFuel = ($service == "refueling") ? $qteFuel : 0;
+                        $qteFuelComputed = ($service == "refueling") ? $qteFuel : 0;
                         
                         $serviceObject = new Service();
                         $serviceObject->setName($service);
                         
                         try {
                             $orderFormService = new OrderFormService($serviceStartDate, $serviceEndDate, $serviceStartHour, $serviceEndHour, $id_orderForm, $idService, null);
-                            $royalty = new Royalty($fuel, $plane, $qteFuel, $serviceCategory, $planeLength, $maxWeight, $planeWidth, $surface, $serviceHtPrice, $serviceTtcPrice, $ffa, $idService, $acousticGroup);
+                            $royalty = new Royalty($fuel, $plane, $qteFuelComputed, $serviceCategory, $planeLength, $maxWeight, $planeWidth, $surface, $serviceHtPrice, $serviceTtcPrice, $ffa, $idService, $acousticGroup);
 
                             $orderFormManager->insertOrderFormService($orderFormService, $royalty, $serviceObject);
                         } catch (Exception $e) {

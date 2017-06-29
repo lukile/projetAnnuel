@@ -30,7 +30,6 @@ class OrderFormManager {
                 throw new Exception('La date de fin ne peut pas être antérieure à la date de début');
             }
         }
-
         $lastInsertId = $this->insertRoyalties($royalty);        
         $orderFormService->setRoyaltyId($lastInsertId);
  
