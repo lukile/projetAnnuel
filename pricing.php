@@ -66,7 +66,7 @@
                     </div>
                     <div class="panel-body">
                         <span class="price"><sup>€</sup>12<sup>99</sup></span>
-                        <span class="period">à partir</span>
+                        <span class="period">à partir de</span>
                     </div>
                     <ul class="list-group">
                         <li class="list-group-item"><strong></strong> Un service qui varie</li>

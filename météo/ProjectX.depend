@@ -1,0 +1,59 @@
+# depslib dependency file v1.0
+1494905540 source:c:\damien\etude\esgi\projet annuel\2 année\météo\new\v1.8.5\main.c
+	"readInfo.h"
+	"writeInfo.h"
+	"parseJSON.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1494905538 c:\damien\etude\esgi\projet annuel\2 année\météo\new\v1.8.5\readinfo.h
+	<winsock2.h>
+	<Ws2tcpip.h>
+	<winsock.h>
+	<MYSQL/mysql.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<netinet/in.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<netdb.h>
+	<my_global.h>
+	<mysql.h>
+	<time.h>
+
+1494905536 c:\damien\etude\esgi\projet annuel\2 année\météo\new\v1.8.5\writeinfo.h
+
+1494905540 c:\damien\etude\esgi\projet annuel\2 année\météo\new\v1.8.5\parsejson.h
+	<winsock2.h>
+	<Ws2tcpip.h>
+	<winsock.h>
+	<MYSQL/mysql.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<netinet/in.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<netdb.h>
+	<my_global.h>
+	<mysql.h>
+	<time.h>
+
+1498822535 source:c:\damien\etude\esgi\projet annuel\2 année\météo\new\v1.8.5\parsejson.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"parseJSON.h"
+
+1498821303 source:c:\damien\etude\esgi\projet annuel\2 année\météo\new\v1.8.5\readinfo.c
+	"readInfo.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1494905536 source:c:\damien\etude\esgi\projet annuel\2 année\météo\new\v1.8.5\writeinfo.c
+	"writeInfo.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

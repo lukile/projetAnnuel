@@ -98,10 +98,35 @@
                 $insertion_prep_meteo->execute();
                 $fetch_query = $insertion_prep_meteo->fetch();
 
-                /*$id = $fetch_query['weather'];
-                $req = $connect->query('SELECT icone FROM correspondanceIDWeather WHERE IDWeather = "'.$id.'"');
+                $db= connect();
+                $select_icone = "SELECT iDMeteo from meteo";
+                $insertion_ic_meteo = $db->prepare($select_icone);
+                $insertion_ic_meteo->execute();
+                $fetch_quer = $insertion_ic_meteo->fetch();
 
-                $d = $req->fetch();*/
+                switch ($fetch_quer['iDMeteo']) {
+                    case '200':
+                        $temps = 'Orage';
+                        break;
+                    case '300':
+                        $temps = 'Bruine';
+                        break;
+                    case '500':
+                        $temps = 'Pluie';
+                        break;
+                    case '600':
+                        $temps = 'Neige';
+                        break;
+                    case '700':
+                        $temps = 'Brouillard';
+                        break;
+                    case '800':
+                        $temps = 'Clair';
+                        break;
+                    case '801':
+                        $temps = 'Nuageux';
+                        break;        
+                }
 
             
 
@@ -114,7 +139,7 @@
                         </div>
                         <div class="panel-body">
                             <span class="price"><!--<?php echo $d['icone']?>--></span>
-                            <span class="period"><?php echo utf8_decode($fetch_query['description'])?></span>
+                            <span class="period"><?php echo $temps?></span>
                         </div>
                         <ul class="list-group">
                             <li class="list-group-item"><strong>Température actuelle</strong> : <?php echo $fetch_query['tempnow'] - 273.15?>°C</li>
@@ -145,7 +170,7 @@
                                 echo "Ouest";
                             }
                             if($fetch_query['winddegree'] >= 315 && $fetch_query['winddegree'] < 360){
-                                echo "Norf-Ouest";
+                                echo "Nord-Ouest";
                             }
                                 
                              ?> </li>
