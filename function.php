@@ -190,6 +190,20 @@ function getOpenDays($startDate, $endDate){
     }
 }
 
+function isParked($id_orderForm){
+    $request = connect()->prepare("SELECT service_id FROM order_form_service WHERE order_form_id = :orderFormId");
+    $request->execute(array(':orderFormId'=>$id_orderForm));
+    $result = $request->fetch(PDO::FETCH_OBJ);
+
+    $parkingId = $result->service_id;
+
+    if($parkingId == 3){
+        echo 'parké';
+    }else{
+        echo 'pas parké';
+    }
+}
+
 function displayServices(){
   
 }
