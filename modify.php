@@ -41,7 +41,6 @@ $listUsers = connect()->query("SELECT id, firstname, lastname, pseudo, mail, pho
                     <td><?php echo $data['application_fee'].'<br>'; ?> </td>
                     
                     <td><a href="modifyUser.php?id=<?php echo $data['id']?>">Modifier</a></td>
-                    <td><a href="displayReservations.php?id=<?php echo $data['id']?>">Liste reservations clients</a></td>
                     </tr>    
 <?php } ?>
                </tbody>
@@ -51,6 +50,7 @@ $listUsers = connect()->query("SELECT id, firstname, lastname, pseudo, mail, pho
             </div>
         </div>
         </div>
+        <?php include "footer.php"; ?>
     </div>
 </div>
 

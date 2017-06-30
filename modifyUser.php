@@ -164,8 +164,11 @@
                      
                     </form>
 <!--                    <p id = "message"><?= $message?:'' ?></p>
+
 -->                </div>
-                
+                    <div class="login-register">
+                        <a href="admin.php"><i class="fa fa-arrow-circle-left" aria-hidden="true"> Retour</i></a>
+                    </div>                
 <?php 
     include "footer.php";
 ?>   

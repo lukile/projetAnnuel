@@ -38,7 +38,7 @@ include "createReservations.php";
             <th>Masse maximum</th>
             <th>Carburant</th>
             <th>Groupe Acoustique</th>
-            <th>Catégorie</th>
+            <th>FFA</th>
         </tr>
     </thead>
     <tbody>

@@ -48,6 +48,7 @@ $listUsers = connect()->query("SELECT id, firstname, lastname, pseudo, mail, pho
             </div>
         </div>
         </div>
+        <?php include "footer.php"; ?>
     </div>
 </div>
 

@@ -54,7 +54,8 @@ $listMsg = connect()->query("SELECT id, statut, userMessage, mail, content FROM 
             </div>
         </div>
         </div>
-    </div>
+    <?php include "footer.php"; ?>
+    </div>    
 </div>
 
 <script src="http://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
