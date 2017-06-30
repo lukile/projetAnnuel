@@ -16,7 +16,7 @@
                 <h1 class="page-header">ADMIN
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="index.html">Accueil</a>
+                    <li><a href="index.php">Accueil</a>
                     </li>
                     <li class="active">Admin</li>
                 </ol>
@@ -62,7 +62,7 @@
                      <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <li><a href = "checkUser.php">Verification des utilisateurs</a>
+                                <li><a href = "checkUser.php">Envoyer message pour examen</a>
                             </h4>
                         </div>
                     </div>

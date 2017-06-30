@@ -1,4 +1,5 @@
 <?php 
+include "header.php";
 //session_start();
 //include "function.php";
 //include "checkUser.php"
@@ -34,10 +35,47 @@ if(isset($_GET['id']) && isset($_GET['mail'])){
     $mail->IsHTML(true);
     $mail->Body    = 'Bonjour,<br/> Vous avez cumulé plus de 10 cours de leçon de pilotage, <br/> nous vous proposons donc de passer un examen afin de recevoir au plus rapidement votre titre confimé. <br/> Contactez l\'AEN pour prendre rendez vous<br/>'.$link ;
     $mail->Send();
+    
+   ?> <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Envoi de mail
+                  
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="admin.php">Admin</a>
+                    </li>
+                    <li class="active">Envoi de mail</li>
+                </ol>
+            </div>
+        </div> 
+
+        <?php 
+        echo "Un mail a été envoyé à l'adresse suivante : $email,  proposant à l'utilisateur de passer un examen";
      return true;
         
     } else {
-    	 echo "Le client n'as pas cumulé plus de 10 cours, il n'a pas accès au passage d'examens";
+        ?>
+        <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Envoi de mail
+                  
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="admin.php">Admin</a>
+                    </li>
+                    <li class="active">Envoi de mail</li>
+                </ol>
+            </div>
+        </div> 
+
+        <?php
+    	 echo "Le client n'a pas cumulé plus de 10 cours, il ne peut être présenter à l'examen, nombre total de cours actuel : $result[0] / 10.";
         return false;
        
     }
