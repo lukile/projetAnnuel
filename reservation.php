@@ -42,7 +42,7 @@ include "createReservations.php";
         </tr>
     </thead>
     <tbody>
-    <form method="POST" name="form1" >
+    <form method="POST" name="form1" action="pdf/generatepdf.php" target="_blank">
         <tr>    
         <div class="col-md-2">    
             <th scope="row">
