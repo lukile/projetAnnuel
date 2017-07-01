@@ -105,29 +105,28 @@
                 $fetch_quer = $insertion_ic_meteo->fetch();
 
                 $temps = '';
-                switch ($fetch_quer['weather']) {
-                    case '200':
-                        $temps = 'Orage';
-                        break;
-                    case '300':
-                        $temps = 'Bruine';
-                        break;
-                    case '500':
-                        $temps = 'Pluie';
-                        break;
-                    case '600':
-                        $temps = 'Neige';
-                        break;
-                    case '700':
-                        $temps = 'Brouillard';
-                        break;
-                    case '800':
-                        $temps = 'Clair';
-                        break;
-                    case '801':
-                        $temps = 'Nuageux';
-                        break;        
+                if($fetch_quer['weather'] >= 200 && $fetch_quer['weather'] <= 232){
+                    $temps = 'Orage';
                 }
+                if($fetch_quer['weather'] >= 300 && $fetch_quer['weather'] <= 321){
+                    $temps = 'Bruine';
+                }
+                if($fetch_quer['weather'] >= 500 && $fetch_quer['weather'] <= 531){
+                    $temps = 'Pluie';
+                }
+                if($fetch_quer['weather'] >= 600 && $fetch_quer['weather'] <= 622){
+                    $temps = 'Neige';
+                }
+                if($fetch_quer['weather'] >= 700 && $fetch_quer['weather'] <= 781){
+                    $temps = 'Brouillard';
+                }
+                if($fetch_quer['weather'] == 800){
+                    $temps = 'Clair';
+                }
+                if($fetch_quer['weather'] >= 801 && $fetch_quer['weather'] <= 804){
+                    $temps = 'Nuageux';
+                }
+            
 
             
 
