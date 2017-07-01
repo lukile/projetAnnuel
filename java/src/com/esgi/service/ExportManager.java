@@ -28,7 +28,7 @@ public class ExportManager {
 
         List<User> users = userRepository.findUsers(year, month);
 
-        users.forEach(System.out::println);
+        //users.forEach(System.out::println);
 
         String filename = year + "-" + month + POSTFIX_FILENAME;
         csvExporter.export(users, filename);
@@ -55,8 +55,4 @@ public class ExportManager {
         return LocalDate.now().minus(1, ChronoUnit.MONTHS);
     }
 
-    @Override
-    public void run() {
-        export();
-    }
 }

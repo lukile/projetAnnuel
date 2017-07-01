@@ -7,6 +7,7 @@ import com.esgi.service.ExportManager;
 import com.esgi.service.TimerService;
 
 import java.sql.SQLException;
+import java.util.TimerTask;
 
 public class Main {
 
@@ -17,6 +18,12 @@ public class Main {
         CsvExporter csvExporter = new CsvExporter();
         ExportManager exportManager = new ExportManager(csvExporter, userRepository);
 
-        TimerService.schedule( exportManager::export );
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                exportManager.export();
+            }
+        };
+        TimerService.schedule(task);
     }
 }

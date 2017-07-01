@@ -23,14 +23,23 @@ public class CsvExporter {
     );
 
     public void export(List<User> users, String filename) {
-        try ( FileWriter fileWriter = new FileWriter(filename) ) {
-
+        FileWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter(filename);
             writeLine(fileWriter, HEADERS);
             writeUsers(users, fileWriter);
 
         } catch (IOException e) {
             System.out.println("Problem with opening writer for file " + filename);
             e.printStackTrace();
+        } finally {
+            if (fileWriter != null) {
+                try {
+                    fileWriter.close();
+                } catch (IOException e) {
+                    System.out.println("Erreur à la fermeture du fichier");
+                }
+            }
         }
     }
 

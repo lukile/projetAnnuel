@@ -5,13 +5,7 @@ import java.util.TimerTask;
 
 public class TimerService {
 
-    public static void schedule(Runnable runnable) {
-        TimerTask task = new TimerTask() {
-            public void run() {
-                runnable.run();
-            }
-        };
-
+    public static void schedule(TimerTask task) {
         int waitFiveSeconds = 5 * 1000;
         int eachMinute = 60 * 1000;
 
