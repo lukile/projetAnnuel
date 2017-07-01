@@ -14,6 +14,7 @@ require_once("function.php");
     }
 
     $message = null;
+    $messagepdf = null;
 
     //Get Europe current locale time 
     setlocale(LC_TIME, 'fr_FR');
@@ -148,6 +149,7 @@ if(isset($_POST['ffa']) && isset($_POST['planeSelecter']) && isset($_POST['fuel'
                         $priceHTShelterCategory = $computePriceService->priceHTShelterCategory($startParkingDate, $endParkingDate, $priceHtShelter, $orderform, $maxWeight, $surface);
                         $priceTTCShelterCategory = $computePriceService-> priceTTCShelterCategory($startParkingDate, $endParkingDate, $priceTtcShelter, $orderform, $maxWeight, $surface);
                     }
+                    $messagepdf = 'Pour telecharger la facture de votre réservation veuillez cliquez <a href="pdf/generatepdf.php" target="_blank"> Facture </a> <?php ';
                 }else{
                     $message = "Vous devez sélectionner une activité au moins pour valider la réservation";
                 }
@@ -157,4 +159,5 @@ if(isset($_POST['ffa']) && isset($_POST['planeSelecter']) && isset($_POST['fuel'
         }else{
             $message =  'Tous les champs doivent être renseignés';
         }
+        
 ?>

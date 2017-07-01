@@ -17,14 +17,14 @@ int findcntlght(char *buffer)
     pst_1 = strstr(buffer, a);
     if( pst_1 == NULL )
     {
-        fprintf(stderr,"\nERROR, \ncan't find the string a");
+        fprintf(stderr,"\nERROR, can't find the string a");
         return -1;
     }
 
     pst_2 = strstr(buffer, b);
     if( pst_2 == NULL )
     {
-        fprintf(stderr,"\nERROR, \ncan't find the string b");
+        fprintf(stderr,"\nERROR, can't find the string b");
         return -1;
     }
 
@@ -33,7 +33,7 @@ int findcntlght(char *buffer)
     strcntlght = malloc(sizeof(char) * (contentstringlen + 1));
     if( strcntlght == NULL )
     {
-        fprintf(stderr,"\nERROR, \ncan't create the string content length");
+        fprintf(stderr,"\nERROR, can't create the string content length");
         return -1;
     }
 
@@ -58,7 +58,7 @@ int filterinf(char *buffer, char *filteredInf)
     if( cntlght == -1)
         return -1;
 
-    while(j < cntlght)
+    while(j < contentlen)
     {
         if(buffer[i] == '{')
             start_writing = TRUE;
@@ -71,12 +71,12 @@ int filterinf(char *buffer, char *filteredInf)
         i++;
     }
 
-    if(filteredInf[cntlght - 1] != '}')
+    if(filteredInf[contentlen - 1] != '}')
     {
         fprintf(stderr,"\nERROR, in the data");
         return -1;
     }
-    filteredInf[cntlght] = '\0';
+    filteredInf[contentlen] = '\0';
 
     return 0;
 }
@@ -92,12 +92,12 @@ int writeInfo(char *buffer)
     weather = fopen("weather.json", "w");
     if(weather == NULL)
     {
-        fprintf(stderr,"\nERROR, \ncannot create the weather file");
+        fprintf(stderr,"\nERROR, cannot create the weather file");
         return -1;
     }
     if(fwrite(filteredInf, 1, strlen(filteredInf), weather) < strlen(filteredInf))
     {
-        fprintf(stderr,"\nERROR, \nthe weather file wasn't write properly");
+        fprintf(stderr,"\nERROR, the weather file wasn't write properly");
         return -1;
     }
     fclose(weather);

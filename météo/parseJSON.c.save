@@ -4,7 +4,7 @@
 #include "parseJSON.h"
 
 int parseJSON(){
-    printf("\n LOL");
+
 
     FILE* WeatherJSON = fopen("weather.json", "r");
     int saut = 0;
@@ -35,11 +35,7 @@ int parseJSON(){
             saut++;
         }
     }
-    //char_actuel = fgetc(WeatherJSON);
-    //printf("\n res : %c et saut : %d",char_actuel, saut);
 
-   // fseek(WeatherJSON, 90, SEEK_CUR);
-   // char char_actuel = "";
     int i = 0;
     char_actuel = fgetc(WeatherJSON);
     while(char_actuel != ',')
@@ -48,12 +44,11 @@ int parseJSON(){
         char_actuel = fgetc(WeatherJSON);
         i++;
     }
-    //fread(temp_now, 6, 1, WeatherJSON);
+
     while(char_actuel != ':'){
         char_actuel = fgetc((WeatherJSON));
     }
-   // printf("\n\n resbis : %c", char_actuel);
-   // temp_now[i] = '/0';
+
     i = 0;
     char_actuel = fgetc(WeatherJSON);
     while(char_actuel != ',')
@@ -62,7 +57,7 @@ int parseJSON(){
         char_actuel = fgetc(WeatherJSON);
         i++;
     }
-    // printf("\n\n resbis : %s", pressure);
+
     while(char_actuel != ':'){
         char_actuel = fgetc((WeatherJSON));
     }
@@ -74,9 +69,7 @@ int parseJSON(){
         char_actuel = fgetc(WeatherJSON);
         i++;
     }
-   // printf("\n\n resbis : %s", humidity);
-     //printf("\n\n caractere : %c", char_actuel);
-    //humidity[i] = '/0';
+
      while(char_actuel != ':'){
         char_actuel = fgetc((WeatherJSON));
     }
@@ -88,7 +81,7 @@ int parseJSON(){
         char_actuel = fgetc(WeatherJSON);
         i++;
     }
-    //printf("\n\n resbis : %s", temp_min);
+
     while(char_actuel != ':'){
         char_actuel = fgetc((WeatherJSON));
     }
@@ -100,8 +93,7 @@ int parseJSON(){
         char_actuel = fgetc(WeatherJSON);
         i++;
     }
-    //printf("\n\n resbis : %s", temp_max);
-    //temp_max[i] = '/0';
+
     while(char_actuel != ':'){
         char_actuel = fgetc((WeatherJSON));
     }
@@ -113,7 +105,7 @@ int parseJSON(){
         char_actuel = fgetc(WeatherJSON);
         i++;
     }
-    //printf("\n\n resbis : %s", visibility);
+
     saut = 0;
     while(saut < 2){
         char_actuel = fgetc(WeatherJSON);
@@ -129,7 +121,7 @@ int parseJSON(){
         char_actuel = fgetc(WeatherJSON);
         i++;
     }
-    //printf("\n\n resbis : %s", wind_speed);
+
     while(char_actuel != ':'){
         char_actuel = fgetc((WeatherJSON));
     }
@@ -141,7 +133,7 @@ int parseJSON(){
         char_actuel = fgetc(WeatherJSON);
         i++;
     }
-    // printf("\n\n resbis : %s", wind_degree);
+
      saut = 0;
     while(saut < 9){
         char_actuel = fgetc(WeatherJSON);
@@ -157,7 +149,7 @@ int parseJSON(){
         char_actuel = fgetc(WeatherJSON);
         i++;
     }
-    //printf("\n\n resbis : %s", sun_sunrise);
+
     while(char_actuel != ':'){
         char_actuel = fgetc((WeatherJSON));
     }
@@ -184,8 +176,9 @@ int parseJSON(){
           printf("\n OPA");
           char marequete[600] = "";
           //On stock la requete dans notre tableau de char
-          sprintf(marequete, "INSERT INTO meteo VALUES('', %s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')"
+          sprintf(marequete, "UPDATE meteo SET weather = '%s', tempnow = '%s', pressure = '%s', humidity ='%s', tempsmin = '%s', tempsmax = '%s', visibility = '%s', windspeed = '%s', winddegree = '%s', sunrise = '%s', sunset= '%s' WHERE iDMeteo = 1;"
                   ,weather,temp_now,pressure,humidity,temp_min,temp_max,visibility,wind_speed,wind_degree,sun_sunrise,sun_sunset);
+        printf("\n%s", marequete);
           //On execute la requete
           mysql_query(&sql, marequete);
           mysql_close(&sql);

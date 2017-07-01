@@ -10,7 +10,7 @@ $listUsers = connect()->query("SELECT id, firstname, lastname, pseudo, mail, pho
 <div class="container">
     <div class="row">
             <div class="box clearfix">
-            <h3>Modification d'un utilisateur</h3>
+            <h3>Mail d'examen</h3>
 
             <table class="table table-hover" id="bootstrap-table">
                 <thead>

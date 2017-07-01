@@ -209,5 +209,35 @@ function isMonth($startDate, $endDate){
 
 }
 
+function getId() {
+    if (!empty($_SESSION['activation_key'])) {
+    // si oui on se connecte à la bdd
+        $db = connect();
+    // est ce qu'il existe un user avec l'email de SESSION[email]
+    // et l'access token SESSION[accesstoken]
+        $query = $db->prepare('SELECT id FROM user WHERE activation_key=:activation_key');
+        $query->execute(['activation_key' => $_SESSION['activation_key']]);
+        $result = $query->fetch();
+    // si oui on regenere un accesstoken et on retourne vrai
+        return $result;
+}
+}
+
+function createPdf() {
+
+    $id = getId();
+    $request =  connect()->prepare("SELECT u.id, 
+                order_form_id,
+                booking_start_date, booking_end_date,booking_start_hour, booking_end_hour, 
+                type,
+                petroleum_type, fuel_quantity, plane_length, plane_weight, wingspan, landing_type, parking_surface, ffa
+                FROM user u, order_form of, order_form_service ofs, services s, royalties r
+                WHERE u.id in (SELECT user_id FROM order_form WHERE user_id = :id)
+                AND of.id = ofs.order_form_id
+                AND s.id = ofs.service_id
+                AND r.id = ofs.royalties_id
+                ");
+                $request->execute([':id'=>$id]);
+}
 ?>
 

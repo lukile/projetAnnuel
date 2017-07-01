@@ -42,7 +42,9 @@ include "createReservations.php";
         </tr>
     </thead>
     <tbody>
-    <form method="POST" name="form1" >
+        
+    <form method="POST" name="form1">
+
         <tr>    
         <div class="col-md-2">    
             <th scope="row">
@@ -501,7 +503,10 @@ include "createReservations.php";
       <div class="col-md-8 red">
         <h3>N'oubliez pas de confirmer votre réservation 24h à l'avance !</h3>
         <p id = "message"><?= $message?:'' ?></p>
-     </div>     
+     </div>    
+    <div class="col-md-8"> 
+        <p id = "message"><?= $messagepdf?:'' ?></p>
+     </div> 
      <?php 
      endif;
         if(!isActive()):
@@ -514,7 +519,7 @@ include "createReservations.php";
             endif;
             ?>
 
-    </form>
+</form>
     
              
 <script type="text/javascript" src="calendar/bootstrapv3/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
