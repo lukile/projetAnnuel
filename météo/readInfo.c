@@ -54,7 +54,7 @@ int readInfo(char *buffer)
     ip = malloc(sizeof(char) * (iplen+1));
     if (ip == NULL)
     {
-        fprintf(stderr,"ERROR, cannot create ip string");
+        fprintf(stderr,"\nERROR, cannot create ip string");
         return -1;
     }
     memset(ip, 0, iplen+1);
@@ -65,7 +65,7 @@ int readInfo(char *buffer)
     sock = socket(AF_INET, SOCK_STREAM, 0); //création du socket
     if(sock == SOCKET_ERROR)
     {
-        fprintf(stderr,"ERROR, cannot create socket");
+        fprintf(stderr,"\nERROR, cannot create socket");
         return -1;
     }
     sin.sin_addr.s_addr = inet_addr(ip);
@@ -73,25 +73,17 @@ int readInfo(char *buffer)
     sin.sin_port = htons(80); // port HTTP.
 
     if(connect(sock, (SOCKADDR*)&sin, sizeof(sin)) != SOCKET_ERROR)
-        printf("Connexion to %s on port %d\n", inet_ntoa(sin.sin_addr), htons(sin.sin_port));
+        printf("\nConnexion to %s on port %d\n", inet_ntoa(sin.sin_addr), htons(sin.sin_port));
     else
-        fprintf(stderr,"ERROR, Unable to connect");
+        fprintf(stderr,"\nERROR, Unable to connect");
 
     send(sock, api, strlen(api), 0); // on envoie la requête HTTP.
 
-    //test
-    /*log = fopen("test.txt","w");
-    if(log == NULL)
-    {
-        fprintf(stderr,"ERROR, cannot create the log file");
-        return -1;
-    }*/
 
     if (recv(sock, buffer, BUFFER_SIZE, 0) != 0) // si le buffer reçoit des données.
     {
         printf("%s",buffer);
 	printf("\nout of buffer\n");
-        //fwrite(buffer, 1, BUFFER_SIZE, log); // enregistrement des données dans le fichier.
         MYSQL sql;
         mysql_init(&sql);
 	printf("\ninit\n");
@@ -111,11 +103,11 @@ int readInfo(char *buffer)
         }
         else
         {
-            printf("Une erreur à eu lieu lors de la connection sur la base de donnée.");
+            printf("\nError, \ncannot connect to the database.");
         }
     }
     else
-        printf("ERROR, cannot read the buffer");
+        printf("\nERROR, cannot read the buffer.");
 
     //fclose(log);
     free(ip);
