@@ -139,7 +139,7 @@
                             <h3 class="panel-title">Météo</h3>
                         </div>
                         <div class="panel-body">
-                            <span class="price"><?php <p> </p>?></span>
+                            <span class="price"><?php ?></span>
                             <span class="period"><?php echo $temps?></span>
                         </div>
                         <ul class="list-group">
