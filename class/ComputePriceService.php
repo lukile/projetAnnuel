@@ -32,19 +32,23 @@ class ComputePriceService{
     }
 
     public function priceHTShelter($priceParking, $surface, $maxWeight){
+        $dateManager = new DateHourManager();
+
         $htPrice = $this->computeHTParkingPrice($priceParking, $surface);
 
             if($maxWeight < 0.5 && $surface < 60 || $maxWeight < 0.5 && $surface >= 60 && $surface < 100 || $maxWeight >= 0.5 && $maxWeight < 1){
-                $htPrice += 116.67; 
-            
+                //cat2
+                $htPrice += 7.29;
             }else if($maxWeight > 1 && $surface < 60 || 
                      $maxWeight >= 0.5 && $maxWeight < 1 && $surface >= 60 && $surface < 100 ||
                      $maxWeight > 1 && $surface >= 60 && $surface < 100 ||
                      $maxWeight < 0.5 && $surface > 100 ||
                      $maxWeight >= 0.5 && $maxWeight < 1 && $surface > 100){
-                $htPrice += 70.83;
+            
+                $htPrice += 4.42;            
             }else if($maxWeight > 1 && $surface > 100){
-                $htPrice += 150;
+                //cat1
+                $htPrice += 9.38;
             }
         return $htPrice;
     }
@@ -115,26 +119,17 @@ class ComputePriceService{
         $openDays = $dateManager->getOpenDays($start, $end);
 
         $coefficient = new Coefficient();
-        $period = $coefficient->dayOrNightPeriod($acousticGroup, $hour);
-
-        echo '<br>period : '.$period.'<br>';
-        
+        $period = $coefficient->dayOrNightPeriod($acousticGroup, $hour);        
 
         if($plane == "monoMulti" && $openDays == 0){          
             $htPrice = 41.17 * $period;
-            echo '1 ->'.$htPrice;
         }elseif($plane == "monoBiTur" && $openDays == 0){
             $htPrice = 34.50 * $period;
-            echo '2 ->'.$htPrice;
         }elseif($plane == "monoMulti" && $openDays > 0){
             $htPrice = 37.17 * $period;
-            echo '3 ->'.$htPrice;
         }elseif($plane == "monoBiTur" && $openDays > 0){
             $htPrice = 31.17 * $period;
-            echo '<br>period : '.$period.'<br>';
-            echo '4 ->'.$htPrice;
         }
-        echo '5 ->'.$htPrice;
         
         return $htPrice;
     }
@@ -163,40 +158,123 @@ class ComputePriceService{
 
     public function landingParkingHTPrice($order_form_id, $plane, $idRoyalties, $htPrice, $startDate, $endDate){
         $dateManager = new DateHourManager();
-        echo 'ht price'.$htPrice;
         $request = connect()->prepare("UPDATE royalties SET HT_price=:htPrice WHERE id=:idRoyalties");   
 
         if($plane == "monoMulti" && $dateManager->isMonth($startDate, $endDate)){
             $htPrice += 120.0;    
-             echo '1.2 ->'.$htPrice;
             $request->execute(array(':htPrice'=>$htPrice, ':idRoyalties'=>$idRoyalties));
         }elseif($plane == "monoMulti"){
             $htPrice += 18.0;
-             echo '2.2 ->'.$htPrice;
             $request->execute(array(':htPrice'=>$htPrice, ':idRoyalties'=>$idRoyalties));
         }elseif($plane == "monoBiTur" && $dateManager->isMonth($startDate, $endDate)){
             $htPrice += 113.0;
-             echo '3.2 ->'.$htPrice;
             $request->execute(array(':htPrice'=>$htPrice, ':idRoyalties'=>$idRoyalties));
         }elseif($plane == "monoBiTur"){
             $htPrice += 15.25;
-             echo '4.2 ->'.$htPrice;
             $request->execute(array(':htPrice'=>$htPrice, ':idRoyalties'=>$idRoyalties));
         }
         return $htPrice;
     }
 
-    public function landingParkingTTCPrice($order_form_id, $plane, $idRoyalties, $ttcPrice){
+    public function landingParkingTTCPrice($order_form_id, $plane, $idRoyalties, $ttcPrice, $startDate, $endDate){
+        $dateManager = new DateHourManager();
         $request = connect()->prepare("UPDATE royalties SET TTC_price=:ttcPrice WHERE id=:idRoyalties");   
-        if($plane == "monoMulti"){
+       
+        if($plane == "monoMulti" && $dateManager->isMonth($startDate, $endDate)){
+            $ttcPrice += 144.0;
+            $request->execute(array(':ttcPrice'=>$ttcPrice, ':idRoyalties'=>$idRoyalties));
+        }elseif($plane == "monoMulti"){
             $ttcPrice += 21.60;
             $request->execute(array(':ttcPrice'=>$ttcPrice, ':idRoyalties'=>$idRoyalties));
+        }elseif($plane == "monoBiTur" && $dateManager->isMonth($startDate, $endDate)){
+            $ttcPrice += 135.60;
+            $request->execute(array(':ttcPrice'=>$ttcPrice, ':idRoyalties'=>$idRoyalties));       
         }elseif($plane == "monoBiTur"){
             $ttcPrice += 18.30;
             $request->execute(array(':ttcPrice'=>$ttcPrice, ':idRoyalties'=>$idRoyalties));
         }
         return $ttcPrice;
     }
+
+    public function priceHTShelterCategory($startDate, $endDate, $htPrice, $idRoyalties, $maxWeight, $surface){
+        $request = connect()->prepare("UPDATE royalties SET HT_price=:htPrice WHERE id=:idRoyalties");
+        
+        $dateManager = new DateHourManager();
+        
+        if($maxWeight < 0.5 && $surface < 60 || $maxWeight < 0.5 && $surface >= 60 && $surface < 100 || $maxWeight >= 0.5 && $maxWeight < 1){
+            //cat2
+            if($dateManager->isMonth($startDate, $endDate)){
+                $htPrice += 116.67;
+                $request->execute(array(':htPrice'=>$htPrice, ':idRoyalties'=>$idRoyalties)); 
+            }else{
+                $htPrice += 4.33;
+                $request->execute(array(':htPrice'=>$htPrice, ':idRoyalties'=>$idRoyalties));
+            }
+        }else if($maxWeight > 1 && $surface < 60 || 
+                    $maxWeight >= 0.5 && $maxWeight < 1 && $surface >= 60 && $surface < 100 ||
+                    $maxWeight > 1 && $surface >= 60 && $surface < 100 ||
+                    $maxWeight < 0.5 && $surface > 100 ||
+                    $maxWeight >= 0.5 && $maxWeight < 1 && $surface > 100){
+            //cat3
+            if($dateManager->isMonth($startDate, $endDate)){
+                $htPrice += 70.83;
+                $request->execute(array(':htPrice'=>$htPrice, ':idRoyalties'=>$idRoyalties)); 
+            }else{
+                $htPrice += 2.63;    
+                $request->execute(array(':htPrice'=>$htPrice, ':idRoyalties'=>$idRoyalties)); 
+            }        
+        }else if($maxWeight > 1 && $surface > 100){
+            //cat1
+            if($dateManager->isMonth($startDate, $endDate)){
+                $htPrice += 150;
+                $request->execute(array(':htPrice'=>$htPrice, ':idRoyalties'=>$idRoyalties)); 
+            }else{
+                $htPrice += 5.50;
+                $request->execute(array(':htPrice'=>$htPrice, ':idRoyalties'=>$idRoyalties)); 
+            }
+        }
+        return $htPrice;
+    }
+
+    public function priceTTCShelterCategory($startDate, $endDate, $ttcPrice, $idRoyalties, $maxWeight, $surface){
+        $request = connect()->prepare("UPDATE royalties SET TTC_price=:ttcPrice WHERE id=:idRoyalties");
+        
+        $dateManager = new DateHourManager();
+        
+        if($maxWeight < 0.5 && $surface < 60 || $maxWeight < 0.5 && $surface >= 60 && $surface < 100 || $maxWeight >= 0.5 && $maxWeight < 1){
+            //cat2
+            if($dateManager->isMonth($startDate, $endDate)){
+                $ttcPrice += 140.0;
+                $request->execute(array(':ttcPrice'=>$ttcPrice, ':idRoyalties'=>$idRoyalties)); 
+            }else{
+                $ttcPrice += 5.20;
+                $request->execute(array(':ttcPrice'=>$ttcPrice, ':idRoyalties'=>$idRoyalties));
+            }
+        }else if($maxWeight > 1 && $surface < 60 || 
+                    $maxWeight >= 0.5 && $maxWeight < 1 && $surface >= 60 && $surface < 100 ||
+                    $maxWeight > 1 && $surface >= 60 && $surface < 100 ||
+                    $maxWeight < 0.5 && $surface > 100 ||
+                    $maxWeight >= 0.5 && $maxWeight < 1 && $surface > 100){
+            //cat3
+            if($dateManager->isMonth($startDate, $endDate)){
+                $ttcPrice += 85.0;
+                $request->execute(array(':ttcPrice'=>$ttcPrice, ':idRoyalties'=>$idRoyalties)); 
+            }else{
+                $ttcPrice += 3.15;    
+                $request->execute(array(':ttcPrice'=>$ttcPrice, ':idRoyalties'=>$idRoyalties)); 
+            }        
+        }else if($maxWeight > 1 && $surface > 100){
+            //cat1
+            if($dateManager->isMonth($startDate, $endDate)){
+                $ttcPrice += 180;
+                $request->execute(array(':ttcPrice'=>$ttcPrice, ':idRoyalties'=>$idRoyalties)); 
+            }else{
+                $ttcPrice += 6.60;
+                $request->execute(array(':ttcPrice'=>$ttcPrice, ':idRoyalties'=>$idRoyalties)); 
+            }
+        }
+        return $ttcPrice;
+    }    
 
     private function connect(){
         $manager = DatabaseManager::getsharedInstance();

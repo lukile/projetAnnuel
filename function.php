@@ -199,10 +199,8 @@ function isParked($id_orderForm){
     $parkingId = $result->service_id;
 
     if($parkingId == 3){
-        echo 'parké';
         return true;
     }else{
-        echo 'pas parké';
         return false;
     }
 }

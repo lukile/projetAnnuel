@@ -86,7 +86,6 @@ class OrderFormManager {
     }
 
     public function isLanding($service){
-        echo $service;
         if($service == "landing"){
             return true;
         }else{

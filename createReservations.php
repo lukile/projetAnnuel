@@ -104,7 +104,7 @@ if(isset($_POST['ffa']) && isset($_POST['planeSelecter']) && isset($_POST['fuel'
                             "first_flying" => 80,
                             "flying_lesson" => 70,
                             "parking" => ($shelter == "Oui") 
-                                ? $computePriceService->priceHTShelter($priceParking, $surface, $maxWeight)
+                                ? $priceHtShelter = $computePriceService->priceHTShelter($priceParking, $surface, $maxWeight)
                                 : $computePriceService->computeHTParkingPrice($priceParking, $surface)
                         ];
 
@@ -114,7 +114,7 @@ if(isset($_POST['ffa']) && isset($_POST['planeSelecter']) && isset($_POST['fuel'
                             "landing" => $landingTTCPrice = $computePriceService->landingTTCPrice($service, $plane, $serviceStartDate, $serviceStartHour, $acousticGroup, $id_orderForm),
                             "refueling" => $computePriceService->refuelingTTCPrice($fuelValues, $qteFuel),
                             "parking" => ($shelter == "Oui") 
-                                ? $computePriceService->priceTTCShelter($priceParking, $surface, $maxWeight)
+                                ? $priceTtcShelter = $computePriceService->priceTTCShelter($priceParking, $surface, $maxWeight)
                                 :$computePriceService->computeTTCParkingPrice($priceParking, $surface)
                         ];
                         
@@ -143,7 +143,10 @@ if(isset($_POST['ffa']) && isset($_POST['planeSelecter']) && isset($_POST['fuel'
                     }
                     if(isParked($id_orderForm) && $orderFormManager->isLanding($service)){
                         $landingParkingHtPrice = $computePriceService->landingParkingHTPrice($id_orderForm, $plane, $orderform, $landingHTPrice, $startParkingDate, $endParkingDate);
-                        $landingParkingTtcPrice = $computePriceService->landingParkingTTCPrice($id_orderForm, $plane, $orderform, $landingTTCPrice, $startParkingDate, $endParkingDate);
+                        $landingParkingTtcPrice = $computePriceService->landingParkingTTCPrice($id_orderForm, $plane, $orderform, $landingTTCPrice, $startParkingDate, $endParkingDate);                        
+                    }elseif(isParked($id_orderForm) && $shelter == "Oui"){
+                        $priceHTShelterCategory = $computePriceService->priceHTShelterCategory($startParkingDate, $endParkingDate, $priceHtShelter, $orderform, $maxWeight, $surface);
+                        $priceTTCShelterCategory = $computePriceService-> priceTTCShelterCategory($startParkingDate, $endParkingDate, $priceTtcShelter, $orderform, $maxWeight, $surface);
                     }
                 }else{
                     $message = "Vous devez sélectionner une activité au moins pour valider la réservation";
