@@ -99,12 +99,13 @@
                 $fetch_query = $insertion_prep_meteo->fetch();
 
                 $db= connect();
-                $select_icone = "SELECT iDMeteo from meteo";
+                $select_icone = "SELECT weather from meteo";
                 $insertion_ic_meteo = $db->prepare($select_icone);
                 $insertion_ic_meteo->execute();
                 $fetch_quer = $insertion_ic_meteo->fetch();
 
-                switch ($fetch_quer['iDMeteo']) {
+                $temps = '';
+                switch ($fetch_quer['weather']) {
                     case '200':
                         $temps = 'Orage';
                         break;
@@ -138,7 +139,7 @@
                             <h3 class="panel-title">Météo</h3>
                         </div>
                         <div class="panel-body">
-                            <span class="price"><!--<?php echo $d['icone']?>--></span>
+                            <span class="price"><?php <p> </p>?></span>
                             <span class="period"><?php echo $temps?></span>
                         </div>
                         <ul class="list-group">
