@@ -34,6 +34,8 @@ class OrderFormManager {
         $orderFormService->setRoyaltyId($lastInsertId);
  
         $this->insertOrderFormServiceValues($orderFormService);
+
+        return $lastInsertId;
     }
 
     private function insertRoyalties(Royalty $royalty){
@@ -81,6 +83,15 @@ class OrderFormManager {
         $exec = $prep->execute($array);
 
         return $exec;
+    }
+
+    public function isLanding($service){
+        echo $service;
+        if($service == "landing"){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public function findInArray($search, $array, $defaultValue = 0) {

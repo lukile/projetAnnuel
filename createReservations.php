@@ -6,6 +6,7 @@ require_once("class/OrderFormManager.php");
 require_once("class/Service.php");
 require_once("class/User.php");
 require_once("class/OrderFormService.php");
+require_once("function.php");
 
     if(!isConnected()){
         header("Location:login.php");
@@ -28,6 +29,9 @@ require_once("class/OrderFormService.php");
     $endHour = filter_input(INPUT_POST, 'statHeureFin');
     $priceParking = filter_input(INPUT_POST, "priceParking");
     $shelter = filter_input(INPUT_POST, 'shelter');
+
+    $startParkingDate = filter_input(INPUT_POST, 'statDateDebut');
+    $endParkingDate = filter_input(INPUT_POST, 'statDateFin');
 
     $qteFuel = filter_input(INPUT_POST, 'qteFuel');
 
@@ -94,7 +98,7 @@ if(isset($_POST['ffa']) && isset($_POST['planeSelecter']) && isset($_POST['fuel'
 
                         $serviceHtPriceArray = [
                             "refueling" => $computePriceService->refuelingHTPrice($fuelValues, $qteFuel),
-                            "landing" => $computePriceService->landingHTPrice($service, $plane, $serviceStartDate, $serviceStartHour, $acousticGroup, $id_orderForm),
+                            "landing" => $landingHTPrice =  $computePriceService->landingHTPrice($service, $plane, $serviceStartDate, $serviceStartHour, $acousticGroup, $id_orderForm),
                             "parachuting" => 80,
                             "ulm" => 120,
                             "first_flying" => 80,
@@ -107,7 +111,7 @@ if(isset($_POST['ffa']) && isset($_POST['planeSelecter']) && isset($_POST['fuel'
                         $serviceHtPrice = $orderFormManager->findInArray($service, $serviceHtPriceArray);
 
                         $serviceTtcPriceArray = [
-                            "landing" => $computePriceService->landingTTCPrice($service, $plane, $serviceStartDate, $serviceStartHour, $acousticGroup, $id_orderForm),
+                            "landing" => $landingTTCPrice = $computePriceService->landingTTCPrice($service, $plane, $serviceStartDate, $serviceStartHour, $acousticGroup, $id_orderForm),
                             "refueling" => $computePriceService->refuelingTTCPrice($fuelValues, $qteFuel),
                             "parking" => ($shelter == "Oui") 
                                 ? $computePriceService->priceTTCShelter($priceParking, $surface, $maxWeight)
@@ -131,10 +135,15 @@ if(isset($_POST['ffa']) && isset($_POST['planeSelecter']) && isset($_POST['fuel'
                             $orderFormService = new OrderFormService($serviceStartDate, $serviceEndDate, $serviceStartHour, $serviceEndHour, $id_orderForm, $idService, null);
                             $royalty = new Royalty($fuel, $plane, $qteFuelComputed, $serviceCategory, $planeLength, $maxWeight, $planeWidth, $surface, $serviceHtPrice, $serviceTtcPrice, $ffa, $idService, $acousticGroup);
 
-                            $orderFormManager->insertOrderFormService($orderFormService, $royalty, $serviceObject);
+                            // $dateHourManager = DateHourManager::isMonth($serviceStartDate, $serviceEndDate);
+                            $orderform = $orderFormManager->insertOrderFormService($orderFormService, $royalty, $serviceObject);
                         } catch (Exception $e) {
                             $message = $e->getMessage();
                         }
+                    }
+                    if(isParked($id_orderForm) && $orderFormManager->isLanding($service)){
+                        $landingParkingHtPrice = $computePriceService->landingParkingHTPrice($id_orderForm, $plane, $orderform, $landingHTPrice, $startParkingDate, $endParkingDate);
+                        $landingParkingTtcPrice = $computePriceService->landingParkingTTCPrice($id_orderForm, $plane, $orderform, $landingTTCPrice, $startParkingDate, $endParkingDate);
                     }
                 }else{
                     $message = "Vous devez sélectionner une activité au moins pour valider la réservation";

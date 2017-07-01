@@ -112,6 +112,7 @@ function msgRead() {
     $fetch_id = connect()->prepare("UPDATE messages SET statut = 1 WHERE id = :id");
     $fetch_id->execute([':id'=>$_GET['id']]);
     $_POST = $fetch_id->fetch();
+   
     }
 
 }
@@ -199,13 +200,15 @@ function isParked($id_orderForm){
 
     if($parkingId == 3){
         echo 'parké';
+        return true;
     }else{
         echo 'pas parké';
+        return false;
     }
 }
 
-function displayServices(){
-  
+function isMonth($startDate, $endDate){
+
 }
 
 ?>

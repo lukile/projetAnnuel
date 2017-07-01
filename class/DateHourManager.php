@@ -1,7 +1,5 @@
 <?php 
 class DateHourManager{
-
-
     public function getOpenDays($startDate, $endDate){
         $publicHolidayArray = array();
 
@@ -57,7 +55,7 @@ class DateHourManager{
         }
     }
 
-    public function formatDate($date){
+    public function formatDateInTimestamp($date){
         $dateFormat = date_create_from_format('d-m-Y', $date);
         $formattedDate = $dateFormat->format('Y-m-d');
 
@@ -71,6 +69,19 @@ class DateHourManager{
         $formattedHour = $hourFormat->format('H:i:s');
 
         return $hour;            
+    }
+
+    public function isMonth($startDate, $endDate){
+        $start = new DateTime($startDate);
+        $end = new DateTime($endDate);
+        $interval = $end->diff($start);
+        $formatInterval = $interval->format('%m');
+        
+        if($formatInterval >= 1){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
 

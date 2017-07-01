@@ -109,7 +109,7 @@ class ComputePriceService{
     public function landingHTPrice($service, $plane, $date, $hour, $acousticGroup, $order_form_id){
         $dateManager = new DateHourManager();
 
-        $start = $dateManager->formatDate($date);
+        $start = $dateManager->formatDateInTimestamp($date);
         $end = $start;
 
         $openDays = $dateManager->getOpenDays($start, $end);
@@ -117,36 +117,37 @@ class ComputePriceService{
         $coefficient = new Coefficient();
         $period = $coefficient->dayOrNightPeriod($acousticGroup, $hour);
 
+        echo '<br>period : '.$period.'<br>';
+        
+
         if($plane == "monoMulti" && $openDays == 0){          
             $htPrice = 41.17 * $period;
+            echo '1 ->'.$htPrice;
         }elseif($plane == "monoBiTur" && $openDays == 0){
             $htPrice = 34.50 * $period;
+            echo '2 ->'.$htPrice;
         }elseif($plane == "monoMulti" && $openDays > 0){
             $htPrice = 37.17 * $period;
+            echo '3 ->'.$htPrice;
         }elseif($plane == "monoBiTur" && $openDays > 0){
             $htPrice = 31.17 * $period;
+            echo '<br>period : '.$period.'<br>';
+            echo '4 ->'.$htPrice;
         }
-
-        if(isParked($order_form_id) && $plane == "monoMulti"){
-            $htPrice = 41.17 * $period + 18.0;
-        }elseif(isParked($order_form_id) && $plane == "monoBiTur"){
-            $htPrice = 34.50 * $period + 15.25;
-        }
+        echo '5 ->'.$htPrice;
         
         return $htPrice;
     }
 
     public function landingTTCPrice($service, $plane, $date, $hour, $acousticGroup, $order_form_id){
         $dateManager = new DateHourManager();
-        $start = $dateManager->formatDate($date);
+        $start = $dateManager->formatDateInTimestamp($date);
         $end = $start;
 
         $openDays = $dateManager->getOpenDays($start, $end);
 
         $coefficient = new Coefficient();
         $period = $coefficient->dayOrNightPeriod($acousticGroup, $hour);
-
-        
 
          if($plane == "monoMulti" && $openDays == 0){
             $ttcPrice = 49.40 * $period;
@@ -156,6 +157,43 @@ class ComputePriceService{
             $ttcPrice = 44.60 * $period;
         }elseif($plane == "monoBiTur" && $openDays > 0){
             $ttcPrice = 37.40 * $period;
+        }
+        return $ttcPrice;
+    }
+
+    public function landingParkingHTPrice($order_form_id, $plane, $idRoyalties, $htPrice, $startDate, $endDate){
+        $dateManager = new DateHourManager();
+        echo 'ht price'.$htPrice;
+        $request = connect()->prepare("UPDATE royalties SET HT_price=:htPrice WHERE id=:idRoyalties");   
+
+        if($plane == "monoMulti" && $dateManager->isMonth($startDate, $endDate)){
+            $htPrice += 120.0;    
+             echo '1.2 ->'.$htPrice;
+            $request->execute(array(':htPrice'=>$htPrice, ':idRoyalties'=>$idRoyalties));
+        }elseif($plane == "monoMulti"){
+            $htPrice += 18.0;
+             echo '2.2 ->'.$htPrice;
+            $request->execute(array(':htPrice'=>$htPrice, ':idRoyalties'=>$idRoyalties));
+        }elseif($plane == "monoBiTur" && $dateManager->isMonth($startDate, $endDate)){
+            $htPrice += 113.0;
+             echo '3.2 ->'.$htPrice;
+            $request->execute(array(':htPrice'=>$htPrice, ':idRoyalties'=>$idRoyalties));
+        }elseif($plane == "monoBiTur"){
+            $htPrice += 15.25;
+             echo '4.2 ->'.$htPrice;
+            $request->execute(array(':htPrice'=>$htPrice, ':idRoyalties'=>$idRoyalties));
+        }
+        return $htPrice;
+    }
+
+    public function landingParkingTTCPrice($order_form_id, $plane, $idRoyalties, $ttcPrice){
+        $request = connect()->prepare("UPDATE royalties SET TTC_price=:ttcPrice WHERE id=:idRoyalties");   
+        if($plane == "monoMulti"){
+            $ttcPrice += 21.60;
+            $request->execute(array(':ttcPrice'=>$ttcPrice, ':idRoyalties'=>$idRoyalties));
+        }elseif($plane == "monoBiTur"){
+            $ttcPrice += 18.30;
+            $request->execute(array(':ttcPrice'=>$ttcPrice, ':idRoyalties'=>$idRoyalties));
         }
         return $ttcPrice;
     }
