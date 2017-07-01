@@ -138,7 +138,29 @@
                             <h3 class="panel-title">Météo</h3>
                         </div>
                         <div class="panel-body">
-                            <span class="price"><?php ?></span>
+                            <span class="price"><?php
+                                if($temps == 'Orage'){?>    
+                                    <img src="img/orage.png">
+                            <?php } 
+                                if($temps == 'Bruine'){
+                            ?>    
+                                    <img src="img/bruine.png">
+                            <?php }
+                                if($temps == 'Pluie'){?>    
+                                    <img src="img/pluie.png">
+                            <?php } 
+                                if($temps == 'Neige'){?>    
+                                    <img src="img/neige.png">
+                            <?php }
+                                if($temps == 'Brouillard'){?>    
+                                    <img src="img/brouillard.png">
+                            <?php }
+                                if($temps == 'Clair'){?>    
+                                    <img src="img/clair.png">
+                            <?php }
+                                if($temps == 'Nuageux'){?>    
+                                    <img src="img/nuageux.png">
+                            <?php } ?></span>
                             <span class="period"><?php echo $temps?></span>
                         </div>
                         <ul class="list-group">
