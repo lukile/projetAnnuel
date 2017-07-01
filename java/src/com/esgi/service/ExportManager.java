@@ -52,6 +52,7 @@ public class ExportManager {
     }
 
     private LocalDate getLastMonthDate() {
+
         return LocalDate.now().minus(1, ChronoUnit.MONTHS);
     }
 

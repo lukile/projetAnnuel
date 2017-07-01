@@ -68,7 +68,7 @@ class InscriptionDAO{
             <?php
                     echo 'Votre inscription est bien enregistrée.';
 
-                        $link="<a href='http://localhost/projects/projetAnnuel/validationemail.php?mail=".$mail."&activationKey=".$activationKey."'>ici</a>";
+                        $link="<a href='http://localhost/projet_annuel/validationemail.php?mail=".$mail."&activationKey=".$activationKey."'>ici</a>";
     
                     require_once('phpmailer/PHPMailerAutoload.php');
 
